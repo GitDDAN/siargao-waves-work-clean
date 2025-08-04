@@ -7,8 +7,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]
     },
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
     "noImplicitAny": false,
     "noUnusedParameters": false,
     "skipLibCheck": true,

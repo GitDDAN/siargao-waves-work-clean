@@ -14,11 +14,13 @@ import {
   Share2,
   MessageCircle,
   Bath,
-  Zap
+  Zap,
+  Heart // <-- Add this line
 } from "lucide-react";
 import ensuiteMasterImage from "@/assets/ensuite-master.png";
 import balconyRoomImage from "@/assets/balcony-room.png";
 import cozyRoomImage from "@/assets/cozy-room.png";
+import { format } from "date-fns"; // Make sure date-fns is installed
 
 const AccommodationSection = () => {
   const { toast } = useToast();
@@ -83,20 +85,71 @@ const AccommodationSection = () => {
     }
   ];
 
-  const shareRoom = (room: typeof roomTypes[0]) => {
-    const shareText = `Check out this amazing coliving room at Siargao: ${room.title} - ${room.subtitle}!\n\n${room.perfectFor}\n\nPricing:\n• Monthly: ${room.monthlyPrice}\n• Weekly: ${room.weeklyPrice}\n\nBook now: ${window.location.origin}`;
+  const getAvailabilityDates = (room: typeof roomTypes[0]) => {
+    // Updated with specific availability dates
+    const availabilityMap = {
+      "Cozy Room": {
+        nextAvailable: new Date(2025, 7, 7), // August 7, 2025
+        availableUntil: new Date(2025, 11, 31) // December 31, 2025
+      },
+      "Ensuite Master": {
+        nextAvailable: new Date(2025, 7, 15), // August 15, 2025
+        availableUntil: new Date(2025, 11, 31) // December 31, 2025
+      },
+      "Balcony Room": {
+        nextAvailable: new Date(2025, 7, 15), // August 15, 2025
+        availableUntil: new Date(2025, 11, 31) // December 31, 2025
+      }
+    };
     
+    return {
+      from: format(availabilityMap[room.title].nextAvailable, 'MMM dd, yyyy'),
+      until: format(availabilityMap[room.title].availableUntil, 'MMM dd, yyyy')
+    };
+  };
+
+  const shareRoom = (room: typeof roomTypes[0]) => {
+    const availability = getAvailabilityDates(room);
+    const imageUrl = window.location.origin + room.image; // Get full URL for image
+    const shareText = `
+🌊 Discover Your Perfect Coliving Space in Siargao!
+
+${room.title} - ${room.subtitle}
+📅 Available: ${availability.from} to ${availability.until}
+
+💰 Stay with Us:
+• Monthly: ${room.monthlyPrice}
+• Weekly: ${room.weeklyPrice}
+
+✨ Room Highlights:
+${room.features.map(f => `• ${f}`).join('\n')}
+
+👥 Perfect for: ${room.perfectFor}
+
+🏠 View the space: ${imageUrl}
+
+🌴 Book your stay: ${window.location.href}
+
+Contact us on WhatsApp to reserve your spot!
+`.trim();
+
     if (navigator.share) {
       navigator.share({
-        title: `${room.title} - Siargao Coliving`,
+        title: `${room.title} at Siargao Coliving`,
         text: shareText,
-        url: window.location.origin
+        url: window.location.href
+      }).catch(err => {
+        navigator.clipboard.writeText(shareText);
+        toast({
+          title: "Room details copied!",
+          description: "Share this room with your friends",
+        });
       });
     } else {
       navigator.clipboard.writeText(shareText);
       toast({
         title: "Room details copied!",
-        description: "Share this coliving room with your friends",
+        description: "Share this room with your friends",
       });
     }
   };
@@ -108,12 +161,12 @@ const AccommodationSection = () => {
   };
 
   const amenities = [
-    { icon: Wifi, label: "High-Speed Fiber WiFi", description: "Reliable 100+ Mbps with generator backup" },
+    { icon: Wifi, label: "High-Speed Fiber WiFi", description: "Reliable 100+ Mbps" },
     { icon: Coffee, label: "24/7 Kitchen", description: "Fully equipped coliving kitchen space" },
-    { icon: Zap, label: "Generator Backup Power", description: "Never lose power during work sessions" },
     { icon: Shield, label: "24/7 Security", description: "CCTV system and secure coliving environment" },
     { icon: Calendar, label: "Flexible Stays", description: "Weekly and monthly coliving rates" },
-    { icon: Users, label: "Coliving Community Events", description: "Surf sessions, skill shares, island adventures" }
+    { icon: Users, label: "Live-in Hosts for 24/7 Support", description: "On-property team for all your needs" },
+    { icon: Heart, label: "Island Partnership Network", description: "Best local guides & experiences" }
   ];
 
   return (
@@ -121,17 +174,23 @@ const AccommodationSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4">
-            Coliving Accommodations
+            Tropical Paradise Coliving
           </Badge>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Coliving
+              Siargao Villa
             </span>{" "}
-            Accommodations
+            Coliving Suites
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Short & Long-Term Stays - Authentic tropical coliving with professional coworking facilities
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
+            Your Dream Island Living & Coworking Space Awaits
           </p>
+          <div className="bg-primary/5 p-4 rounded-lg inline-block">
+            <h3 className="text-lg font-semibold text-primary mb-2">Next Available Suites:</h3>
+            <p className="text-sm text-muted-foreground">
+              🌟 Cozy Room - Available August 7th | Ensuite Master & Balcony Suite - Available August 15th
+            </p>
+          </div>
         </div>
 
         {/* Room Types */}
@@ -184,6 +243,16 @@ const AccommodationSection = () => {
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground mt-2">
                   <Users className="w-4 h-4" />
                   <span>{room.capacity}</span>
+                </div>
+
+                <div className="flex flex-col gap-2 mt-3 bg-primary/5 p-3 rounded-lg border border-primary/10">
+                  <div className="flex items-center space-x-2 text-sm">
+                    <Calendar className="w-4 h-4 text-primary" />
+                    <span className="font-medium">Suite Availability:</span>
+                  </div>
+                  <span className="text-sm text-primary font-medium">
+                    Move in from {getAvailabilityDates(room).from}
+                  </span>
                 </div>
               </CardHeader>
 

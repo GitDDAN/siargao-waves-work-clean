@@ -73,61 +73,21 @@ const WorkspaceSection = () => {
     }
   ];
 
-  const productivity = [
-    { metric: "98%", label: "Uptime Guarantee" },
-    { metric: "150+", label: "Mbps Average Speed" },
-    { metric: "24/7", label: "Technical Support" },
-    { metric: "5min", label: "Setup Time" }
-  ];
-
   return (
     <section id="workspace" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4">
-            Coworking Spaces
+            Work Flexibility
           </Badge>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Coworking
-            </span> Spaces Within Our Coliving Community
+              Work From Anywhere - True Island Flexibility
+            </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Professional coworking infrastructure designed for our coliving community members
+            Work from the hammock, dining table, garden, or bedroom desk - choose your daily office! For AC comfort and Starlink speeds, we know the best cafes on the island. Need serious focus? We'll show you the top coworking offices for those important meeting days.
           </p>
-        </div>
-
-        {/* Productivity Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {productivity.map((stat, index) => (
-            <div 
-              key={index}
-              className="text-center p-6 bg-background rounded-xl shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="text-3xl font-bold text-primary mb-2">{stat.metric}</div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Technical Specifications */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {techSpecs.map((tech, index) => (
-            <Card key={index} className="hover:shadow-lg transition-all duration-300">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <tech.icon className="w-6 h-6 text-white" />
-                </div>
-                <h4 className="font-semibold mb-2">{tech.feature}</h4>
-                <div className="text-2xl font-bold text-primary mb-1">{tech.spec}</div>
-                <p className="text-sm text-muted-foreground mb-3">{tech.backup}</p>
-                <Badge variant="secondary" className="text-xs">
-                  <CheckCircle className="w-3 h-3 mr-1" />
-                  {tech.status}
-                </Badge>
-              </CardContent>
-            </Card>
-          ))}
         </div>
 
         {/* Workspace Types */}

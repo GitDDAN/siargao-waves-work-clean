@@ -60,8 +60,14 @@ const SiargaoSection = () => {
   const locations = [
     {
       name: "Cloud 9",
-      distance: "1km",
+      distance: "5-minute drive",
       activity: "World-famous surf break",
+      icon: Waves
+    },
+    {
+      name: "Cemetery Surf Spot",
+      distance: "3-minute drive",
+      activity: "Local favorite surf spot",
       icon: Waves
     },
     {
@@ -201,6 +207,7 @@ const SiargaoSection = () => {
         {/* Community Impact */}
         <div className="bg-gradient-to-r from-accent/10 to-primary/10 rounded-2xl p-8 mb-12">
           <div className="text-center mb-8">
+            <span className="inline-block bg-yellow-400 text-white px-3 py-1 rounded-full text-xs font-bold mb-2">Coming Soon</span>
             <Heart className="w-12 h-12 text-accent mx-auto mb-4" />
             <h3 className="text-2xl font-bold mb-4">Supporting Local Community</h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -241,6 +248,26 @@ const SiargaoSection = () => {
             </Button>
           </div>
         </div>
+
+        <p className="text-center mt-4 text-sm text-muted-foreground">
+          Exact coordinates: <a href="https://maps.google.com/?q=9.791547987108133,126.15896492864357" target="_blank" rel="noopener noreferrer" className="underline">9.791547987108133, 126.15896492864357</a>
+        </p>
+        <a
+          href="https://wa.me/639083339477?text=Hi%20Ali%2C%20please%20send%20me%20the%20Welcome%20Package!"
+          className="btn btn-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Request Welcome Package
+        </a>
+        <a
+          href="https://wa.me/639083339477?text=Hi%20Ali%2C%20I%27d%20like%20to%20join%20the%20community%20WhatsApp%20group!"
+          className="btn btn-outline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Join Community WhatsApp
+        </a>
       </div>
     </section>
   );

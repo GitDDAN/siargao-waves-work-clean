@@ -4,7 +4,7 @@ import CommunitySection from "@/components/sections/CommunitySection";
 import AccommodationSection from "@/components/sections/AccommodationSection";
 import WorkspaceSection from "@/components/sections/WorkspaceSection";
 import SiargaoSection from "@/components/sections/SiargaoSection";
-import ApplicationSection from "@/components/sections/ApplicationSection";
+import BookingSection from "@/components/sections/BookingSection";
 import Footer from "@/components/sections/Footer";
 
 const Index = () => {
@@ -15,11 +15,13 @@ const Index = () => {
       <CommunitySection />
       <AccommodationSection />
       <WorkspaceSection />
+      <BookingSection />
       <SiargaoSection />
-      <ApplicationSection />
       <Footer />
     </div>
   );
 };
 
 export default Index;
+
+<script type="module" src="/src/main.tsx"></script>
