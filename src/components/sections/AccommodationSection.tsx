@@ -104,24 +104,31 @@ const AccommodationSection = () => {
       }
     };
     
+    const roomData = availabilityMap[room.title];
+    
     return {
-      from: format(availabilityMap[room.title].nextAvailable, 'MMM dd, yyyy'),
-      until: format(availabilityMap[room.title].availableUntil, 'MMM dd, yyyy'),
-      fromShort: format(availabilityMap[room.title].nextAvailable, 'MMM dd'),
-      monthYear: format(availabilityMap[room.title].nextAvailable, 'MMMM yyyy')
+      from: format(roomData.nextAvailable, 'MMM dd, yyyy'),
+      until: format(roomData.availableUntil, 'MMM dd, yyyy'),
+      fromShort: format(roomData.nextAvailable, 'MMM dd'),
+      monthYear: format(roomData.nextAvailable, 'MMMM yyyy'),
+      nextAvailable: roomData.nextAvailable // Add this for sorting
     };
   };
 
   const shareRoom = async (room) => {
     const availability = getAvailabilityDates(room);
-    const currentUrl = window.location.href;
+    const currentUrl = window.location.href.split('#')[0]; // Remove any existing hash
     const roomUrl = `${currentUrl}#${room.title.toLowerCase().replace(/ /g, '-')}`;
     
-    // Create rich share content
+    // Create absolute image URL
+    const imageUrl = new URL(room.image, window.location.origin).href;
+    
+    // Create rich share content with image
     const shareData = {
       title: `${room.title} - Siargao Coliving Paradise`,
       text: `${room.socialTagline}\n\n📅 Available from ${availability.from}\n💰 From ${room.monthlyPrice}/month\n\n${room.perfectFor}`,
-      url: roomUrl
+      url: roomUrl,
+      files: [] // We'll try to include the image if possible
     };
 
     // Enhanced text for platforms that don't support rich sharing
@@ -143,18 +150,23 @@ ${room.features.slice(0, 4).map(f => `• ${f}`).join('\n')}
 🌊 Book your island coliving experience: ${roomUrl}
 
 Contact us on WhatsApp to secure your spot! 🏄‍♀️
+
+📸 Room Image: ${imageUrl}
     `.trim();
+
+    // Update meta tags first for better social media previews
+    updateMetaTags(room, availability, roomUrl, imageUrl);
 
     try {
       // Try native sharing first (mobile devices)
       if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
         await navigator.share(shareData);
       } else {
-        // Fallback to clipboard
+        // Fallback to clipboard with image URL
         await navigator.clipboard.writeText(enhancedShareText);
         toast({
           title: "Room details copied! 📋",
-          description: "Perfect for sharing on social media - includes image preview when posted!",
+          description: "Perfect for sharing on social media - includes room image URL and preview data!",
         });
       }
     } catch (err) {
@@ -163,7 +175,7 @@ Contact us on WhatsApp to secure your spot! 🏄‍♀️
         await navigator.clipboard.writeText(enhancedShareText);
         toast({
           title: "Room details copied! 📋", 
-          description: "Share this amazing coliving space with your friends!",
+          description: "Share this amazing coliving space with your friends! Image URL included.",
         });
       } catch (clipboardErr) {
         toast({
@@ -172,27 +184,29 @@ Contact us on WhatsApp to secure your spot! 🏄‍♀️
         });
       }
     }
-
-    // Add meta tags dynamically for better social media previews
-    updateMetaTags(room, availability, roomUrl);
   };
 
-  const updateMetaTags = (room, availability, roomUrl) => {
+  const updateMetaTags = (room, availability, roomUrl, imageUrl) => {
     // Remove existing meta tags
     const existingMetas = document.querySelectorAll('meta[property^="og:"], meta[name^="twitter:"]');
     existingMetas.forEach(meta => meta.remove());
 
-    // Add new meta tags for rich social sharing
+    // Add new meta tags for rich social sharing with image
     const metaTags = [
       { property: 'og:title', content: `${room.title} - Siargao Coliving Paradise` },
       { property: 'og:description', content: `${room.socialTagline} Available from ${availability.from}. ${room.perfectFor}` },
-      { property: 'og:image', content: window.location.origin + room.image },
+      { property: 'og:image', content: imageUrl },
+      { property: 'og:image:width', content: '1200' },
+      { property: 'og:image:height', content: '630' },
+      { property: 'og:image:alt', content: `${room.title} - ${room.subtitle}` },
       { property: 'og:url', content: roomUrl },
       { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Siargao Coliving Paradise' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: `${room.title} - Siargao Coliving` },
       { name: 'twitter:description', content: `${room.socialTagline} Available ${availability.fromShort}` },
-      { name: 'twitter:image', content: window.location.origin + room.image }
+      { name: 'twitter:image', content: imageUrl },
+      { name: 'twitter:image:alt', content: `${room.title} - ${room.subtitle}` }
     ];
 
     metaTags.forEach(tag => {
@@ -244,9 +258,16 @@ Contact us on WhatsApp to secure your spot! 🏄‍♀️
           </div>
         </div>
 
-        {/* Room Types */}
+        {/* Room Types - Sorted by availability date */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {roomTypes.map((room, index) => (
+          {roomTypes
+            .sort((a, b) => {
+              // Sort by availability date - earliest first
+              const dateA = getAvailabilityDates(a).nextAvailable || new Date(2099, 0, 1);
+              const dateB = getAvailabilityDates(b).nextAvailable || new Date(2099, 0, 1);
+              return new Date(dateA) - new Date(dateB);
+            })
+            .map((room, index) => (
             <Card 
               key={index} 
               id={room.title.toLowerCase().replace(/ /g, '-')}

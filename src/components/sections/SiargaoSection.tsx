@@ -104,9 +104,9 @@ const SiargaoSection = () => {
       icon: Utensils
     },
     {
-      name: "Doot Beach",
-      distance: "3km drive",
-      activity: "Sunset views, beach bars",
+      name: "Bravo Beach Resort",
+      distance: "300m Walk",
+      activity: "Sunrise views, beach bars",
       icon: Sun
     },
     {

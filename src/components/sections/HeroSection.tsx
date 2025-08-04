@@ -46,11 +46,10 @@ const HeroSection = () => {
 					</div>
 
 					{/* Main Heading with Modern Gradient */}
-					<div className="space-y-6 text-center">
-						<h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
-							<span className="text-white">Coliving & Remote Work</span>{" "}
+					<div className="space-y-4 md:space-y-6 text-center">
+						<h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
 							<span
-								className="animate-gradient bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent block"
+								className="animate-gradient bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent block mb-2"
 								style={{
 									textShadow: "0 8px 32px rgba(255,140,0,0.5)",
 									filter: "brightness(1.2) contrast(1.1)",
@@ -58,10 +57,13 @@ const HeroSection = () => {
 							>
 								{activities[currentActivity]}
 							</span>
+							<span className="text-white text-2xl sm:text-3xl md:text-5xl lg:text-6xl block">
+								Coliving & Remote Work
+							</span>
 						</h1>
 
-						{/* Subtitle - Moved back closer to heading */}
-						<p className="text-xl md:text-2xl text-white/90 font-light max-w-4xl mx-auto">
+						{/* Subtitle - Better mobile sizing */}
+						<p className="text-lg sm:text-xl md:text-2xl text-white/90 font-light max-w-4xl mx-auto px-4">
 							Where Digital Nomads Find{" "}
 							<span className="font-semibold bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">
 								Community, Comfort & Connectivity
@@ -73,7 +75,7 @@ const HeroSection = () => {
 					{/* Feature Pills with Glass Effect */}
 					<div className="flex flex-wrap justify-center gap-4 pt-6">
 						{[
-							{ icon: Laptop, text: "Fast WiFi" },
+							{ icon: Laptop, text: "Starlink WiFi" },
 							{ icon: Users, text: "Nomad Community" },
 							{ icon: Coffee, text: "Coworking Ready" },
 							{ icon: Waves, text: "5min to Cloud 9" },
@@ -116,8 +118,8 @@ const HeroSection = () => {
 					<div className="flex flex-wrap justify-center gap-8 pt-10">
 						{[
 							{ number: "₱25k/mo", label: "Coliving Rates" },
-							{ number: "100+ Mbps", label: "Fast WIFI / StarLink Coming" },
-							{ number: "24/7", label: "Cafe 3 min Walk" },
+							{ number: "100+ Mbps", label: "Starlink WiFi" },
+							{ number: "24/7", label: "Power Backup" },
 						].map((stat, index) => (
 							<div
 								key={index}
