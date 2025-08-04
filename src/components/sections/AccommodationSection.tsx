@@ -15,12 +15,12 @@ import {
   MessageCircle,
   Bath,
   Zap,
-  Heart // <-- Add this line
+  Heart
 } from "lucide-react";
 import ensuiteMasterImage from "@/assets/ensuite-master.png";
 import balconyRoomImage from "@/assets/balcony-room.png";
 import cozyRoomImage from "@/assets/cozy-room.png";
-import { format } from "date-fns"; // Make sure date-fns is installed
+import { format } from "date-fns";
 
 const AccommodationSection = () => {
   const { toast } = useToast();
@@ -33,6 +33,7 @@ const AccommodationSection = () => {
       weeklyPrice: "₱9,500",
       image: ensuiteMasterImage,
       perfectFor: "Digital nomads seeking premium coliving with privacy and focused coworking space",
+      socialTagline: "🌊 Premium Coliving Suite with Private Bathroom & Coworking Space in Paradise! Perfect for Digital Nomads seeking luxury island living.",
       features: [
         "Private ensuite bathroom",
         "Dedicated coworking workspace",
@@ -52,6 +53,7 @@ const AccommodationSection = () => {
       weeklyPrice: "₱8,500",
       image: balconyRoomImage,
       perfectFor: "Couples enjoying coliving lifestyle with outdoor morning routines and collaborative workspace",
+      socialTagline: "🌴 Wake Up to Jungle Views Every Day! Coliving Suite with Private Balcony - Perfect for Couples & Digital Nomads in Siargao Paradise.",
       features: [
         "Private balcony with jungle views",
         "Coworking space with nature views",
@@ -71,6 +73,7 @@ const AccommodationSection = () => {
       weeklyPrice: "₱7,500",
       image: cozyRoomImage,
       perfectFor: "Solo nomads maximizing coliving value for extended community living",
+      socialTagline: "🏄‍♂️ Budget-Friendly Island Coliving! Perfect for Solo Digital Nomads - Garden Views, Great Community, Unbeatable Value in Siargao.",
       features: [
         "Garden view workspace",
         "Comfortable double bed",
@@ -85,8 +88,7 @@ const AccommodationSection = () => {
     }
   ];
 
-  const getAvailabilityDates = (room: typeof roomTypes[0]) => {
-    // Updated with specific availability dates
+  const getAvailabilityDates = (room) => {
     const availabilityMap = {
       "Cozy Room": {
         nextAvailable: new Date(2025, 7, 7), // August 7, 2025
@@ -104,58 +106,107 @@ const AccommodationSection = () => {
     
     return {
       from: format(availabilityMap[room.title].nextAvailable, 'MMM dd, yyyy'),
-      until: format(availabilityMap[room.title].availableUntil, 'MMM dd, yyyy')
+      until: format(availabilityMap[room.title].availableUntil, 'MMM dd, yyyy'),
+      fromShort: format(availabilityMap[room.title].nextAvailable, 'MMM dd'),
+      monthYear: format(availabilityMap[room.title].nextAvailable, 'MMMM yyyy')
     };
   };
 
-  const shareRoom = (room: typeof roomTypes[0]) => {
+  const shareRoom = async (room) => {
     const availability = getAvailabilityDates(room);
-    const imageUrl = window.location.origin + room.image; // Get full URL for image
-    const shareText = `
-🌊 Discover Your Perfect Coliving Space in Siargao!
+    const currentUrl = window.location.href;
+    const roomUrl = `${currentUrl}#${room.title.toLowerCase().replace(/ /g, '-')}`;
+    
+    // Create rich share content
+    const shareData = {
+      title: `${room.title} - Siargao Coliving Paradise`,
+      text: `${room.socialTagline}\n\n📅 Available from ${availability.from}\n💰 From ${room.monthlyPrice}/month\n\n${room.perfectFor}`,
+      url: roomUrl
+    };
 
-${room.title} - ${room.subtitle}
-📅 Available: ${availability.from} to ${availability.until}
+    // Enhanced text for platforms that don't support rich sharing
+    const enhancedShareText = `
+🏝️ ${room.title} - Siargao Coliving Paradise
 
-💰 Stay with Us:
-• Monthly: ${room.monthlyPrice}
+${room.socialTagline}
+
+📅 AVAILABLE: ${availability.from}
+💰 PRICING:
+• Monthly: ${room.monthlyPrice} 
 • Weekly: ${room.weeklyPrice}
 
-✨ Room Highlights:
-${room.features.map(f => `• ${f}`).join('\n')}
+✨ ROOM HIGHLIGHTS:
+${room.features.slice(0, 4).map(f => `• ${f}`).join('\n')}
 
-👥 Perfect for: ${room.perfectFor}
+👥 ${room.perfectFor}
 
-🏠 View the space: ${imageUrl}
+🌊 Book your island coliving experience: ${roomUrl}
 
-🌴 Book your stay: ${window.location.href}
+Contact us on WhatsApp to secure your spot! 🏄‍♀️
+    `.trim();
 
-Contact us on WhatsApp to reserve your spot!
-`.trim();
-
-    if (navigator.share) {
-      navigator.share({
-        title: `${room.title} at Siargao Coliving`,
-        text: shareText,
-        url: window.location.href
-      }).catch(err => {
-        navigator.clipboard.writeText(shareText);
+    try {
+      // Try native sharing first (mobile devices)
+      if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+        await navigator.share(shareData);
+      } else {
+        // Fallback to clipboard
+        await navigator.clipboard.writeText(enhancedShareText);
         toast({
-          title: "Room details copied!",
-          description: "Share this room with your friends",
+          title: "Room details copied! 📋",
+          description: "Perfect for sharing on social media - includes image preview when posted!",
         });
-      });
-    } else {
-      navigator.clipboard.writeText(shareText);
-      toast({
-        title: "Room details copied!",
-        description: "Share this room with your friends",
-      });
+      }
+    } catch (err) {
+      // Final fallback
+      try {
+        await navigator.clipboard.writeText(enhancedShareText);
+        toast({
+          title: "Room details copied! 📋", 
+          description: "Share this amazing coliving space with your friends!",
+        });
+      } catch (clipboardErr) {
+        toast({
+          title: "Share manually",
+          description: "Copy this URL to share: " + roomUrl,
+        });
+      }
     }
+
+    // Add meta tags dynamically for better social media previews
+    updateMetaTags(room, availability, roomUrl);
   };
 
-  const openWhatsApp = (room: typeof roomTypes[0]) => {
-    const message = `Hi! I'm interested in the ${room.title} for coliving at Siargao. Can you share availability for both short and long-term stays?`;
+  const updateMetaTags = (room, availability, roomUrl) => {
+    // Remove existing meta tags
+    const existingMetas = document.querySelectorAll('meta[property^="og:"], meta[name^="twitter:"]');
+    existingMetas.forEach(meta => meta.remove());
+
+    // Add new meta tags for rich social sharing
+    const metaTags = [
+      { property: 'og:title', content: `${room.title} - Siargao Coliving Paradise` },
+      { property: 'og:description', content: `${room.socialTagline} Available from ${availability.from}. ${room.perfectFor}` },
+      { property: 'og:image', content: window.location.origin + room.image },
+      { property: 'og:url', content: roomUrl },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: `${room.title} - Siargao Coliving` },
+      { name: 'twitter:description', content: `${room.socialTagline} Available ${availability.fromShort}` },
+      { name: 'twitter:image', content: window.location.origin + room.image }
+    ];
+
+    metaTags.forEach(tag => {
+      const meta = document.createElement('meta');
+      if (tag.property) meta.setAttribute('property', tag.property);
+      if (tag.name) meta.setAttribute('name', tag.name);
+      meta.setAttribute('content', tag.content);
+      document.head.appendChild(meta);
+    });
+  };
+
+  const openWhatsApp = (room) => {
+    const availability = getAvailabilityDates(room);
+    const message = `Hi! I'm interested in the ${room.title} for coliving at Siargao. I saw it's available from ${availability.from}. Can you share more details about both short and long-term stays?`;
     const whatsappUrl = `https://wa.me/639083339477?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -198,6 +249,7 @@ Contact us on WhatsApp to reserve your spot!
           {roomTypes.map((room, index) => (
             <Card 
               key={index} 
+              id={room.title.toLowerCase().replace(/ /g, '-')}
               className={`relative hover:shadow-xl transition-all duration-300 hover:scale-[1.02] ${
                 room.popular ? 'ring-2 ring-primary shadow-lg' : ''
               }`}
@@ -212,18 +264,21 @@ Contact us on WhatsApp to reserve your spot!
                 <div className="relative rounded-lg overflow-hidden mb-4">
                   <img
                     src={room.image}
-                    alt={room.title}
+                    alt={`${room.title} - ${room.subtitle} - Available from ${getAvailabilityDates(room).from}`}
                     className="w-full h-48 object-cover"
                   />
                   <Button
                     variant="secondary"
                     size="sm" 
-                    className="absolute top-3 right-3 bg-white/90 hover:bg-white text-black"
+                    className="absolute top-3 right-3 bg-white/90 hover:bg-white text-black transition-all hover:scale-105"
                     onClick={() => shareRoom(room)}
                   >
                     <Share2 className="w-3 h-3 mr-1" />
                     Share
                   </Button>
+                  <div className="absolute bottom-3 left-3 bg-primary text-white px-2 py-1 rounded-md text-xs font-medium">
+                    Available {getAvailabilityDates(room).fromShort}
+                  </div>
                 </div>
                 
                 <CardTitle className="text-xl">{room.title}</CardTitle>
@@ -299,6 +354,7 @@ Contact us on WhatsApp to reserve your spot!
                     variant="outline"
                     size="lg"
                     onClick={() => shareRoom(room)}
+                    className="hover:scale-105 transition-transform"
                   >
                     <Share2 className="w-4 h-4" />
                   </Button>
