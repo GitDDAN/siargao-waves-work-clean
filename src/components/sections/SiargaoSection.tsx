@@ -11,7 +11,10 @@ import {
   Heart,
   Leaf,
   Sun,
-  Mountain
+  Mountain,
+  Dumbbell,
+  Music,
+  Camera
 } from "lucide-react";
 
 const SiargaoSection = () => {
@@ -59,10 +62,22 @@ const SiargaoSection = () => {
 
   const locations = [
     {
-      name: "Cloud 9",
-      distance: "5-minute drive",
-      activity: "World-famous surf break",
-      icon: Waves
+      name: "CrossFit Siargao",
+      distance: "200m walk",
+      activity: "Morning workouts & fitness",
+      icon: Dumbbell
+    },
+    {
+      name: "General Luna Club",
+      distance: "250m walk",
+      activity: "Local nightlife & events",
+      icon: Music
+    },
+    {
+      name: "Kermit Surf Resort",
+      distance: "400m walk",
+      activity: "Italian restaurant & bar",
+      icon: Utensils
     },
     {
       name: "Cemetery Surf Spot",
@@ -71,22 +86,34 @@ const SiargaoSection = () => {
       icon: Waves
     },
     {
+      name: "Cloud 9",
+      distance: "5-minute drive",
+      activity: "World-famous surf break",
+      icon: Waves
+    },
+    {
+      name: "Sunset Bridge",
+      distance: "2km drive",
+      activity: "Sunset views & photography",
+      icon: Camera
+    },
+    {
       name: "General Luna Town",
-      distance: "2km", 
+      distance: "2km drive", 
       activity: "Restaurants, cafes, shops",
       icon: Utensils
     },
     {
-      name: "Sayak Airport",
-      distance: "45km",
-      activity: "Daily flights to Manila/Cebu",
-      icon: Car
-    },
-    {
       name: "Doot Beach",
-      distance: "3km",
+      distance: "3km drive",
       activity: "Sunset views, beach bars",
       icon: Sun
+    },
+    {
+      name: "Sayak Airport",
+      distance: "45km drive",
+      activity: "Daily flights to Manila/Cebu",
+      icon: Car
     }
   ];
 
@@ -164,10 +191,10 @@ const SiargaoSection = () => {
 
         {/* Location Map */}
         <div className="bg-muted/50 rounded-2xl p-8 mb-16">
-          <h3 className="text-2xl font-bold text-center mb-8">Strategic Location</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h3 className="text-2xl font-bold text-center mb-8">Perfect Location - Everything Within Walking Distance</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {locations.map((location, index) => (
-              <div key={index} className="text-center p-6 bg-background rounded-xl shadow-sm">
+              <div key={index} className="text-center p-6 bg-background rounded-xl shadow-sm hover:shadow-md transition-shadow">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <location.icon className="w-6 h-6 text-primary" />
                 </div>
@@ -176,6 +203,11 @@ const SiargaoSection = () => {
                 <p className="text-sm text-muted-foreground">{location.activity}</p>
               </div>
             ))}
+          </div>
+          <div className="text-center mt-6">
+            <p className="text-sm text-muted-foreground">
+              Everything you need is just a short walk or quick motorbike ride away!
+            </p>
           </div>
         </div>
 
@@ -205,7 +237,17 @@ const SiargaoSection = () => {
         </div>
 
         {/* Community Impact */}
-        <div className="bg-gradient-to-r from-accent/10 to-primary/10 rounded-2xl p-8 mb-12">
+        <div className="bg-gradient-to-r from-accent/10 to-primary/10 rounded-2xl p-8 mb-12 relative overflow-hidden">
+          {/* Future Goals Stamp */}
+          <div className="absolute top-4 right-4 transform rotate-12">
+            <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg border-2 border-white shadow-lg">
+              <div className="text-center">
+                <div className="text-xs font-bold uppercase tracking-wider">Future Goals</div>
+                <div className="text-sm font-medium">2025-2027</div>
+              </div>
+            </div>
+          </div>
+
           <div className="text-center mb-8">
             <span className="inline-block bg-yellow-400 text-white px-3 py-1 rounded-full text-xs font-bold mb-2">Coming Soon</span>
             <Heart className="w-12 h-12 text-accent mx-auto mb-4" />
@@ -249,25 +291,34 @@ const SiargaoSection = () => {
           </div>
         </div>
 
-        <p className="text-center mt-4 text-sm text-muted-foreground">
-          Exact coordinates: <a href="https://maps.google.com/?q=9.791547987108133,126.15896492864357" target="_blank" rel="noopener noreferrer" className="underline">9.791547987108133, 126.15896492864357</a>
-        </p>
-        <a
-          href="https://wa.me/639083339477?text=Hi%20Ali%2C%20please%20send%20me%20the%20Welcome%20Package!"
-          className="btn btn-primary"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Request Welcome Package
-        </a>
-        <a
-          href="https://wa.me/639083339477?text=Hi%20Ali%2C%20I%27d%20like%20to%20join%20the%20community%20WhatsApp%20group!"
-          className="btn btn-outline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Join Community WhatsApp
-        </a>
+        <div className="text-center space-y-4 mt-8">
+          <p className="text-sm text-muted-foreground">
+            Exact coordinates: <a href="https://maps.google.com/?q=9.791547987108133,126.15896492864357" target="_blank" rel="noopener noreferrer" className="underline">9.791547987108133, 126.15896492864357</a>
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => {
+                const message = "Hi Ali, please send me the Welcome Package!";
+                window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
+              }}
+            >
+              Request Welcome Package
+            </Button>
+            <Button 
+              variant="tropical" 
+              size="lg"
+              onClick={() => {
+                const message = "Hi Ali, I'd like to join the community WhatsApp group!";
+                window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
+              }}
+            >
+              Join Community WhatsApp
+            </Button>
+          </div>
+        </div>
       </div>
     </section>
   );
