@@ -46,7 +46,7 @@ const HeroSection = () => {
 					{/* Main Heading with Modern Gradient */}
 					<div className="space-y-6 text-center">
 						<h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
-							<span className="text-white">Testing It, Coworking,</span>{" "}
+							<span className="text-white">Coliving, Coworking,</span>{" "}
 							<span
 								className="animate-gradient bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent"
 								style={{
