@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import heroImage from "@/assets/tropical-common-area.png";
 
 const HeroSection = () => {
-	const activities = ["Surf", "CrossFit", "Wakeboard", "Paddle", "Yoga", "Party"];
+	const activities = ["Surf", "CrosssFit", "Wakeboard", "Paddle", "Yoga", "Party"];
 	const [currentActivity, setCurrentActivity] = useState(0);
 
 	useEffect(() => {
