@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import heroImage from "@/assets/tropical-common-area.png";
 
 const HeroSection = () => {
-	const activities = ["Surfing", "rugby", "Wakeboard", "Skateboard", "Yoga", "Party"];
+	const activities = ["Surfing", "CrosssFit", "Wakeboard", "Paddle", "Yoga", "Party"];
 	const [currentActivity, setCurrentActivity] = useState(0);
 
 	useEffect(() => {
@@ -46,7 +46,7 @@ const HeroSection = () => {
 					{/* Main Heading with Modern Gradient */}
 					<div className="space-y-6 text-center">
 						<h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
-							<span className="text-white">Co-living, Coworking,</span>{" "}
+							<span className="text-white">corun, Coworking,</span>{" "}
 							<span
 								className="animate-gradient bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent"
 								style={{
@@ -61,7 +61,7 @@ const HeroSection = () => {
 						<p className="text-xl md:text-2xl text-white/90 font-light max-w-3xl mx-auto">
 							Siargao's General Luna{" "}
 							<span className="font-medium bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">
-								Co-living & Coworking
+								corun & Coworking
 							</span>{" "}
 							Space
 						</p>
