@@ -1,9 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Wifi, Users, Waves } from "lucide-react";
-import heroImage from "@/assets/hero-coworking.jpg";
+import { useState, useEffect } from "react";
+import heroImage from "@/assets/tropical-common-area.png";
 
 const HeroSection = () => {
+  const activities = ["Surf", "CrossFit", "Wakeboard", "Paddle", "Party"];
+  const [currentActivity, setCurrentActivity] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentActivity((prev) => (prev + 1) % activities.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [activities.length]);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -23,25 +34,31 @@ const HeroSection = () => {
             General Luna, Siargao • 1km to Cloud 9
           </Badge>
 
-          {/* Main Heading */}
+          {/* Main Heading with Dynamic Tagline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-            Live, Work,{" "}
-            <span className="bg-gradient-to-r from-secondary to-orange-400 bg-clip-text text-transparent">
-              Surf
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Coliving
+            </span>
+            , Coworking,{" "}
+            <span className="bg-gradient-to-r from-secondary to-orange-400 bg-clip-text text-transparent transition-all duration-500">
+              {activities[currentActivity]}
             </span>
           </h1>
 
           {/* Subheading */}
           <p className="text-xl md:text-2xl lg:text-3xl font-light text-white/90 max-w-3xl mx-auto">
-            Siargao's premier digital nomad community where productivity meets paradise
+            Siargao's Premier <strong>Coliving & Coworking</strong> Community
+          </p>
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mt-4">
+            Short & Long-Term Stays in Paradise
           </p>
 
           {/* Feature Pills */}
           <div className="flex flex-wrap justify-center gap-4 py-4">
             {[
-              { icon: Users, text: "Community Focused" },
-              { icon: Wifi, text: "100+ Mbps WiFi" },
-              { icon: Waves, text: "5 min to surf" },
+              { icon: Users, text: "Coliving Community" },
+              { icon: Wifi, text: "High-Speed Fiber WiFi" },
+              { icon: Waves, text: "Generator Backup Power" },
             ].map((feature, index) => (
               <div
                 key={index}
@@ -69,9 +86,9 @@ const HeroSection = () => {
           {/* Stats */}
           <div className="flex flex-wrap justify-center gap-8 pt-12 text-center">
             {[
-              { number: "150+", label: "Digital Nomads" },
-              { number: "4.9", label: "Community Rating" },
-              { number: "85%", label: "Return Rate" },
+              { number: "From ₱25k", label: "Monthly Coliving" },
+              { number: "4.9★", label: "Guest Rating" },
+              { number: "70%", label: "Extend Stay" },
             ].map((stat, index) => (
               <div key={index} className="space-y-1">
                 <div className="text-2xl md:text-3xl font-bold">{stat.number}</div>

@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 import { 
   Bed, 
   Users, 
@@ -9,75 +10,110 @@ import {
   Coffee, 
   Car,
   Shield,
-  Calendar
+  Calendar,
+  Share2,
+  MessageCircle,
+  Bath,
+  Zap
 } from "lucide-react";
-import roomImage from "@/assets/room-private.jpg";
+import ensuiteMasterImage from "@/assets/ensuite-master.png";
+import balconyRoomImage from "@/assets/balcony-room.png";
+import cozyRoomImage from "@/assets/cozy-room.png";
 
 const AccommodationSection = () => {
+  const { toast } = useToast();
+
   const roomTypes = [
     {
-      title: "Private Ocean Room",
-      price: "₱35,000",
-      period: "/month",
-      discount: "Save 40%",
-      image: roomImage,
+      title: "Ensuite Master",
+      subtitle: "Your Private Coliving Suite",
+      monthlyPrice: "₱33,000",
+      weeklyPrice: "₱9,500",
+      image: ensuiteMasterImage,
+      perfectFor: "Digital nomads seeking premium coliving with privacy and focused coworking space",
       features: [
-        "Private bathroom",
-        "Ocean view workspace",
-        "Queen bed",
-        "AC + Fan",
-        "100+ Mbps WiFi",
-        "24/7 access"
+        "Private ensuite bathroom",
+        "Dedicated coworking workspace",
+        "Queen bed with premium linens",
+        "AC + ceiling fan comfort",
+        "High-speed fiber WiFi",
+        "24/7 local WhatsApp support"
+      ],
+      popular: false,
+      capacity: "Max 2 guests",
+      amenities: [Bath, Bed, Wifi, AirVent, Shield]
+    },
+    {
+      title: "Balcony Room",
+      subtitle: "Coliving with Paradise Views",
+      monthlyPrice: "₱31,000",
+      weeklyPrice: "₱8,500",
+      image: balconyRoomImage,
+      perfectFor: "Couples enjoying coliving lifestyle with outdoor morning routines and collaborative workspace",
+      features: [
+        "Private balcony with jungle views",
+        "Coworking space with nature views",
+        "Queen bed in tropical setting",
+        "AC + natural ventilation",
+        "High-speed fiber WiFi",
+        "Shared bathroom (2 guests max)"
       ],
       popular: true,
-      capacity: "1 person",
-      amenities: [Bed, Shield, Wifi, AirVent]
+      capacity: "Max 2 guests",
+      amenities: [Bed, Wifi, AirVent, Coffee]
     },
     {
-      title: "Shared Community Room",
-      price: "₱22,000", 
-      period: "/month",
-      discount: "Save 35%",
-      image: roomImage,
+      title: "Cozy Room",
+      subtitle: "Essential Coliving Experience",
+      monthlyPrice: "₱28,000",
+      weeklyPrice: "₱7,500",
+      image: cozyRoomImage,
+      perfectFor: "Solo nomads maximizing coliving value for extended community living",
       features: [
-        "Shared bathroom",
-        "Community workspace", 
-        "Single bed",
-        "AC + Fan",
-        "100+ Mbps WiFi",
-        "Community events"
+        "Garden view workspace",
+        "Comfortable double bed",
+        "Air conditioning comfort",
+        "High-speed fiber WiFi",
+        "Shared bathroom with hot shower",
+        "Perfect for budget-conscious nomads"
       ],
       popular: false,
-      capacity: "2-3 people",
-      amenities: [Users, Coffee, Wifi, AirVent]
-    },
-    {
-      title: "Pod-Style Bed",
-      price: "₱15,000",
-      period: "/month", 
-      discount: "Save 30%",
-      image: roomImage,
-      features: [
-        "Shared facilities",
-        "Curtain privacy",
-        "Personal storage",
-        "Fan cooling",
-        "100+ Mbps WiFi",
-        "Backpacker friendly"
-      ],
-      popular: false,
-      capacity: "1 person",
-      amenities: [Bed, Car, Wifi, Coffee]
+      capacity: "Max 1 guest",
+      amenities: [Bed, Wifi, AirVent, Coffee]
     }
   ];
 
+  const shareRoom = (room: typeof roomTypes[0]) => {
+    const shareText = `Check out this amazing coliving room at Siargao: ${room.title} - ${room.subtitle}!\n\n${room.perfectFor}\n\nPricing:\n• Monthly: ${room.monthlyPrice}\n• Weekly: ${room.weeklyPrice}\n\nBook now: ${window.location.origin}`;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: `${room.title} - Siargao Coliving`,
+        text: shareText,
+        url: window.location.origin
+      });
+    } else {
+      navigator.clipboard.writeText(shareText);
+      toast({
+        title: "Room details copied!",
+        description: "Share this coliving room with your friends",
+      });
+    }
+  };
+
+  const openWhatsApp = (room: typeof roomTypes[0]) => {
+    const message = `Hi! I'm interested in the ${room.title} for coliving at Siargao. Can you share availability for both short and long-term stays?`;
+    const whatsappUrl = `https://wa.me/639083339477?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   const amenities = [
-    { icon: Wifi, label: "100+ Mbps WiFi", description: "Starlink backup available" },
-    { icon: Coffee, label: "24/7 Kitchen", description: "Fully equipped workspace cafe" },
-    { icon: Car, label: "Motorbike Rental", description: "Explore Siargao easily" },
-    { icon: Shield, label: "24/7 Security", description: "Safe and secure environment" },
-    { icon: Calendar, label: "Flexible Stays", description: "Daily, weekly, monthly rates" },
-    { icon: Users, label: "Community Events", description: "Surf trips, skill shares, parties" }
+    { icon: Wifi, label: "High-Speed Fiber WiFi", description: "Reliable 100+ Mbps with generator backup" },
+    { icon: Coffee, label: "24/7 Kitchen", description: "Fully equipped coliving kitchen space" },
+    { icon: Zap, label: "Generator Backup Power", description: "Never lose power during work sessions" },
+    { icon: Shield, label: "24/7 Security", description: "CCTV system and secure coliving environment" },
+    { icon: Calendar, label: "Flexible Stays", description: "Weekly and monthly coliving rates" },
+    { icon: Users, label: "Coliving Community Events", description: "Surf sessions, skill shares, island adventures" }
   ];
 
   return (
@@ -85,16 +121,16 @@ const AccommodationSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4">
-            Accommodation Options
+            Coliving Accommodations
           </Badge>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Your Perfect{" "}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Basecamp
-            </span>
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Coliving
+            </span>{" "}
+            Accommodations
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose from private rooms to community pods - all designed for productivity and connection
+            Short & Long-Term Stays - Authentic tropical coliving with professional coworking facilities
           </p>
         </div>
 
@@ -120,23 +156,44 @@ const AccommodationSection = () => {
                     alt={room.title}
                     className="w-full h-48 object-cover"
                   />
-                  <div className="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-medium">
-                    {room.discount}
-                  </div>
+                  <Button
+                    variant="secondary"
+                    size="sm" 
+                    className="absolute top-3 right-3 bg-white/90 hover:bg-white text-black"
+                    onClick={() => shareRoom(room)}
+                  >
+                    <Share2 className="w-3 h-3 mr-1" />
+                    Share
+                  </Button>
                 </div>
                 
                 <CardTitle className="text-xl">{room.title}</CardTitle>
-                <div className="flex items-baseline space-x-2">
-                  <span className="text-3xl font-bold text-primary">{room.price}</span>
-                  <span className="text-muted-foreground">{room.period}</span>
+                <p className="text-sm text-muted-foreground mb-3">{room.subtitle}</p>
+                
+                <div className="space-y-2">
+                  <div className="flex items-baseline space-x-2">
+                    <span className="text-2xl font-bold text-primary">{room.monthlyPrice}</span>
+                    <span className="text-muted-foreground">/month</span>
+                  </div>
+                  <div className="flex items-baseline space-x-2">
+                    <span className="text-lg font-semibold text-secondary">{room.weeklyPrice}</span>
+                    <span className="text-muted-foreground text-sm">/week</span>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground mt-2">
                   <Users className="w-4 h-4" />
                   <span>{room.capacity}</span>
                 </div>
               </CardHeader>
 
               <CardContent className="space-y-6">
+                {/* Perfect For */}
+                <div className="bg-muted/50 p-3 rounded-lg">
+                  <p className="text-sm font-medium mb-1">Perfect For:</p>
+                  <p className="text-sm text-muted-foreground">{room.perfectFor}</p>
+                </div>
+
                 {/* Amenity Icons */}
                 <div className="flex justify-center space-x-4">
                   {room.amenities.map((Icon, iconIndex) => (
@@ -159,14 +216,24 @@ const AccommodationSection = () => {
                   ))}
                 </ul>
 
-                <Button 
-                  variant={room.popular ? "ocean" : "outline"} 
-                  size="lg" 
-                  className="w-full"
-                >
-                  <Calendar className="w-4 h-4" />
-                  Check Availability
-                </Button>
+                <div className="flex gap-2">
+                  <Button 
+                    variant={room.popular ? "ocean" : "outline"} 
+                    size="lg" 
+                    className="flex-1"
+                    onClick={() => openWhatsApp(room)}
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    WhatsApp
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    size="lg"
+                    onClick={() => shareRoom(room)}
+                  >
+                    <Share2 className="w-4 h-4" />
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}
@@ -190,17 +257,55 @@ const AccommodationSection = () => {
           ))}
         </div>
 
+        {/* Coliving Concierge Services */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold mb-8 text-center">Your Coliving Concierge Services</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: "✈️", title: "Arrival Coordination", description: "Seamless coliving guest arrivals" },
+              { icon: "🗺️", title: "Community Orientation", description: "Island integration for coliving members" },
+              { icon: "🏄", title: "Surf Buddy Connections", description: "Connect with surf-loving colivers" },
+              { icon: "☕", title: "Best Coworking Cafés", description: "Local workspace recommendations" },
+              { icon: "🏢", title: "External Coworking Partnerships", description: "Access to Coco Space & more" },
+              { icon: "💆", title: "Wellness Recommendations", description: "Maintain health during long-term stays" },
+              { icon: "📅", title: "Weekly Community Activities", description: "Regular coliving events & meetups" },
+              { icon: "🏍️", title: "Transportation Arrangements", description: "Motorbike rentals & island transport" }
+            ].map((service, index) => (
+              <div key={index} className="text-center p-4 bg-muted/30 rounded-lg">
+                <div className="text-2xl mb-2">{service.icon}</div>
+                <h4 className="font-medium mb-1 text-sm">{service.title}</h4>
+                <p className="text-xs text-muted-foreground">{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* CTA */}
         <div className="text-center bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8">
-          <h3 className="text-2xl font-bold mb-4">Ready to make Siargao your basecamp?</h3>
+          <h3 className="text-2xl font-bold mb-4">Ready to Join Our Coliving Community?</h3>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Join our waitlist for priority booking and exclusive member benefits
+            Experience authentic tropical coliving with professional coworking facilities
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="ocean" size="lg">
-              Join Waitlist
+            <Button 
+              variant="ocean" 
+              size="lg"
+              onClick={() => {
+                const message = "Hi! I'm interested in joining your coliving community at Siargao. Can you share more details about availability for both short and long-term stays?";
+                window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
+              }}
+            >
+              <MessageCircle className="w-4 h-4" />
+              Join Our Coliving Community
             </Button>
-            <Button variant="outline" size="lg">
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => {
+                const message = "Hi! I'd like to schedule a virtual tour of your coliving space. When would be a good time?";
+                window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
+              }}
+            >
               Schedule Virtual Tour
             </Button>
           </div>

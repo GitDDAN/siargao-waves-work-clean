@@ -17,16 +17,16 @@ import {
 const WorkspaceSection = () => {
   const techSpecs = [
     {
-      feature: "Internet Speed",
+      feature: "High-Speed Fiber WiFi",
       spec: "100+ Mbps",
-      backup: "Starlink backup available",
+      backup: "Generator backup power",
       icon: Wifi,
       status: "guaranteed"
     },
     {
       feature: "Power Backup",
       spec: "Uninterrupted",
-      backup: "Solar + generator backup",
+      backup: "Generator backup system",
       icon: Zap,
       status: "24/7"
     },
@@ -48,26 +48,26 @@ const WorkspaceSection = () => {
 
   const workspaceTypes = [
     {
-      title: "Focus Pods",
-      description: "Individual soundproof workspaces for deep focus sessions",
+      title: "Focus Hammock",
+      description: "Outdoor productivity space for quiet coliving work",
       capacity: "1 person",
-      features: ["Noise cancellation", "Adjustable lighting", "Private WiFi"],
-      hourlyRate: "₱200/hour",
+      features: ["Jungle views", "Natural ventilation", "Private workspace"],
+      hourlyRate: "Included",
       icon: Headphones
     },
     {
       title: "Collaboration Zones", 
-      description: "Open areas designed for team projects and networking",
+      description: "Shared coworking areas designed for coliving community projects",
       capacity: "2-8 people",
-      features: ["Whiteboard walls", "Presentation screens", "Comfortable seating"],
-      hourlyRate: "₱150/hour",
+      features: ["Bamboo architecture", "Group workspace", "Community collaboration"],
+      hourlyRate: "Included",
       icon: Monitor
     },
     {
-      title: "Café Workspace",
-      description: "Relaxed environment with coffee and healthy snacks",
-      capacity: "20+ people",
-      features: ["All-day coffee", "Natural lighting", "Social atmosphere"],
+      title: "Café Style Workspace",
+      description: "Relaxed coworking environment perfect for coliving social work",
+      capacity: "All coliving members",
+      features: ["Coffee station", "Tropical setting", "Community atmosphere"],
       hourlyRate: "Included",
       icon: Coffee
     }
@@ -85,16 +85,15 @@ const WorkspaceSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4">
-            Productivity Infrastructure
+            Coworking Spaces
           </Badge>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Work From{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Paradise
-            </span>
+              Coworking
+            </span> Spaces Within Our Coliving Community
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Enterprise-grade infrastructure meets tropical inspiration for maximum productivity
+            Professional coworking infrastructure designed for our coliving community members
           </p>
         </div>
 
@@ -133,7 +132,8 @@ const WorkspaceSection = () => {
 
         {/* Workspace Types */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-center mb-8">Choose Your Workspace</h3>
+          <h3 className="text-2xl font-bold text-center mb-8">All Coliving Rooms Include Dedicated Coworking Setup</h3>
+          <p className="text-center text-muted-foreground mb-8">Every coliving room features an ergonomic desk and high-speed fiber WiFi</p>
           <div className="grid md:grid-cols-3 gap-8">
             {workspaceTypes.map((workspace, index) => (
               <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">

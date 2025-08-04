@@ -65,13 +65,12 @@ const CommunitySection = () => {
             Community First
           </Badge>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Connect, Create,{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Collaborate
-            </span>
+              Coliving
+            </span> Community Hub
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Join a thriving community of digital nomads building amazing projects while living the island life
+            Join our authentic coliving community where digital nomads connect, collaborate, and create amazing projects together
           </p>
         </div>
 
@@ -128,8 +127,16 @@ const CommunitySection = () => {
               </ul>
             </div>
 
-            <Button variant="tropical" size="lg" className="w-full">
-              Join Our Community
+            <Button 
+              variant="tropical" 
+              size="lg" 
+              className="w-full"
+              onClick={() => {
+                const message = "Hi! I'd love to join your coliving community at Siargao. Can you add me to the WhatsApp group?";
+                window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
+              }}
+            >
+              Join Our Coliving Community
             </Button>
           </div>
         </div>
