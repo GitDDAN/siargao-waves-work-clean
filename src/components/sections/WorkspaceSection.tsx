@@ -121,8 +121,12 @@ const WorkspaceSection = () => {
                   
                   <div className="flex items-center justify-between">
                     <div className="text-lg font-bold text-primary">{workspace.hourlyRate}</div>
-                    <Button variant="outline" size="sm">
-                      <Calendar className="w-4 h-4" />
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      className="hover:bg-primary/10 hover:border-primary/50 transition-colors"
+                    >
+                      <Calendar className="w-4 h-4 mr-2" />
                       Book Now
                     </Button>
                   </div>
@@ -183,12 +187,20 @@ const WorkspaceSection = () => {
             Simple, reliable workspace setup with the flexibility to work wherever inspiration strikes
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="ocean" size="lg">
-              <Shield className="w-4 h-4" />
+            <Button 
+              variant="default" 
+              size="lg"
+              className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
+            >
+              <Shield className="w-4 h-4 mr-2" />
               Test Our WiFi Speed
             </Button>
-            <Button variant="outline" size="lg">
-              <Coffee className="w-4 h-4" />
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="hover:bg-primary/10 hover:border-primary/50 transition-colors"
+            >
+              <Coffee className="w-4 h-4 mr-2" />
               Free Coffee Always
             </Button>
           </div>

@@ -59,8 +59,8 @@ const CommunitySection = () => {
 
   return (
     <section id="community" className="py-8 bg-muted/30 relative overflow-hidden max-h-[30vh]">
-      {/* Coming Soon Banner */}
-      <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 z-20 py-3">
+      {/* Coming Soon Banner - Updated with tropical colors */}
+      <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-primary via-secondary to-accent z-20 py-3">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -78,8 +78,9 @@ const CommunitySection = () => {
               </div>
             </div>
             <Button 
+              variant="default"
               size="sm"
-              className="bg-white text-purple-600 hover:bg-white/90 font-semibold px-3 py-1 rounded-full text-sm"
+              className="bg-white text-primary hover:bg-white/90 font-semibold px-3 py-1 rounded-full text-sm border-0"
               onClick={() => {
                 const message = "Hi! I'm interested in joining the coliving community when it launches in August 2025. Can you add me to the early access list?";
                 window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
@@ -91,11 +92,11 @@ const CommunitySection = () => {
         </div>
       </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/40 via-purple-600/40 to-pink-500/40  z-10" />
+      {/* Overlay - Updated with tropical colors */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-secondary/40 to-accent/40 backdrop-blur-sm z-10" />
 
       {/* Content */}
-      <div className="relative z-0 pt-16 filter  opacity-60">
+      <div className="relative z-0 pt-16 filter blur-[1px] opacity-60">
         <div className="container mx-auto px-4">
           <div className="text-center mb-6">
             <Badge variant="outline" className="mb-2 bg-white/80 text-xs">
@@ -155,9 +156,9 @@ const CommunitySection = () => {
               </div>
 
               <Button 
-                variant="tropical" 
+                variant="default"
                 size="sm" 
-                className="w-full opacity-70 cursor-not-allowed text-xs"
+                className="w-full opacity-70 cursor-not-allowed text-xs bg-gradient-to-r from-primary to-secondary text-white border-0"
                 disabled
               >
                 Join Our Coliving Community (Coming August 2025)

@@ -18,12 +18,12 @@ const Header = () => {
         <nav className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary-glow rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-br from-accent to-orange-500 rounded-lg flex items-center justify-center">
               <Waves className="w-5 h-5 text-white" />
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-bold text-foreground">Siargao</span>
-              <span className="text-xs text-primary font-medium -mt-1">Coliving</span>
+              <span className="text-xs text-accent font-medium -mt-1">Coliving</span>
             </div>
           </div>
 
@@ -43,11 +43,19 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-3">
-            <Button variant="outline" size="sm">
+            <Button 
+              variant="outline" 
+              size="sm"
+              className="hover:bg-primary/10 hover:border-primary/50 transition-colors"
+            >
               Contact
             </Button>
-            <Button variant="ocean" size="sm">
-              <Send className="w-4 h-4" />
+            <Button 
+              variant="default" 
+              size="sm"
+              className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
+            >
+              <Send className="w-4 h-4 mr-1" />
               Apply Now
             </Button>
           </div>
@@ -79,11 +87,19 @@ const Header = () => {
                 </a>
               ))}
               <div className="flex flex-col space-y-2 pt-4 border-t border-border/50">
-                <Button variant="outline" size="sm">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  className="hover:bg-primary/10 hover:border-primary/50 transition-colors"
+                >
                   Contact
                 </Button>
-                <Button variant="ocean" size="sm">
-                  <Send className="w-4 h-4" />
+                <Button 
+                  variant="default" 
+                  size="sm"
+                  className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
+                >
+                  <Send className="w-4 h-4 mr-1" />
                   Apply Now
                 </Button>
               </div>

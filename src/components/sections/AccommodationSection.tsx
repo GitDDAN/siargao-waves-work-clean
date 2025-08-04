@@ -120,18 +120,17 @@ const AccommodationSection = () => {
     const currentUrl = window.location.href.split('#')[0]; // Remove any existing hash
     const roomUrl = `${currentUrl}#${room.title.toLowerCase().replace(/ /g, '-')}`;
     
-    // Create absolute image URL
-    const imageUrl = new URL(room.image, window.location.origin).href;
+    // Create absolute image URL - try multiple approaches
+    let imageUrl;
+    try {
+      // Try to create absolute URL from relative path
+      imageUrl = new URL(room.image, window.location.origin).href;
+    } catch (error) {
+      // Fallback to simple concatenation
+      imageUrl = window.location.origin + room.image;
+    }
     
-    // Create rich share content with image
-    const shareData = {
-      title: `${room.title} - Siargao Coliving Paradise`,
-      text: `${room.socialTagline}\n\n📅 Available from ${availability.from}\n💰 From ${room.monthlyPrice}/month\n\n${room.perfectFor}`,
-      url: roomUrl,
-      files: [] // We'll try to include the image if possible
-    };
-
-    // Enhanced text for platforms that don't support rich sharing
+    // Enhanced text for sharing with image
     const enhancedShareText = `
 🏝️ ${room.title} - Siargao Coliving Paradise
 
@@ -151,22 +150,28 @@ ${room.features.slice(0, 4).map(f => `• ${f}`).join('\n')}
 
 Contact us on WhatsApp to secure your spot! 🏄‍♀️
 
-📸 Room Image: ${imageUrl}
+📸 See room photos: ${imageUrl}
     `.trim();
 
     // Update meta tags first for better social media previews
     updateMetaTags(room, availability, roomUrl, imageUrl);
 
     try {
-      // Try native sharing first (mobile devices)
-      if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+      // For mobile devices with native sharing
+      if (navigator.share) {
+        const shareData = {
+          title: `${room.title} - Siargao Coliving Paradise`,
+          text: room.socialTagline,
+          url: roomUrl
+        };
+        
         await navigator.share(shareData);
       } else {
-        // Fallback to clipboard with image URL
+        // Fallback to clipboard
         await navigator.clipboard.writeText(enhancedShareText);
         toast({
           title: "Room details copied! 📋",
-          description: "Perfect for sharing on social media - includes room image URL and preview data!",
+          description: "Perfect for sharing on social media - includes room image link and preview data!",
         });
       }
     } catch (err) {
@@ -175,13 +180,23 @@ Contact us on WhatsApp to secure your spot! 🏄‍♀️
         await navigator.clipboard.writeText(enhancedShareText);
         toast({
           title: "Room details copied! 📋", 
-          description: "Share this amazing coliving space with your friends! Image URL included.",
+          description: "Share this amazing coliving space with your friends! Image link included.",
         });
       } catch (clipboardErr) {
-        toast({
-          title: "Share manually",
-          description: "Copy this URL to share: " + roomUrl,
-        });
+        // Last resort - just copy the URL
+        const fallbackText = `Check out this coliving room in Siargao: ${roomUrl}`;
+        try {
+          await navigator.clipboard.writeText(fallbackText);
+          toast({
+            title: "Link copied!",
+            description: "Share this URL: " + roomUrl,
+          });
+        } catch (finalErr) {
+          toast({
+            title: "Share manually",
+            description: "Copy this URL: " + roomUrl,
+          });
+        }
       }
     }
   };
@@ -265,7 +280,7 @@ Contact us on WhatsApp to secure your spot! 🏄‍♀️
               // Sort by availability date - earliest first
               const dateA = getAvailabilityDates(a).nextAvailable || new Date(2099, 0, 1);
               const dateB = getAvailabilityDates(b).nextAvailable || new Date(2099, 0, 1);
-              return new Date(dateA) - new Date(dateB);
+              return dateA.getTime() - dateB.getTime();
             })
             .map((room, index) => (
             <Card 
@@ -363,12 +378,12 @@ Contact us on WhatsApp to secure your spot! 🏄‍♀️
 
                 <div className="flex gap-2">
                   <Button 
-                    variant={room.popular ? "ocean" : "outline"} 
+                    variant={room.popular ? "default" : "outline"} 
                     size="lg" 
-                    className="flex-1"
+                    className={`flex-1 ${room.popular ? 'bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0' : ''}`}
                     onClick={() => openWhatsApp(room)}
                   >
-                    <MessageCircle className="w-4 h-4" />
+                    <MessageCircle className="w-4 h-4 mr-2" />
                     WhatsApp
                   </Button>
                   <Button 
@@ -434,19 +449,21 @@ Contact us on WhatsApp to secure your spot! 🏄‍♀️
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              variant="ocean" 
+              variant="default"
               size="lg"
+              className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
               onClick={() => {
                 const message = "Hi! I'm interested in joining your coliving community at Siargao. Can you share more details about availability for both short and long-term stays?";
                 window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
               }}
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-4 h-4 mr-2" />
               Join Our Coliving Community
             </Button>
             <Button 
               variant="outline" 
               size="lg"
+              className="hover:bg-primary/10 hover:border-primary/50 transition-colors"
               onClick={() => {
                 const message = "Hi! I'd like to schedule a virtual tour of your coliving space. When would be a good time?";
                 window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');

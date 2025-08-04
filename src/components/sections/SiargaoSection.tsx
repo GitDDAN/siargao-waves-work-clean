@@ -238,9 +238,9 @@ const SiargaoSection = () => {
 
         {/* Community Impact */}
         <div className="bg-gradient-to-r from-accent/10 to-primary/10 rounded-2xl p-8 mb-12 relative overflow-hidden">
-          {/* Future Goals Stamp */}
+          {/* Future Goals Stamp - Updated with tropical colors */}
           <div className="absolute top-4 right-4 transform rotate-12">
-            <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg border-2 border-white shadow-lg">
+            <div className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-lg border-2 border-white shadow-lg">
               <div className="text-center">
                 <div className="text-xs font-bold uppercase tracking-wider">Future Goals</div>
                 <div className="text-sm font-medium">2025-2027</div>
@@ -280,12 +280,20 @@ const SiargaoSection = () => {
             Join a community that's building the future while respecting island culture
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="tropical" size="lg">
-              <MapPin className="w-4 h-4" />
+            <Button 
+              variant="default"
+              size="lg"
+              className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
+            >
+              <MapPin className="w-4 h-4 mr-2" />
               Explore Local Guide
             </Button>
-            <Button variant="outline" size="lg">
-              <Waves className="w-4 h-4" />
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="hover:bg-primary/10 hover:border-primary/50 transition-colors"
+            >
+              <Waves className="w-4 h-4 mr-2" />
               Watch Island Tour
             </Button>
           </div>
@@ -300,6 +308,7 @@ const SiargaoSection = () => {
             <Button 
               variant="outline" 
               size="lg"
+              className="hover:bg-primary/10 hover:border-primary/50 transition-colors"
               onClick={() => {
                 const message = "Hi Ali, please send me the Welcome Package!";
                 window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
@@ -308,8 +317,9 @@ const SiargaoSection = () => {
               Request Welcome Package
             </Button>
             <Button 
-              variant="tropical" 
+              variant="default" 
               size="lg"
+              className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
               onClick={() => {
                 const message = "Hi Ali, I'd like to join the community WhatsApp group!";
                 window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');

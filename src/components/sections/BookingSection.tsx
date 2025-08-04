@@ -119,7 +119,10 @@ ${formData.message}
                     <Label>Check-in Date</Label>
                     <Popover>
                       <PopoverTrigger asChild>
-                        <Button variant="outline" className="w-full justify-start text-left">
+                        <Button 
+                          variant="outline" 
+                          className="w-full justify-start text-left hover:bg-primary/10 hover:border-primary/50 transition-colors"
+                        >
                           {formData.checkIn ? format(formData.checkIn, 'MMM dd, yyyy') : 'Select date'}
                           <CalendarIcon className="w-5 h-5 ml-auto" />
                         </Button>
@@ -133,7 +136,7 @@ ${formData.message}
                             <Button
                               onClick={() => setFormData({...formData, checkIn: null})}
                               variant="outline"
-                              className="w-full"
+                              className="w-full hover:bg-primary/10 hover:border-primary/50 transition-colors"
                             >
                               Clear Date
                             </Button>
@@ -146,7 +149,10 @@ ${formData.message}
                     <Label>Check-out Date</Label>
                     <Popover>
                       <PopoverTrigger asChild>
-                        <Button variant="outline" className="w-full justify-start text-left">
+                        <Button 
+                          variant="outline" 
+                          className="w-full justify-start text-left hover:bg-primary/10 hover:border-primary/50 transition-colors"
+                        >
                           {formData.checkOut ? format(formData.checkOut, 'MMM dd, yyyy') : 'Select date'}
                           <CalendarIcon className="w-5 h-5 ml-auto" />
                         </Button>
@@ -160,7 +166,7 @@ ${formData.message}
                             <Button
                               onClick={() => setFormData({...formData, checkOut: null})}
                               variant="outline"
-                              className="w-full"
+                              className="w-full hover:bg-primary/10 hover:border-primary/50 transition-colors"
                             >
                               Clear Date
                             </Button>
@@ -171,7 +177,12 @@ ${formData.message}
                   </div>
                 </div>
 
-                <Button type="submit" variant="default" size="lg" className="w-full bg-gradient-to-r from-blue-500 via-cyan-400 to-green-400">
+                <Button 
+                  type="submit" 
+                  variant="default" 
+                  size="lg" 
+                  className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
+                >
                   <Send className="w-4 h-4 mr-2" />
                   Book via WhatsApp
                 </Button>
@@ -187,9 +198,14 @@ ${formData.message}
               <p className="text-muted-foreground mb-6">
                 Beyond just booking a room, become part of our vibrant digital nomad community
               </p>
-              <Button variant="outline" size="lg" onClick={() => {
-                window.open('https://wa.me/639083339477?text=Hi! I\'d like to learn more about joining the Siargao Coliving community!', '_blank');
-              }}>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="hover:bg-primary/10 hover:border-primary/50 transition-colors"
+                onClick={() => {
+                  window.open('https://wa.me/639083339477?text=Hi! I\'d like to learn more about joining the Siargao Coliving community!', '_blank');
+                }}
+              >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Join Community
               </Button>

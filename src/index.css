@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Digital Nomad Coliving Design System - Siargao 
-All colors MUST be HSL. Ocean blues, sunset oranges, palm greens.
+All colors MUST be HSL. Jungle greens, ocean blues, sunset vibes.
 */
 
 @layer base {
@@ -20,21 +20,21 @@ All colors MUST be HSL. Ocean blues, sunset oranges, palm greens.
     --popover: 0 0% 100%;
     --popover-foreground: 215 28% 17%;
     
-    /* Ocean Blue Primary - Main brand color */
-    --primary: 199 89% 48%;
+    /* Tropical Ocean Blue Primary - Main brand color */
+    --primary: 195 100% 45%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 199 89% 65%;
+    --primary-glow: 195 100% 65%;
     
-    /* Sunset Orange Secondary */
-    --secondary: 21 90% 48%;
+    /* Palm Green Secondary */
+    --secondary: 140 80% 35%;
     --secondary-foreground: 0 0% 100%;
     
-    /* Palm Green Accent */
-    --accent: 142 76% 36%;
+    /* Sunset Gold Accent */
+    --accent: 35 95% 55%;
     --accent-foreground: 0 0% 100%;
     
     /* Muted tropical tones */
-    --muted: 199 20% 96%;
+    --muted: 140 20% 96%;
     --muted-foreground: 215 20% 40%;
     
     /* Destructive */
@@ -42,20 +42,32 @@ All colors MUST be HSL. Ocean blues, sunset oranges, palm greens.
     --destructive-foreground: 0 0% 100%;
     
     /* Borders and inputs */
-    --border: 199 20% 90%;
-    --input: 199 20% 90%;
-    --ring: 199 89% 48%;
+    --border: 140 20% 90%;
+    --input: 140 20% 90%;
+    --ring: 195 100% 45%;
     
-    /* Gradients for tropical feel */
-    --gradient-ocean: linear-gradient(135deg, hsl(199 89% 48%), hsl(199 89% 65%));
-    --gradient-sunset: linear-gradient(135deg, hsl(21 90% 48%), hsl(21 90% 65%));
-    --gradient-hero: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(21 90% 48%) 100%);
-    --gradient-tropical: linear-gradient(180deg, hsl(199 20% 96%) 0%, hsl(142 20% 96%) 100%);
+    /* NEW JUNGLE ISLAND SURFING GRADIENTS */
+    --gradient-ocean: linear-gradient(135deg, hsl(195 100% 45%), hsl(180 85% 50%));
+    --gradient-jungle: linear-gradient(135deg, hsl(140 80% 35%), hsl(120 70% 45%));
+    --gradient-sunset: linear-gradient(135deg, hsl(35 95% 55%), hsl(25 90% 60%));
+    --gradient-tropical-wave: linear-gradient(135deg, hsl(195 100% 45%) 0%, hsl(140 80% 35%) 50%, hsl(35 95% 55%) 100%);
+    --gradient-surf-vibes: linear-gradient(135deg, hsl(180 85% 50%) 0%, hsl(120 70% 45%) 100%);
+    --gradient-island-paradise: linear-gradient(135deg, hsl(140 80% 35%) 0%, hsl(195 100% 45%) 50%, hsl(35 95% 55%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(195 100% 45%) 0%, hsl(140 80% 35%) 50%, hsl(35 95% 55%) 100%);
+    --gradient-tropical: linear-gradient(180deg, hsl(140 20% 96%) 0%, hsl(195 20% 96%) 100%);
     
-    /* Shadows with color */
-    --shadow-ocean: 0 10px 30px -10px hsl(199 89% 48% / 0.3);
-    --shadow-sunset: 0 10px 30px -10px hsl(21 90% 48% / 0.3);
-    --shadow-soft: 0 4px 20px -2px hsl(199 20% 40% / 0.1);
+    /* Vibrant button gradients */
+    --gradient-primary-btn: linear-gradient(135deg, hsl(195 100% 45%), hsl(180 85% 50%), hsl(140 80% 35%));
+    --gradient-secondary-btn: linear-gradient(135deg, hsl(140 80% 35%), hsl(120 70% 45%));
+    --gradient-accent-btn: linear-gradient(135deg, hsl(35 95% 55%), hsl(25 90% 60%));
+    --gradient-ocean-btn: linear-gradient(135deg, hsl(195 100% 45%), hsl(185 90% 50%));
+    --gradient-tropical-btn: linear-gradient(135deg, hsl(140 80% 35%), hsl(195 100% 45%), hsl(35 95% 55%));
+    
+    /* Shadows with tropical colors */
+    --shadow-ocean: 0 10px 30px -10px hsl(195 100% 45% / 0.4);
+    --shadow-jungle: 0 10px 30px -10px hsl(140 80% 35% / 0.4);
+    --shadow-sunset: 0 10px 30px -10px hsl(35 95% 55% / 0.4);
+    --shadow-soft: 0 4px 20px -2px hsl(140 20% 40% / 0.1);
     
     /* Smooth transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -64,19 +76,12 @@ All colors MUST be HSL. Ocean blues, sunset oranges, palm greens.
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -91,17 +96,17 @@ All colors MUST be HSL. Ocean blues, sunset oranges, palm greens.
     --popover: 215 25% 12%;
     --popover-foreground: 0 0% 95%;
     
-    /* Brighter ocean blue for dark mode */
-    --primary: 199 89% 55%;
+    /* Brighter tropical colors for dark mode */
+    --primary: 195 100% 55%;
     --primary-foreground: 215 28% 8%;
-    --primary-glow: 199 89% 70%;
+    --primary-glow: 195 100% 70%;
     
-    /* Warmer sunset for dark mode */
-    --secondary: 21 90% 55%;
+    /* Vibrant jungle green */
+    --secondary: 140 80% 45%;
     --secondary-foreground: 215 28% 8%;
     
-    /* Vibrant palm green */
-    --accent: 142 76% 45%;
+    /* Glowing sunset gold */
+    --accent: 35 95% 65%;
     --accent-foreground: 215 28% 8%;
     
     --muted: 215 25% 16%;
@@ -112,18 +117,31 @@ All colors MUST be HSL. Ocean blues, sunset oranges, palm greens.
     
     --border: 215 25% 16%;
     --input: 215 25% 16%;
-    --ring: 199 89% 55%;
+    --ring: 195 100% 55%;
     
-    /* Dark mode gradients */
-    --gradient-ocean: linear-gradient(135deg, hsl(199 89% 55%), hsl(199 89% 70%));
-    --gradient-sunset: linear-gradient(135deg, hsl(21 90% 55%), hsl(21 90% 70%));
-    --gradient-hero: linear-gradient(135deg, hsl(199 89% 55%) 0%, hsl(21 90% 55%) 100%);
+    /* Dark mode jungle gradients with glow */
+    --gradient-ocean: linear-gradient(135deg, hsl(195 100% 55%), hsl(180 85% 60%));
+    --gradient-jungle: linear-gradient(135deg, hsl(140 80% 45%), hsl(120 70% 55%));
+    --gradient-sunset: linear-gradient(135deg, hsl(35 95% 65%), hsl(25 90% 70%));
+    --gradient-tropical-wave: linear-gradient(135deg, hsl(195 100% 55%) 0%, hsl(140 80% 45%) 50%, hsl(35 95% 65%) 100%);
+    --gradient-surf-vibes: linear-gradient(135deg, hsl(180 85% 60%) 0%, hsl(120 70% 55%) 100%);
+    --gradient-island-paradise: linear-gradient(135deg, hsl(140 80% 45%) 0%, hsl(195 100% 55%) 50%, hsl(35 95% 65%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(195 100% 55%) 0%, hsl(140 80% 45%) 50%, hsl(35 95% 65%) 100%);
     --gradient-tropical: linear-gradient(180deg, hsl(215 25% 12%) 0%, hsl(215 25% 16%) 100%);
     
+    /* Dark mode button gradients */
+    --gradient-primary-btn: linear-gradient(135deg, hsl(195 100% 55%), hsl(180 85% 60%), hsl(140 80% 45%));
+    --gradient-secondary-btn: linear-gradient(135deg, hsl(140 80% 45%), hsl(120 70% 55%));
+    --gradient-accent-btn: linear-gradient(135deg, hsl(35 95% 65%), hsl(25 90% 70%));
+    --gradient-ocean-btn: linear-gradient(135deg, hsl(195 100% 55%), hsl(185 90% 60%));
+    --gradient-tropical-btn: linear-gradient(135deg, hsl(140 80% 45%), hsl(195 100% 55%), hsl(35 95% 65%));
+    
     /* Glowing shadows for dark mode */
-    --shadow-ocean: 0 10px 30px -10px hsl(199 89% 55% / 0.4);
-    --shadow-sunset: 0 10px 30px -10px hsl(21 90% 55% / 0.4);
+    --shadow-ocean: 0 10px 30px -10px hsl(195 100% 55% / 0.5);
+    --shadow-jungle: 0 10px 30px -10px hsl(140 80% 45% / 0.5);
+    --shadow-sunset: 0 10px 30px -10px hsl(35 95% 65% / 0.5);
     --shadow-soft: 0 4px 20px -2px hsl(0 0% 0% / 0.3);
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -145,8 +163,61 @@ All colors MUST be HSL. Ocean blues, sunset oranges, palm greens.
   }
 }
 
+/* Custom tropical button variants */
+@layer components {
+  .btn-tropical {
+    background: var(--gradient-tropical-btn);
+    color: white;
+    border: none;
+    box-shadow: var(--shadow-jungle);
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-tropical:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px -10px hsl(140 80% 35% / 0.5);
+  }
+  
+  .btn-ocean {
+    background: var(--gradient-ocean-btn);
+    color: white;
+    border: none;
+    box-shadow: var(--shadow-ocean);
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-ocean:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px -10px hsl(195 100% 45% / 0.5);
+  }
+  
+  .btn-sunset {
+    background: var(--gradient-accent-btn);
+    color: white;
+    border: none;
+    box-shadow: var(--shadow-sunset);
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-sunset:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px -10px hsl(35 95% 55% / 0.5);
+  }
+}
+
 @keyframes gradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes surf {
+  0% { transform: translateX(-10px) rotate(-2deg); }
+  50% { transform: translateX(10px) rotate(2deg); }
+  100% { transform: translateX(-10px) rotate(-2deg); }
 }

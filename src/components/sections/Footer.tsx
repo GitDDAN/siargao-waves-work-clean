@@ -52,12 +52,12 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary-glow rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-accent to-orange-500 rounded-lg flex items-center justify-center">
                 <Waves className="w-5 h-5 text-white" />
               </div>
               <div className="flex flex-col">
                 <span className="text-lg font-bold">Siargao</span>
-                <span className="text-xs text-primary font-medium -mt-1">Coliving</span>
+                <span className="text-xs text-accent font-medium -mt-1">Coliving</span>
               </div>
             </div>
             <p className="text-sm text-background/70 max-w-xs">
@@ -111,8 +111,16 @@ const Footer = () => {
               <p className="text-sm text-background/70">
                 Ready to be part of our community?
               </p>
-              <Button variant="ocean" size="sm" className="w-full">
-                Apply Now
+              <Button 
+                variant="default" 
+                size="sm" 
+                className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
+                onClick={() => {
+                  const message = "Hi! I'm interested in booking a stay at Siargao Coliving. Can you share more details about availability?";
+                  window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
+                }}
+              >
+                Book Now
               </Button>
               <div className="flex space-x-3">
                 {social.map((item, index) => (
