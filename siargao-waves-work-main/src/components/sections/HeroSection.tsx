@@ -40,7 +40,7 @@ const HeroSection = () => {
 						className="mx-auto bg-white/10 hover:bg-white/20 text-white border-white/20 backdrop-blur-md px-6 py-2 text-sm transition-all"
 					>
 						<MapPin className="w-4 h-4 mr-2" />
-						General Luna, Siargao • 5min to Cloud 9
+						GGeneral Luna, Siargao • 5min to Cloud 9
 					</Badge>
 
 					{/* Main Heading with Modern Gradient */}
