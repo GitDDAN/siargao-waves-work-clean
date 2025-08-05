@@ -59,7 +59,7 @@ const HeroSection = () => {
                                 {activities[currentActivity]}
                             </span>
                             <span className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl block">
-                                Coliving & Remote Work
+                                Coliving & Coworking
                             </span>
                         </h1>
 
