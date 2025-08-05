@@ -40,7 +40,9 @@ const AccommodationSection = () => {
         "Queen bed with premium linens",
         "AC + ceiling fan comfort",
         "High-speed fiber WiFi",
-        "24/7 local WhatsApp support"
+        "New Linen & Towels Weekly",
+        "Weekly Cleaning Service",
+        "Extra Large balcony with Hammock"
       ],
       popular: false,
       capacity: "Max 2 guests",
@@ -59,8 +61,10 @@ const AccommodationSection = () => {
         "Coworking space with nature views",
         "Queen bed in tropical setting",
         "AC + natural ventilation",
-        "High-speed fiber WiFi",
-        "Shared bathroom (2 guests max)"
+        "High-speed fiber WiFi",,
+        "New Linen & Towels Weekly",
+        "Weekly Cleaning Service",
+        "Perfect for couples or solo nomads"
       ],
       popular: true,
       capacity: "Max 2 guests",
@@ -75,15 +79,17 @@ const AccommodationSection = () => {
       perfectFor: "Solo nomads maximizing coliving value for extended community living",
       socialTagline: "🏄‍♂️ Budget-Friendly Island Coliving! Perfect for Solo Digital Nomads - Garden Views, Great Community, Unbeatable Value in Siargao.",
       features: [
-        "Garden view workspace",
+        "Jungle view workspace",
         "Comfortable double bed",
         "Air conditioning comfort",
         "High-speed fiber WiFi",
         "Shared bathroom with hot shower",
-        "Perfect for budget-conscious nomads"
+        "Perfect for budget-conscious nomads",
+         "New Linen & Towels Weekly",
+        "Weekly Cleaning Service"
       ],
       popular: false,
-      capacity: "Max 1 guest",
+      capacity: "Max 2 guest",
       amenities: [Bed, Wifi, AirVent, Coffee]
     }
   ];

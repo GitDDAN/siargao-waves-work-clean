@@ -75,7 +75,7 @@ const HeroSection = () => {
 					{/* Feature Pills with Glass Effect */}
 					<div className="flex flex-wrap justify-center gap-4 pt-6">
 						{[
-							{ icon: Laptop, text: "Starlink WiFi" },
+							{ icon: Laptop, text: "Fiber WiFi" },
 							{ icon: Users, text: "Nomad Community" },
 							{ icon: Coffee, text: "Coworking Ready" },
 							{ icon: Waves, text: "5min to Cloud 9" },
@@ -117,9 +117,9 @@ const HeroSection = () => {
 					{/* Stats with Modern Glass Cards */}
 					<div className="flex flex-wrap justify-center gap-8 pt-10">
 						{[
-							{ number: "₱25k/mo", label: "Coliving Rates" },
-							{ number: "100+ Mbps", label: "Starlink WiFi" },
-							{ number: "24/7", label: "Power Backup" },
+							{ number: "₱25k/mo", label: "Starting From Coliving Rates" },
+							{ number: "100+ Mbps", label: "Fast WiFi Up & Down" },
+							{ number: "24/7", label: "Backup Cafe 200m" },
 						].map((stat, index) => (
 							<div
 								key={index}
@@ -136,7 +136,7 @@ const HeroSection = () => {
 					{/* Trust Signal - Moved to bottom */}
 					<div className="text-center pt-6">
 						<p className="text-white/70 text-sm font-medium">
-							Trusted by 200+ digital nomads • Featured in Siargao Digital Nomads Community
+							Goal to be Trusted by 200+ digital nomads • Featured in Siargao Digital Nomads Community
 						</p>
 					</div>
 				</div>

@@ -1,16 +1,37 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Waves, 
-  Mail, 
-  MessageCircle, 
-  Instagram, 
-  Twitter,
+import {
+  Waves,
+  Mail,
+  MessageCircle,
+  Instagram,
+  Facebook, // Added Facebook
   MapPin,
   Phone,
   Clock,
   Heart
 } from "lucide-react";
+
+// Logo Component
+const SiargaoLogo = ({ size = 32 }) => (
+  <svg width={size} height={size} viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="200" height="200" rx="40" ry="40" fill="#f97316"/>
+    <g transform="translate(30, 40)">
+      <path d="M20 50 L70 20 L120 50 L20 50 Z" fill="white" stroke="none"/>
+      <path d="M35 50 L70 30 L105 50 L35 50 Z" fill="#f97316"/>
+      <rect x="20" y="50" width="100" height="80" fill="white" stroke="none"/>
+      <rect x="25" y="55" width="90" height="70" fill="#f97316"/>
+      <g fill="white">
+        <path d="M35 70 Q45 65 55 70 T75 70 T95 70 Q100 65 105 70" stroke="white" strokeWidth="4" fill="none"/>
+        <path d="M35 85 Q45 80 55 85 T75 85 T95 85 Q100 80 105 85" stroke="white" strokeWidth="4" fill="none"/>
+        <path d="M35 100 Q45 95 55 100 T75 100 T95 100 Q100 95 105 100" stroke="white" strokeWidth="4" fill="none"/>
+      </g>
+      <rect x="30" y="130" width="15" height="15" fill="white"/>
+      <rect x="95" y="130" width="15" height="15" fill="white"/>
+    </g>
+    <ellipse cx="100" cy="175" rx="80" ry="8" fill="#d97706"/>
+  </svg>
+);
 
 const Footer = () => {
   const quickLinks = [
@@ -20,28 +41,29 @@ const Footer = () => {
     { label: "Siargao Guide", href: "#siargao" }
   ];
 
+  // UPDATED Contact Details
   const contact = [
-    { 
-      icon: Mail, 
-      label: "hello@siargaocoliving.com",
-      href: "mailto:hello@siargaocoliving.com"
+    {
+      icon: Mail,
+      label: "alisamarijaen@gmail.com",
+      href: "mailto:alisamarijaen@gmail.com"
     },
-    { 
-      icon: MessageCircle, 
-      label: "WhatsApp: +63 917 123 4567",
-      href: "https://wa.me/639171234567"
+    {
+      icon: Phone,
+      label: "+63 908 333 9477",
+      href: "tel:+639083339477"
     },
-    { 
-      icon: Phone, 
-      label: "Emergency: +63 917 765 4321",
-      href: "tel:+639177654321"
+    {
+      icon: MessageCircle,
+      label: "WhatsApp",
+      href: "https://wa.me/639083339477"
     }
   ];
 
+  // UPDATED Social Media Links
   const social = [
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: MessageCircle, href: "#", label: "WhatsApp" }
+    { icon: Instagram, href: "https://www.instagram.com/alisaaaa.j/", label: "Instagram" },
+    { icon: Facebook, href: "https://www.facebook.com/alisa.jaen.3", label: "Facebook" }
   ];
 
   return (
@@ -52,8 +74,8 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-accent to-orange-500 rounded-lg flex items-center justify-center">
-                <Waves className="w-5 h-5 text-white" />
+              <div className="w-8 h-8">
+                <SiargaoLogo size={32} />
               </div>
               <div className="flex flex-col">
                 <span className="text-lg font-bold">Siargao</span>
@@ -65,7 +87,8 @@ const Footer = () => {
             </p>
             <div className="flex items-center space-x-2 text-sm">
               <MapPin className="w-4 h-4 text-primary" />
-              <span className="text-background/70">General Luna, Siargao Island</span>
+              <span className="text-background/70">General Luna, Purok 5</span>
+              <span className="text-background/70">Siargao Island</span>
             </div>
           </div>
 
@@ -75,7 +98,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
+                  <a
                     href={link.href}
                     className="text-sm text-background/70 hover:text-primary transition-colors"
                   >
@@ -92,8 +115,10 @@ const Footer = () => {
             <ul className="space-y-3">
               {contact.map((item, index) => (
                 <li key={index}>
-                  <a 
+                  <a
                     href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-start space-x-2 text-sm text-background/70 hover:text-primary transition-colors"
                   >
                     <item.icon className="w-4 h-4 mt-0.5 flex-shrink-0" />
@@ -111,12 +136,13 @@ const Footer = () => {
               <p className="text-sm text-background/70">
                 Ready to be part of our community?
               </p>
-              <Button 
-                variant="default" 
-                size="sm" 
+              <Button
+                variant="default"
+                size="sm"
                 className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
                 onClick={() => {
                   const message = "Hi! I'm interested in booking a stay at Siargao Coliving. Can you share more details about availability?";
+                  // UPDATED WhatsApp link
                   window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
                 }}
               >
@@ -127,6 +153,8 @@ const Footer = () => {
                   <a
                     key={index}
                     href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-8 h-8 bg-background/10 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
                     aria-label={item.label}
                   >
@@ -164,14 +192,15 @@ const Footer = () => {
         <div className="border-t border-background/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-4 text-sm text-background/70">
-              <span>&copy; 2024 Siargao Coliving. All rights reserved.</span>
+              {/* UPDATED Copyright Year */}
+              <span>&copy; 2025 Siargao Coliving. All rights reserved.</span>
               <div className="flex items-center space-x-1">
                 <span>Made with</span>
                 <Heart className="w-4 h-4 text-red-500" />
                 <span>in Siargao</span>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-6 text-sm">
               <a href="#" className="text-background/70 hover:text-primary transition-colors">
                 Privacy Policy

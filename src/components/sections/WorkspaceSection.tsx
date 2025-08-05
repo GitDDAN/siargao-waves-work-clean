@@ -48,7 +48,7 @@ const WorkspaceSection = () => {
 
   const workspaceTypes = [
     {
-      title: "Focus Hammock",
+      title: "2 x Focus Hammock",
       description: "Outdoor productivity space for quiet coliving work",
       capacity: "1 person",
       features: ["Jungle views", "Natural ventilation", "Private workspace"],
@@ -56,16 +56,16 @@ const WorkspaceSection = () => {
       icon: Headphones
     },
     {
-      title: "Collaboration Zones", 
-      description: "Shared coworking areas designed for coliving community projects",
-      capacity: "2-8 people",
+      title: "Private Zones", 
+      description: "Shared Working Balcony areas designed for coliving community projects",
+      capacity: "2-4 people",
       features: ["Bamboo architecture", "Group workspace", "Community collaboration"],
       hourlyRate: "Included",
       icon: Monitor
     },
     {
       title: "Café Style Workspace",
-      description: "Relaxed coworking environment perfect for coliving social work",
+      description: "Focus Table coworking environment perfect for coliving social work",
       capacity: "All coliving members",
       features: ["Coffee station", "Tropical setting", "Community atmosphere"],
       hourlyRate: "Included",
@@ -82,7 +82,7 @@ const WorkspaceSection = () => {
           </Badge>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Work From Anywhere - True Island Flexibility
+              Free Coffee - True Island Spirit
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -121,14 +121,7 @@ const WorkspaceSection = () => {
                   
                   <div className="flex items-center justify-between">
                     <div className="text-lg font-bold text-primary">{workspace.hourlyRate}</div>
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      className="hover:bg-primary/10 hover:border-primary/50 transition-colors"
-                    >
-                      <Calendar className="w-4 h-4 mr-2" />
-                      Book Now
-                    </Button>
+               
                   </div>
                 </CardContent>
               </Card>
