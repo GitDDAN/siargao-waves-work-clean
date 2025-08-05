@@ -1,18 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
-  Waves,
+  Waves, // Kept for consistency if you want to use it
   Mail,
   MessageCircle,
   Instagram,
-  Facebook, // Added Facebook
+  Facebook,
   MapPin,
   Phone,
   Clock,
   Heart
 } from "lucide-react";
 
-// Logo Component
+// This is the same custom SVG logo from your original file.
 const SiargaoLogo = ({ size = 32 }) => (
   <svg width={size} height={size} viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
     <rect width="200" height="200" rx="40" ry="40" fill="#f97316"/>
@@ -41,7 +41,7 @@ const Footer = () => {
     { label: "Siargao Guide", href: "#siargao" }
   ];
 
-  // UPDATED Contact Details
+  // --- UPDATED: WhatsApp link now includes the full name ---
   const contact = [
     {
       icon: Mail,
@@ -56,11 +56,10 @@ const Footer = () => {
     {
       icon: MessageCircle,
       label: "WhatsApp",
-      href: "https://wa.me/639083339477"
+      href: "https://wa.me/639083339477?text=Hi!%20I'd%20like%20to%20ask%20a%20question%20about%20Siargao%20Salamat%20Villa%20Coliving."
     }
   ];
 
-  // UPDATED Social Media Links
   const social = [
     { icon: Instagram, href: "https://www.instagram.com/alisaaaa.j/", label: "Instagram" },
     { icon: Facebook, href: "https://www.facebook.com/alisa.jaen.3", label: "Facebook" }
@@ -77,9 +76,10 @@ const Footer = () => {
               <div className="w-8 h-8">
                 <SiargaoLogo size={32} />
               </div>
+              {/* --- UPDATED: Logo text changed --- */}
               <div className="flex flex-col">
-                <span className="text-lg font-bold">Siargao</span>
-                <span className="text-xs text-accent font-medium -mt-1">Coliving</span>
+                <span className="text-lg font-bold">Siargao Salamat</span>
+                <span className="text-xs text-accent font-medium -mt-1">Villa Coliving</span>
               </div>
             </div>
             <p className="text-sm text-background/70 max-w-xs">
@@ -141,8 +141,8 @@ const Footer = () => {
                 size="sm"
                 className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
                 onClick={() => {
-                  const message = "Hi! I'm interested in booking a stay at Siargao Coliving. Can you share more details about availability?";
-                  // UPDATED WhatsApp link
+                  // --- UPDATED: WhatsApp message with new name ---
+                  const message = "Hi! I'm interested in booking a stay at Siargao Salamat Villa Coliving. Can you share more details about availability?";
                   window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
                 }}
               >
@@ -170,12 +170,12 @@ const Footer = () => {
         <div className="border-t border-background/20 pt-8 mb-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <div className="text-2xl font-bold text-primary">150+</div>
+              <div className="text-2xl font-bold text-primary">Goal 150+</div>
               <div className="text-xs text-background/70">Community Members</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-secondary">98%</div>
-              <div className="text-xs text-background/70">WiFi Uptime</div>
+              <div className="text-2xl font-bold text-secondary">100+</div>
+              <div className="text-xs text-background/70">WiFi Speed</div>
             </div>
             <div>
               <div className="text-2xl font-bold text-accent">4.9</div>
@@ -192,8 +192,8 @@ const Footer = () => {
         <div className="border-t border-background/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-4 text-sm text-background/70">
-              {/* UPDATED Copyright Year */}
-              <span>&copy; 2025 Siargao Coliving. All rights reserved.</span>
+              {/* --- UPDATED: Copyright with new name --- */}
+              <span>&copy; 2025 Siargao Salamat Villa Coliving. All rights reserved.</span>
               <div className="flex items-center space-x-1">
                 <span>Made with</span>
                 <Heart className="w-4 h-4 text-red-500" />

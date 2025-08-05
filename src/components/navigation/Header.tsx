@@ -1,18 +1,24 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 import { Menu, X, Waves, Users, Home, Briefcase, MapPin, Send } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("#community");
 
-  // Effect to prevent background scrolling when the menu is open
+  // Effect to prevent background scrolling when the mobile menu is open
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-    // Cleanup function to ensure scroll is restored on component unmount
     return () => {
       document.body.style.overflow = 'auto';
     };
@@ -26,61 +32,69 @@ const Header = () => {
   ];
 
   const Logo = () => (
-    <div className="flex items-center space-x-2">
-      <div className="w-8 h-8 bg-gradient-to-br from-accent to-orange-500 rounded-lg flex items-center justify-center">
+    <a href="#" className="flex items-center space-x-2 overflow-hidden" aria-label="Back to top">
+      <div className="w-8 h-8 bg-gradient-to-br from-accent to-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
         <Waves className="w-5 h-5 text-white" />
       </div>
       <div className="flex flex-col">
-        <span className="text-lg font-bold text-foreground">Siargao</span>
-        <span className="text-xs text-accent font-medium -mt-1">Coliving</span>
+        <span className="text-base font-bold text-foreground truncate">Siargao Salamat</span>
+        <span className="text-xs text-accent font-medium -mt-1">Villa Coliving</span>
       </div>
-    </div>
+    </a>
   );
   
-  // Renders the full-screen mobile navigation overlay
+  const CtaButtons = ({ mobile = false }: { mobile?: boolean }) => {
+    const contactUrl = "https://wa.me/639083339477?text=Hi!%20I'd%20like%20to%20ask%20a%20question%20about%20Siargao%20Salamat%20Villa%20Coliving.";
+    const applyUrl = "https://wa.me/639083339477?text=Hi!%20I'm%20interested%20in%20applying%20to%20stay%20at%20Siargao%20Salamat%20Villa%20Coliving.";
+
+    return (
+      <>
+        <Button asChild variant="outline" size={mobile ? "lg" : "sm"} className={!mobile ? "hover:bg-primary/10 hover:border-primary/50 transition-colors" : ""}>
+          <a href={contactUrl} target="_blank" rel="noopener noreferrer">
+            Contact
+          </a>
+        </Button>
+        <Button asChild variant="default" size={mobile ? "lg" : "sm"} className="bg-gradient-to-r from-primary to-secondary text-white">
+          <a href={applyUrl} target="_blank" rel="noopener noreferrer">
+            <Send className={`w-4 h-4 ${mobile ? 'mr-2' : 'mr-1'}`} />
+            Apply Now
+          </a>
+        </Button>
+      </>
+    );
+  };
+
   const MobileNavOverlay = () => (
     <div 
       className={`fixed inset-0 z-40 bg-background/95 backdrop-blur-sm md:hidden animate-fade-in`}
+      id="mobile-menu"
     >
       <div className="container mx-auto px-4">
-        {/* Top bar inside overlay with logo and close button */}
         <div className="flex items-center justify-between h-16 border-b border-border/50">
           <Logo />
           <Button
             variant="ghost"
-            size="sm"
+            size="icon"
             onClick={() => setIsMenuOpen(false)}
             aria-label="Close menu"
           >
             <X className="w-6 h-6" />
           </Button>
         </div>
-
-        {/* Menu Items */}
-        <div className="flex flex-col items-center justify-center mt-12 space-y-6 animate-slide-in-from-top">
+        <div className="flex flex-col items-center justify-center text-center mt-16 space-y-8">
            {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="flex items-center space-x-3 text-xl font-medium text-muted-foreground hover:text-primary transition-colors"
+              className="flex items-center space-x-3 text-2xl font-semibold text-foreground hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              <item.icon className="w-5 h-5" />
+              <item.icon className="w-6 h-6" />
               <span>{item.label}</span>
             </a>
           ))}
-
-          {/* Buttons at the bottom */}
-          <div className="flex flex-col space-y-3 pt-8 w-full max-w-xs">
-            <Button variant="outline" size="lg">Contact</Button>
-            <Button 
-              variant="default" 
-              size="lg"
-              className="bg-gradient-to-r from-primary to-secondary text-white"
-            >
-              <Send className="w-4 h-4 mr-2" />
-              Apply Now
-            </Button>
+          <div className="flex flex-col space-y-4 pt-8 w-full max-w-xs">
+            <CtaButtons mobile />
           </div>
         </div>
       </div>
@@ -91,60 +105,56 @@ const Header = () => {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
         <div className="container mx-auto px-4">
-          <nav className="flex items-center justify-between h-16">
-            <Logo />
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="flex items-center space-x-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
-                >
-                  <item.icon className="w-4 h-4" />
-                  <span>{item.label}</span>
-                </a>
-              ))}
-            </div>
-
-            {/* Desktop CTA */}
-            <div className="hidden md:flex items-center space-x-3">
-              <Button 
-                variant="outline" 
-                size="sm"
-                className="hover:bg-primary/10 hover:border-primary/50 transition-colors"
+          <div className="flex items-center justify-between h-16">
+            {/* --- REDESIGNED: Simplified mobile and desktop layouts --- */}
+            
+            {/* Mobile Header (only logo and menu button) */}
+            <div className="flex items-center justify-between w-full md:hidden">
+              <Logo />
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Open menu"
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-menu"
               >
-                Contact
-              </Button>
-              <Button 
-                variant="default" 
-                size="sm"
-                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white"
-              >
-                <Send className="w-4 h-4 mr-1" />
-                Apply Now
+                <Menu className="w-6 h-6" />
               </Button>
             </div>
 
-            {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="sm"
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Open menu"
-              aria-expanded={isMenuOpen} // Accessibility improvement
-              aria-controls="mobile-menu" // Accessibility improvement
-            >
-              {/* This button remains in the header, while the menu is a separate overlay */}
-              <Menu className="w-6 h-6" />
-            </Button>
-          </nav>
+            {/* Desktop Header (full navigation) */}
+            <div className="hidden md:flex items-center justify-between w-full">
+              <Logo />
+              <div className="flex items-center space-x-6">
+                <NavigationMenu>
+                  <NavigationMenuList>
+                    {navItems.map((item) => (
+                      <NavigationMenuItem key={item.label}>
+                        <a
+                          href={item.href}
+                          onClick={() => setActiveLink(item.href)}
+                          className={cn(
+                            "group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-3 py-2 text-sm font-medium transition-colors hover:text-primary focus:outline-none focus:text-primary disabled:pointer-events-none disabled:opacity-50",
+                            activeLink === item.href ? "text-primary" : "text-muted-foreground"
+                          )}
+                        >
+                          <item.icon className="w-4 h-4 mr-2" />
+                          {item.label}
+                        </a>
+                      </NavigationMenuItem>
+                    ))}
+                  </NavigationMenuList>
+                </NavigationMenu>
+                <div className="flex items-center space-x-3">
+                  <CtaButtons />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </header>
       
-      {/* Conditionally render the mobile overlay */}
       {isMenuOpen && <MobileNavOverlay />}
     </>
   );
