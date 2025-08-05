@@ -61,7 +61,7 @@ const AccommodationSection = () => {
         "Coworking space with nature views",
         "Queen bed in tropical setting",
         "AC + natural ventilation",
-        "High-speed fiber WiFi",,
+        "High-speed fiber WiFi",
         "New Linen & Towels Weekly",
         "Weekly Cleaning Service",
         "Perfect for couples or solo nomads"
@@ -126,108 +126,74 @@ const AccommodationSection = () => {
     const currentUrl = window.location.href.split('#')[0]; // Remove any existing hash
     const roomUrl = `${currentUrl}#${room.title.toLowerCase().replace(/ /g, '-')}`;
     
-    // Create absolute image URL - try multiple approaches
-    let imageUrl;
-    try {
-      // Try to create absolute URL from relative path
-      imageUrl = new URL(room.image, window.location.origin).href;
-    } catch (error) {
-      // Fallback to simple concatenation
-      imageUrl = window.location.origin + room.image;
-    }
+    // Create absolute image URL
+    let imageUrl = new URL(room.image, window.location.origin).href;
     
-    // Enhanced text for sharing with image
+    // Enhanced text for sharing with image and details
     const enhancedShareText = `
-🏝️ ${room.title} - Siargao Coliving Paradise
+🏝️ Check out the "${room.title}" room at Siargao Salamat Villa Coliving!
 
 ${room.socialTagline}
 
-📅 AVAILABLE: ${availability.from}
-💰 PRICING:
-• Monthly: ${room.monthlyPrice} 
-• Weekly: ${room.weeklyPrice}
+📅 Available from: ${availability.from}
+💰 Price: ${room.monthlyPrice}/month
 
-✨ ROOM HIGHLIGHTS:
-${room.features.slice(0, 4).map(f => `• ${f}`).join('\n')}
+✨ Highlights:
+${room.features.slice(0, 3).map(f => `• ${f}`).join('\n')}
 
-👥 ${room.perfectFor}
+👥 Perfect for: ${room.perfectFor}
 
-🌊 Book your island coliving experience: ${roomUrl}
+Book your stay or see more details here: ${roomUrl}
+`.trim();
 
-Contact us on WhatsApp to secure your spot! 🏄‍♀️
-
-📸 See room photos: ${imageUrl}
-    `.trim();
-
-    // Update meta tags first for better social media previews
+    // Update meta tags for rich social media previews
     updateMetaTags(room, availability, roomUrl, imageUrl);
 
     try {
-      // For mobile devices with native sharing
       if (navigator.share) {
-        const shareData = {
-          title: `${room.title} - Siargao Coliving Paradise`,
+        await navigator.share({
+          title: `${room.title} - Siargao Salamat Villa Coliving`,
           text: room.socialTagline,
           url: roomUrl
-        };
-        
-        await navigator.share(shareData);
+        });
       } else {
-        // Fallback to clipboard
         await navigator.clipboard.writeText(enhancedShareText);
         toast({
           title: "Room details copied! 📋",
-          description: "Perfect for sharing on social media - includes room image link and preview data!",
+          description: "Ready to share on your favorite platform.",
         });
       }
     } catch (err) {
-      // Final fallback
+      console.error("Share failed:", err);
       try {
         await navigator.clipboard.writeText(enhancedShareText);
         toast({
           title: "Room details copied! 📋", 
-          description: "Share this amazing coliving space with your friends! Image link included.",
+          description: "Sharing failed, but you can paste the details.",
         });
       } catch (clipboardErr) {
-        // Last resort - just copy the URL
-        const fallbackText = `Check out this coliving room in Siargao: ${roomUrl}`;
-        try {
-          await navigator.clipboard.writeText(fallbackText);
-          toast({
-            title: "Link copied!",
-            description: "Share this URL: " + roomUrl,
-          });
-        } catch (finalErr) {
-          toast({
-            title: "Share manually",
-            description: "Copy this URL: " + roomUrl,
-          });
-        }
+        toast({
+          title: "Could not copy details",
+          description: "Please share the link manually: " + roomUrl,
+          variant: "destructive",
+        });
       }
     }
   };
 
   const updateMetaTags = (room, availability, roomUrl, imageUrl) => {
-    // Remove existing meta tags
-    const existingMetas = document.querySelectorAll('meta[property^="og:"], meta[name^="twitter:"]');
-    existingMetas.forEach(meta => meta.remove());
+    // Remove existing meta tags to avoid duplicates
+    document.querySelectorAll('meta[property^="og:"], meta[name^="twitter:"]').forEach(meta => meta.remove());
 
-    // Add new meta tags for rich social sharing with image
     const metaTags = [
-      { property: 'og:title', content: `${room.title} - Siargao Coliving Paradise` },
-      { property: 'og:description', content: `${room.socialTagline} Available from ${availability.from}. ${room.perfectFor}` },
+      { property: 'og:title', content: `${room.title} - Siargao Salamat Villa Coliving` },
+      { property: 'og:description', content: `${room.socialTagline} Available from ${availability.from}.` },
       { property: 'og:image', content: imageUrl },
       { property: 'og:image:width', content: '1200' },
       { property: 'og:image:height', content: '630' },
-      { property: 'og:image:alt', content: `${room.title} - ${room.subtitle}` },
       { property: 'og:url', content: roomUrl },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Siargao Coliving Paradise' },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: `${room.title} - Siargao Coliving` },
-      { name: 'twitter:description', content: `${room.socialTagline} Available ${availability.fromShort}` },
-      { name: 'twitter:image', content: imageUrl },
-      { name: 'twitter:image:alt', content: `${room.title} - ${room.subtitle}` }
     ];
 
     metaTags.forEach(tag => {
@@ -241,7 +207,8 @@ Contact us on WhatsApp to secure your spot! 🏄‍♀️
 
   const openWhatsApp = (room) => {
     const availability = getAvailabilityDates(room);
-    const message = `Hi! I'm interested in the ${room.title} for coliving at Siargao. I saw it's available from ${availability.from}. Can you share more details about both short and long-term stays?`;
+    // Updated message to be more specific to the room
+    const message = `Hi! I'm interested in booking the "${room.title}" room at Siargao Salamat Villa Coliving. I saw it's available from ${availability.from}. Could you please provide more details on booking?`;
     const whatsappUrl = `https://wa.me/639083339477?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -283,16 +250,15 @@ Contact us on WhatsApp to secure your spot! 🏄‍♀️
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {roomTypes
             .sort((a, b) => {
-              // Sort by availability date - earliest first
-              const dateA = getAvailabilityDates(a).nextAvailable || new Date(2099, 0, 1);
-              const dateB = getAvailabilityDates(b).nextAvailable || new Date(2099, 0, 1);
+              const dateA = getAvailabilityDates(a).nextAvailable;
+              const dateB = getAvailabilityDates(b).nextAvailable;
               return dateA.getTime() - dateB.getTime();
             })
             .map((room, index) => (
             <Card 
               key={index} 
               id={room.title.toLowerCase().replace(/ /g, '-')}
-              className={`relative hover:shadow-xl transition-all duration-300 hover:scale-[1.02] ${
+              className={`relative flex flex-col hover:shadow-xl transition-all duration-300 hover:scale-[1.02] ${
                 room.popular ? 'ring-2 ring-primary shadow-lg' : ''
               }`}
             >
@@ -353,36 +319,39 @@ Contact us on WhatsApp to secure your spot! 🏄‍♀️
                 </div>
               </CardHeader>
 
-              <CardContent className="space-y-6">
-                {/* Perfect For */}
-                <div className="bg-muted/50 p-3 rounded-lg">
-                  <p className="text-sm font-medium mb-1">Perfect For:</p>
-                  <p className="text-sm text-muted-foreground">{room.perfectFor}</p>
-                </div>
-
-                {/* Amenity Icons */}
-                <div className="flex justify-center space-x-4">
-                  {room.amenities.map((Icon, iconIndex) => (
-                    <div 
-                      key={iconIndex}
-                      className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center"
-                    >
-                      <Icon className="w-5 h-5 text-primary" />
+              <CardContent className="space-y-6 flex-grow flex flex-col justify-between">
+                <div>
+                    {/* Perfect For */}
+                    <div className="bg-muted/50 p-3 rounded-lg mb-6">
+                      <p className="text-sm font-medium mb-1">Perfect For:</p>
+                      <p className="text-sm text-muted-foreground">{room.perfectFor}</p>
                     </div>
-                  ))}
+
+                    {/* Amenity Icons */}
+                    <div className="flex justify-center space-x-4 mb-6">
+                      {room.amenities.map((Icon, iconIndex) => (
+                        <div 
+                          key={iconIndex}
+                          className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center"
+                        >
+                          <Icon className="w-5 h-5 text-primary" />
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Features List */}
+                    <ul className="space-y-2">
+                      {room.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center space-x-3 text-sm">
+                          <div className="w-2 h-2 bg-accent rounded-full flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
                 </div>
 
-                {/* Features List */}
-                <ul className="space-y-2">
-                  {room.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center space-x-3 text-sm">
-                      <div className="w-2 h-2 bg-accent rounded-full flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex gap-2">
+                {/* --- UPDATED BUTTONS --- */}
+                <div className="flex gap-2 pt-6">
                   <Button 
                     variant={room.popular ? "default" : "outline"} 
                     size="lg" 
@@ -390,13 +359,14 @@ Contact us on WhatsApp to secure your spot! 🏄‍♀️
                     onClick={() => openWhatsApp(room)}
                   >
                     <MessageCircle className="w-4 h-4 mr-2" />
-                    WhatsApp
+                    Book Now
                   </Button>
                   <Button 
                     variant="outline"
                     size="lg"
                     onClick={() => shareRoom(room)}
                     className="hover:scale-105 transition-transform"
+                    aria-label="Share this room"
                   >
                     <Share2 className="w-4 h-4" />
                   </Button>

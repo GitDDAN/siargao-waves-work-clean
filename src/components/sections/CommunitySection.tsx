@@ -58,45 +58,48 @@ const CommunitySection = () => {
   ];
 
   return (
-    <section id="community" className="py-8 bg-muted/30 relative overflow-hidden max-h-[30vh]">
-      {/* Coming Soon Banner - Updated with tropical colors */}
-      <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-primary via-secondary to-accent z-20 py-3">
+    // --- UPDATED: Adjusted padding and removed max-height for better scaling ---
+    <section id="community" className="py-24 bg-muted/30 relative overflow-hidden">
+      {/* --- UPDATED: Banner is now vertically centered --- */}
+      <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 z-20">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="flex space-x-2">
-                <Sparkles className="w-4 h-4 text-yellow-300 animate-pulse" />
-                <Clock className="w-4 h-4 text-white animate-bounce" />
+          <div className="bg-gradient-to-r from-primary via-secondary to-accent rounded-xl shadow-lg p-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="flex space-x-2">
+                  <Sparkles className="w-4 h-4 text-yellow-300 animate-pulse" />
+                  <Clock className="w-4 h-4 text-white animate-bounce" />
+                </div>
+                <div>
+                  <h3 className="text-base md:text-xl font-bold text-white">
+                    🚀 Community Hub Launching August 2025
+                  </h3>
+                  <p className="text-xs text-white/90 hidden md:block">
+                    Get ready for collaborative projects & skill sharing!
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg md:text-xl font-bold text-white">
-                  🚀 Community Hub Launching August 2025
-                </h3>
-                <p className="text-xs text-white/90 hidden md:block">
-                  Get ready for collaborative projects & skill sharing!
-                </p>
-              </div>
+              <Button 
+                variant="default"
+                size="sm"
+                className="bg-white text-primary hover:bg-white/90 font-semibold px-3 py-1 rounded-full text-sm border-0 flex-shrink-0"
+                onClick={() => {
+                  const message = "Hi! I'm interested in joining the coliving community when it launches in August 2025. Can you add me to the early access list?";
+                  window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
+                }}
+              >
+                Join Early Access
+              </Button>
             </div>
-            <Button 
-              variant="default"
-              size="sm"
-              className="bg-white text-primary hover:bg-white/90 font-semibold px-3 py-1 rounded-full text-sm border-0"
-              onClick={() => {
-                const message = "Hi! I'm interested in joining the coliving community when it launches in August 2025. Can you add me to the early access list?";
-                window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
-              }}
-            >
-              Join Early Access
-            </Button>
           </div>
         </div>
       </div>
 
-      {/* Overlay - Updated with tropical colors */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-secondary/40 to-accent/40 backdrop-blur-sm z-10" />
 
       {/* Content */}
-      <div className="relative z-0 pt-16 filter blur-[1px] opacity-60">
+      <div className="relative z-0 filter blur-[2px] opacity-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-6">
             <Badge variant="outline" className="mb-2 bg-white/80 text-xs">
