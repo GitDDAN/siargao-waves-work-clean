@@ -231,9 +231,9 @@ Book your stay or see more details here: ${roomUrl}
           </Badge>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Siargao Villa
+            Coliving Siargao Villa
             </span>{" "}
-            Coliving Suites
+             Private Suites
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
             Your Dream Island Living & Coworking Space Awaits
