@@ -311,7 +311,7 @@ const SiargaoSection = () => {
               className="hover:bg-primary/10 hover:border-primary/50 transition-colors"
               onClick={() => {
                 const message = "Hi Ali, please send me the Welcome Package!";
-                window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
+                window.open(`https://wa.me/639476170167?text=${encodeURIComponent(message)}`, '_blank');
               }}
             >
               Request Welcome Package
@@ -322,7 +322,7 @@ const SiargaoSection = () => {
               className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
               onClick={() => {
                 const message = "Hi Ali, I'd like to join the community WhatsApp group!";
-                window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
+                window.open(`https://wa.me/639476170167?text=${encodeURIComponent(message)}`, '_blank');
               }}
             >
               Join Community WhatsApp

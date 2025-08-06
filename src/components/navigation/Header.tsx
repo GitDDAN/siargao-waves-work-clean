@@ -47,8 +47,8 @@ const Header = () => {
   );
   
   const CtaButtons = ({ mobile = false }: { mobile?: boolean }) => {
-    const contactUrl = "https://wa.me/639083339477?text=Hi!%20I'd%20like%20to%20ask%20a%20question%20about%20Siargao%20Salamat%20Villa%20Coliving.";
-    const applyUrl = "https://wa.me/639083339477?text=Hi!%20I'm%20interested%20in%20applying%20to%20stay%20at%20Siargao%20Salamat%20Villa%20Coliving.";
+    const contactUrl = "https://wa.me/639476170167?text=Hi!%20I'd%20like%20to%20ask%20a%20question%20about%20Siargao%20Salamat%20Villa%20Coliving.";
+    const applyUrl = "https://wa.me/639476170167?text=Hi!%20I'm%20interested%20in%20applying%20to%20stay%20at%20Siargao%20Salamat%20Villa%20Coliving.";
 
     return (
       <div className={`flex ${mobile ? 'flex-col space-y-3 w-full' : 'flex-row space-x-3'}`}>

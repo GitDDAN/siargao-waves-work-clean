@@ -45,7 +45,7 @@ Hello! I'd like to book a stay with the following details:
 ${formData.message || 'None'}
     `.trim().replace(/\n\s*\n/g, '\n'); // Clean up extra lines
 
-    window.open(`https://wa.me/639083339477?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+    window.open(`https://wa.me/639476170167?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
   };
 
   return (
@@ -200,7 +200,7 @@ ${formData.message || 'None'}
                   size="lg" 
                   className="w-full"
                   onClick={() => {
-                    window.open('https://wa.me/639083339477?text=Hi! I\'d like to learn more about joining the Siargao Coliving community!', '_blank');
+                    window.open('https://wa.me/639476170167?text=Hi! I\'d like to learn more about joining the Siargao Coliving community!', '_blank');
                   }}
                 >
                   <MessageCircle className="w-4 h-4 mr-2" />

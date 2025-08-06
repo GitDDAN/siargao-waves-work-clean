@@ -96,7 +96,7 @@ const HeroSection = () => {
                     {/* CTA Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <a
-                            href="https://wa.me/639083339477"
+                            href="https://wa.me/639476170167"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group relative px-6 py-3 md:px-8 md:py-4 rounded-full overflow-hidden bg-gradient-to-r from-blue-500 via-cyan-400 to-green-400 hover:scale-105 transition-all duration-300"

@@ -372,7 +372,7 @@ Book your stay or see more details here: ${roomUrl}
   const openWhatsApp = (room) => {
     const availability = getAvailabilityDates(room);
     const message = `Hi! I'm interested in booking the "${room.title}" room at Siargao Salamat Villa Coliving. I saw it's available from ${availability.from}. Could you please provide more details on booking?`;
-    const whatsappUrl = `https://wa.me/639083339477?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/639476170167?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -460,10 +460,10 @@ Book your stay or see more details here: ${roomUrl}
             <h3 className="text-2xl font-bold mb-4">Ready to Join Our Coliving Community?</h3>
             <p className="text-muted-foreground mb-6 max-w-xl mx-auto">Experience authentic tropical coliving with professional coworking facilities</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="default" size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0" onClick={() => { const message = "Hi! I'm interested in joining your coliving community at Siargao. Can you share more details about availability for both short and long-term stays?"; window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank'); }}>
+              <Button variant="default" size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0" onClick={() => { const message = "Hi! I'm interested in joining your coliving community at Siargao. Can you share more details about availability for both short and long-term stays?"; window.open(`https://wa.me/639476170167?text=${encodeURIComponent(message)}`, '_blank'); }}>
                 <MessageCircle className="w-4 h-4 mr-2" /> Join Our Coliving Community
               </Button>
-              <Button variant="outline" size="lg" className="hover:bg-primary/10 hover:border-primary/50 transition-colors" onClick={() => { const message = "Hi! I'd like to schedule a virtual tour of your coliving space. When would be a good time?"; window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank'); }}>
+              <Button variant="outline" size="lg" className="hover:bg-primary/10 hover:border-primary/50 transition-colors" onClick={() => { const message = "Hi! I'd like to schedule a virtual tour of your coliving space. When would be a good time?"; window.open(`https://wa.me/639476170167?text=${encodeURIComponent(message)}`, '_blank'); }}>
                 Schedule Virtual Tour
               </Button>
             </div>

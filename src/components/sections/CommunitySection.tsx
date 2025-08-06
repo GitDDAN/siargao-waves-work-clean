@@ -85,7 +85,7 @@ const CommunitySection = () => {
                 className="bg-white text-primary hover:bg-white/90 font-semibold px-3 py-1 rounded-full text-sm border-0 flex-shrink-0"
                 onClick={() => {
                   const message = "Hi! I'm interested in joining the coliving community when it launches in August 2025. Can you add me to the early access list?";
-                  window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
+                  window.open(`https://wa.me/639476170167?text=${encodeURIComponent(message)}`, '_blank');
                 }}
               >
                 Join Early Access
