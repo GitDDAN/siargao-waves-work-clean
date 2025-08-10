@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Partnership Application Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .form-section {
+            display: none;
+        }
+        .form-section.active {
+            display: block;
+        }
+        .form-label {
+            @apply block text-sm font-medium text-gray-700 mb-1;
+        }
+        .form-input {
+            @apply block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
+        }
+        .form-radio-label {
+            @apply ml-2 block text-sm text-gray-900;
+        }
+        .form-radio {
+            @apply h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500;
+        }
+        .btn {
+            @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2;
+        }
+        .btn-primary {
+            @apply bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500;
+        }
+        .btn-secondary {
+            @apply bg-gray-200 hover:bg-gray-300 text-gray-800 focus:ring-gray-500;
+        }
+        /* Custom styles for progress bar */
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 9999px;
+            height: 8px;
+        }
+        .progress-bar {
+            height: 8px;
+            background-color: #4f46e5;
+            border-radius: 9999px;
+            transition: width 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl w-full space-y-8 bg-white p-8 sm:p-10 rounded-xl shadow-lg">
+            
+            <div id="form-container">
+                <!-- Progress Bar -->
+                <div class="mb-8">
+                    <p id="progress-text" class="text-center text-sm font-medium text-gray-600 mb-2">Page 1 of 15</p>
+                    <div class="progress-bar-container">
+                        <div id="progress-bar" class="progress-bar" style="width: 6.67%;"></div>
+                    </div>
+                </div>
+
+                <!-- 
+                  This form is now connected to your Formspree account.
+                -->
+                <form id="villa-form" action="https://formspree.io/f/xanbalgp" method="POST">
+                    <!-- Page 0: Introduction -->
+                    <div class="form-section active" data-page="0">
+                        <div class="text-center">
+                            <h2 class="text-2xl font-bold text-gray-900">Premium Digital Nomad Retreat Partnership</h2>
+                            <p class="mt-2 text-sm text-gray-600">Evaluating villa partners for monthly co-living experiences in Siargao.</p>
+                        </div>
+                        <div class="mt-6 text-gray-700 space-y-4">
+                            <p>Your villa could host 15-22 international professionals who work remotely while experiencing island life. These entrepreneurs, developers, and consultants pay premium rates (₱33,333-200,000 per person) for month-long programs combining productivity with adventure.</p>
+                            <p>Our model offers guaranteed monthly rental income while we handle all guest management, marketing, and operations. Successful partnerships generate ₱400,000-1,200,000 monthly revenue.</p>
+                            <p class="font-semibold">More details:</p>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li><a href="https://gamma.app/docs/Partnership-Proposal-for-Schonhouse-Villa-ckdsrh1ci30p52l" target="_blank" class="text-indigo-600 hover:underline">Villa Partnership Proposal</a></li>
+                                <li><a href="https://gamma.app/docs/Island-Life-Co-Living-at-Schonhouse-Villa-5ejpuuba6rpm62q" target="_blank" class="text-indigo-600 hover:underline">Customer Experience Overview</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Page 1: Critical Requirements -->
+                    <div class="form-section" data-page="1">
+                        <h2 class="text-xl font-bold text-gray-900">Section 1: Critical Requirements</h2>
+                        <div class="mt-6 space-y-6">
+                            <div>
+                                <label class="form-label">Do you have Starlink internet?</label>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center"><input type="radio" name="starlink" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div>
+                                    <div class="flex items-center"><input type="radio" name="starlink" value="no" class="form-radio"><label class="form-radio-label">No</label></div>
+                                </div>
+                            </div>
+                            <div><label for="internet_speed" class="form-label">What's your internet speed in Mbps?</label><input type="text" name="internet_speed" id="internet_speed" class="form-input" value="250-500 Mbps"></div>
+                            <div><label for="backup_power" class="form-label">Do you have backup internet and generator?</label><input type="text" name="backup_power" id="backup_power" class="form-input" placeholder="Please specify both if available"></div>
+                            <div><label for="bedrooms_total" class="form-label">How many bedrooms total?</label><input type="number" name="bedrooms_total" id="bedrooms_total" class="form-input" value="6"></div>
+                            <div><label for="walk_to_cloud9" class="form-label">Walking minutes to Cloud 9?</label><input type="number" name="walk_to_cloud9" id="walk_to_cloud9" class="form-input"></div>
+                            <div>
+                                <label class="form-label">Business/commercial use okay?</label>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center"><input type="radio" name="commercial_use" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div>
+                                    <div class="flex items-center"><input type="radio" name="commercial_use" value="no" class="form-radio"><label class="form-radio-label">No</label></div>
+                                </div>
+                            </div>
+                             <div>
+                                <label class="form-label">1-month rental agreements okay?</label>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center"><input type="radio" name="one_month_rental" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div>
+                                    <div class="flex items-center"><input type="radio" name="one_month_rental" value="no" class="form-radio"><label class="form-radio-label">No</label></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 2: Workspace Infrastructure -->
+                    <div class="form-section" data-page="2">
+                        <h2 class="text-xl font-bold text-gray-900">Section 2: Workspace Infrastructure</h2>
+                        <div class="mt-6 space-y-6">
+                            <div><label class="form-label">Indoor AC spaces for 15+ people working during rain?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="indoor_ac_space" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="indoor_ac_space" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label for="workspace_sqm" class="form-label">Square meters of covered workspace?</label><input type="number" name="workspace_sqm" id="workspace_sqm" class="form-input"></div>
+                            <div><label class="form-label">15+ dedicated desk spaces possible?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="desk_spaces" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="desk_spaces" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Private meeting room with door available?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="meeting_room" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="meeting_room" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Work areas separate from pool noise 9AM-5PM?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="pool_noise" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="pool_noise" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Proper lighting for video calls in work areas?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="video_lighting" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="video_lighting" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Private phone call spaces available?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="call_spaces" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="call_spaces" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Can you install permanent power outlets at work desks?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="power_outlets" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="power_outlets" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Cable management solutions okay?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="cable_management" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="cable_management" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">External monitors placement okay?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="monitor_placement" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="monitor_placement" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Lockable storage for equipment overnight?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="lockable_storage" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="lockable_storage" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Page 3: Sun & Lighting -->
+                    <div class="form-section" data-page="3">
+                        <h2 class="text-xl font-bold text-gray-900">Section 3: Sun & Lighting</h2>
+                        <div class="mt-6 space-y-6">
+                            <div><label class="form-label">Do work areas get screen glare during the day?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="screen_glare" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="screen_glare" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label for="sunlight_time" class="form-label">What time does direct sunlight hit main workspaces?</label><input type="text" name="sunlight_time" id="sunlight_time" class="form-input"></div>
+                            <div><label class="form-label">Would workers need to move during day to avoid sun?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="move_for_sun" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="move_for_sun" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Blinds/curtains available in work areas?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="blinds" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="blinds" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Can someone work same spot comfortably 9AM-6PM?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="comfortable_spot" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="comfortable_spot" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Page 4: Property Details -->
+                    <div class="form-section" data-page="4">
+                        <h2 class="text-xl font-bold text-gray-900">Section 4: Property Details</h2>
+                        <div class="mt-6 space-y-6">
+                            <div><label class="form-label">Bedrooms with pool access?</label><input type="number" name="pool_access_rooms" class="form-input" value="4"></div>
+                            <div><label class="form-label">Private ensuite bathrooms in all rooms?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="ensuite" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="ensuite" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label for="bed_config" class="form-label">Bed configuration in each room (please describe all rooms):</label><textarea name="bed_config" id="bed_config" rows="6" class="form-input"></textarea></div>
+                            <div><label for="pool_details" class="form-label">Swimming pool details?</label><input type="text" name="pool_details" id="pool_details" class="form-input" value="22m infinity pool"></div>
+                            <div><label for="kitchen_details" class="form-label">Shared kitchen details?</label><input type="text" name="kitchen_details" id="kitchen_details" class="form-input" value="Fully equipped kitchen with island"></div>
+                            <div><label for="property_size" class="form-label">Total property size in square meters?</label><input type="number" name="property_size" id="property_size" class="form-input"></div>
+                        </div>
+                    </div>
+
+                    <!-- Page 5: Technology & Equipment -->
+                    <div class="form-section" data-page="5">
+                        <h2 class="text-xl font-bold text-gray-900">Section 5: Technology & Equipment</h2>
+                        <div class="mt-6 space-y-6">
+                            <div><label for="office_chairs" class="form-label">How many ergonomic office chairs currently available?</label><input type="number" name="office_chairs" id="office_chairs" class="form-input"></div>
+                            <div><label class="form-label">External monitors available for guest use?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="monitors_available" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="monitors_available" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Printer/scanner available?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="printer_scanner" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="printer_scanner" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Router optimization possible (e.g., WiFi 6 mesh)?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="router_optimization" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="router_optimization" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Page 6: Staff & Services -->
+                    <div class="form-section" data-page="6">
+                        <h2 class="text-xl font-bold text-gray-900">Section 6: Staff & Services</h2>
+                        <div class="mt-6 space-y-6">
+                            <div><label class="form-label">Property manager available?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="manager" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="manager" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">24/7 security provided?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="security_247" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="security_247" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label for="housekeeping_freq" class="form-label">Housekeeping frequency?</label><input type="text" name="housekeeping_freq" id="housekeeping_freq" class="form-input" value="Daily cleaning included"></div>
+                            <div><label class="form-label">Can housekeeping work around business hours?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="housekeeping_hours" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="housekeeping_hours" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">English-speaking staff available?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="english_staff" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="english_staff" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Chef services available?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="chef_services" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="chef_services" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Page 7: Location & Access -->
+                    <div class="form-section" data-page="7">
+                        <h2 class="text-xl font-bold text-gray-900">Section 7: Location & Access</h2>
+                        <div class="mt-6 space-y-6">
+                            <div><label for="walk_to_tourism_road" class="form-label">Walking minutes to Tourism Road?</label><input type="number" name="walk_to_tourism_road" id="walk_to_tourism_road" class="form-input"></div>
+                            <div><label for="walk_to_store" class="form-label">Walking minutes to nearest convenience store?</label><input type="number" name="walk_to_store" id="walk_to_store" class="form-input"></div>
+                            <div><label for="drive_to_airport" class="form-label">Driving minutes to Sayak Airport?</label><input type="text" name="drive_to_airport" id="drive_to_airport" class="form-input" value="19-30 minutes"></div>
+                            <div><label class="form-label">Motorbike parking spaces available?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="motorbike_parking" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="motorbike_parking" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label for="walk_to_clinic" class="form-label">Walking minutes to nearest medical clinic?</label><input type="number" name="walk_to_clinic" id="walk_to_clinic" class="form-input"></div>
+                        </div>
+                    </div>
+
+                    <!-- Page 8: Safety & Security -->
+                    <div class="form-section" data-page="8">
+                        <h2 class="text-xl font-bold text-gray-900">Section 8: Safety & Security</h2>
+                        <div class="mt-6 space-y-6">
+                            <div><label for="camera_locations" class="form-label">Security cameras - where located?</label><input type="text" name="camera_locations" id="camera_locations" class="form-input"></div>
+                            <div><label class="form-label">Individual room locks available?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="room_locks" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="room_locks" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Room safes available in each room?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="room_safes" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="room_safes" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Page 9: Entertainment & Events -->
+                    <div class="form-section" data-page="9">
+                        <h2 class="text-xl font-bold text-gray-900">Section 9: Entertainment & Events</h2>
+                        <div class="mt-6 space-y-6">
+                            <div><label class="form-label">Sound system available?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="sound_system" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="sound_system" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Projector available?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="projector" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="projector" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Can you host 20+ people for events?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="host_20plus" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="host_20plus" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Are parties/events allowed?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="parties_allowed" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="parties_allowed" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label for="music_latest_time" class="form-label">Latest time allowed for music/events?</label><input type="text" name="music_latest_time" id="music_latest_time" class="form-input" value="22:00"></div>
+                        </div>
+                    </div>
+
+                    <!-- Page 10: Kitchen & Dining -->
+                    <div class="form-section" data-page="10">
+                        <h2 class="text-xl font-bold text-gray-900">Section 10: Kitchen & Dining</h2>
+                        <div class="mt-6 space-y-6">
+                            <div><label class="form-label">Full kitchen with stove/oven available?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="full_kitchen" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="full_kitchen" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Large refrigerator available?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="large_fridge" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="large_fridge" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label for="dining_seating" class="form-label">How many people can dining area seat?</label><input type="number" name="dining_seating" id="dining_seating" class="form-input"></div>
+                            <div><label class="form-label">Cooking supplies provided?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="cooking_supplies" value="yes" class="form-radio" checked><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="cooking_supplies" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label for="plates_utensils" class="form-label">Plates/utensils available for how many people?</label><input type="number" name="plates_utensils" id="plates_utensils" class="form-input"></div>
+                        </div>
+                    </div>
+
+                    <!-- Page 11: Flexibility & Furniture -->
+                    <div class="form-section" data-page="11">
+                        <h2 class="text-xl font-bold text-gray-900">Section 11: Flexibility & Furniture</h2>
+                        <div class="mt-6 space-y-6">
+                            <div><label class="form-label">Can furniture be rearranged for different group sizes?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="furniture_rearrange" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="furniture_rearrange" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Flexible check-in/check-out times for business groups?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="flexible_checkin" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="flexible_checkin" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Work furniture additions okay?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="furniture_additions" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="furniture_additions" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Would you co-invest in workspace improvements?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="coinvest" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="coinvest" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Page 12: Rental Terms -->
+                    <div class="form-section" data-page="12">
+                        <h2 class="text-xl font-bold text-gray-900">Section 12: Rental Terms</h2>
+                        <div class="mt-6 space-y-6">
+                            <div><label for="rent_full" class="form-label">Monthly rent for full villa (all suites) in PHP?</label><input type="number" name="rent_full" id="rent_full" class="form-input"></div>
+                            <div><label for="rent_partial" class="form-label">Monthly rent for partial villa (3-4 suites) in PHP?</label><input type="number" name="rent_partial" id="rent_partial" class="form-input"></div>
+                            <div><label class="form-label">50% upfront, 50% on arrival payment terms acceptable?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="payment_terms" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="payment_terms" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label class="form-label">Interest in long-term partnership (6+ months)?</label><div class="flex items-center space-x-4"><div class="flex items-center"><input type="radio" name="long_term" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div><div class="flex items-center"><input type="radio" name="long_term" value="no" class="form-radio"><label class="form-radio-label">No</label></div></div></div>
+                            <div><label for="restrictions" class="form-label">Any restrictions on commercial/business use?</label><textarea name="restrictions" id="restrictions" rows="3" class="form-input"></textarea></div>
+                        </div>
+                    </div>
+
+                    <!-- Page 13: Room Marketing Permission -->
+                    <div class="form-section" data-page="13">
+                        <h2 class="text-xl font-bold text-gray-900">Section 13: Room Marketing Permission</h2>
+                        <div class="mt-6 space-y-4">
+                            <p class="text-sm text-gray-600">Can we advertise these room options on our website with pricing from ₱200,000/month per suite? Guests could book various options like Exclusive, Couple, or Shared.</p>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center"><input type="radio" name="marketing_permission" value="yes" class="form-radio"><label class="form-radio-label">Yes, you can advertise these options.</label></div>
+                            </div>
+                             <div class="flex items-center space-x-4">
+                                <div class="flex items-center"><input type="radio" name="marketing_permission" value="no" class="form-radio"><label class="form-radio-label">No, I have concerns.</label></div>
+                            </div>
+                            <div class="mt-4">
+                                <label class="form-label">Can we contact you for specific room setup based on demand?</label>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center"><input type="radio" name="contact_for_setup" value="yes" class="form-radio"><label class="form-radio-label">Yes</label></div>
+                                    <div class="flex items-center"><input type="radio" name="contact_for_setup" value="no" class="form-radio"><label class="form-radio-label">No</label></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 14: Contact Information -->
+                    <div class="form-section" data-page="14">
+                        <h2 class="text-xl font-bold text-gray-900">Section 14: Contact Information</h2>
+                        <div class="mt-6 space-y-6">
+                            <div><label for="property_name" class="form-label">Property Name</label><input type="text" name="property_name" id="property_name" class="form-input" value="Schönhouse Villa Siargao"></div>
+                            <div><label for="manager_name" class="form-label">Property Owner/Manager Name</label><input type="text" name="manager_name" id="manager_name" class="form-input" value="Kevin"></div>
+                            <div><label for="phone" class="form-label">Phone Number (with country code)</label><input type="tel" name="phone" id="phone" class="form-input" value="+63 954 154 5821"></div>
+                            <div><label for="email" class="form-label">Email Address</label><input type="email" name="email" id="email" class="form-input" value="info.schoenhousesiargao@gmail.com"></div>
+                            <div><label for="additional_info" class="form-label">Additional Property Information</label><textarea name="additional_info" id="additional_info" rows="4" class="form-input">8.8/10 rating, German-Filipino design, luxury villa</textarea></div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Navigation -->
+                <div class="mt-8 flex justify-between">
+                    <button id="prev-btn" class="btn btn-secondary" style="display: none;">Previous</button>
+                    <button id="next-btn" class="btn btn-primary ml-auto">Next</button>
+                    <button id="submit-btn" class="btn btn-primary ml-auto" style="display: none;">Submit Application</button>
+                </div>
+            </div>
+
+            <!-- Submission Confirmation -->
+            <div id="confirmation-message" class="text-center" style="display: none;">
+                <svg class="mx-auto h-12 w-12 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h2 class="mt-4 text-2xl font-bold text-gray-900">Thank You!</h2>
+                <p class="mt-2 text-sm text-gray-600">Your application has been submitted successfully. We will review your information and be in touch shortly.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('villa-form');
+            const sections = Array.from(document.querySelectorAll('.form-section'));
+            const nextBtn = document.getElementById('next-btn');
+            const prevBtn = document.getElementById('prev-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const formContainer = document.getElementById('form-container');
+            const confirmationMessage = document.getElementById('confirmation-message');
+
+            let currentPage = 0;
+            const totalPages = sections.length;
+
+            function updateFormView() {
+                sections.forEach((section, index) => {
+                    section.classList.toggle('active', index === currentPage);
+                });
+
+                const progressPercentage = ((currentPage + 1) / totalPages) * 100;
+                progressBar.style.width = `${progressPercentage}%`;
+                progressText.textContent = `Page ${currentPage + 1} of ${totalPages}`;
+
+                prevBtn.style.display = currentPage > 0 ? 'inline-flex' : 'none';
+                nextBtn.style.display = currentPage < totalPages - 1 ? 'inline-flex' : 'none';
+                submitBtn.style.display = currentPage === totalPages - 1 ? 'inline-flex' : 'none';
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages - 1) {
+                    currentPage++;
+                    updateFormView();
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentPage > 0) {
+                    currentPage--;
+                    updateFormView();
+                }
+            });
+
+            // This is the updated submission logic for Formspree
+            submitBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const action = form.getAttribute('action');
+
+                submitBtn.textContent = 'Submitting...';
+                submitBtn.disabled = true;
+
+                fetch(action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        formContainer.style.display = 'none';
+                        confirmationMessage.style.display = 'block';
+                    } else {
+                        response.json().then(data => {
+                            if (Object.hasOwn(data, 'errors')) {
+                                // This is a simple way to show errors; you can make this more elegant
+                                alert(data["errors"].map(error => error["message"]).join(", "));
+                            } else {
+                                alert('Oops! There was a problem submitting your form.');
+                            }
+                            submitBtn.textContent = 'Submit Application';
+                            submitBtn.disabled = false;
+                        });
+                    }
+                }).catch(error => {
+                    alert('Oops! There was a network error.');
+                    submitBtn.textContent = 'Submit Application';
+                    submitBtn.disabled = false;
+                });
+            });
+
+            updateFormView();
+        });
+    </script>
+
+</body>
+</html>
