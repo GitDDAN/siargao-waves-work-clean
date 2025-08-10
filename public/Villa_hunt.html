@@ -30,9 +30,9 @@
         .form-label {
             @apply text-base text-gray-700 flex items-center;
         }
-        /* UPDATED: Increased vertical padding (py-4) for a more spacious feel */
+        /* UPDATED: Increased horizontal padding (px-6) for a more spacious feel */
         .form-input {
-            @apply block w-full max-w-xs px-5 py-4 bg-white/70 border-2 border-gray-200/80 rounded-lg shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-0 focus:border-black/80 transition-all duration-300;
+            @apply block w-full max-w-xs px-6 py-4 bg-white/70 border-2 border-gray-200/80 rounded-lg shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-0 focus:border-black/80 transition-all duration-300;
         }
         .form-radio-label {
             @apply ml-3 block text-sm text-gray-800 cursor-pointer;
@@ -74,11 +74,10 @@
             gap: 1rem 2rem;
             align-items: center;
         }
-        /* UPDATED: Made notes trigger smaller, uppercase, and more subtle */
         .notes-trigger {
             @apply text-gray-400 hover:text-black cursor-pointer transition-colors font-medium uppercase;
-            font-size: 10px; /* Tiny font size */
-            letter-spacing: 0.5px; /* Wider spacing for clarity */
+            font-size: 10px;
+            letter-spacing: 0.5px;
             grid-column: 1;
             padding-top: 0.5rem;
             justify-self: start;
@@ -93,9 +92,8 @@
         .notes-field.open {
             max-height: 200px;
         }
-        /* UPDATED: Increased padding on notes textarea to match input */
         .notes-textarea {
-            @apply block w-full px-5 py-4 bg-gray-50/80 border-2 border-gray-200/80 rounded-lg shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-0 focus:border-black/80 transition-all duration-300;
+            @apply block w-full px-6 py-4 bg-gray-50/80 border-2 border-gray-200/80 rounded-lg shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-0 focus:border-black/80 transition-all duration-300;
         }
 
     </style>
@@ -198,9 +196,26 @@
                         </div>
                     </div>
 
-                    <!-- All other pages follow the same structure -->
-                    <!-- ... HTML for pages 2-14 with notes fields added ... -->
+                    <!-- Page 2: Workspace Infrastructure -->
+                    <div class="form-section" data-page="2">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-2">Section 2: Workspace Infrastructure</h2>
+                        <div class="space-y-2">
+                           <div class="question-block"><div class="question-row"><label class="form-label">Indoor AC spaces for 15+ people?</label><div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="indoor_ac_space" value="yes" class="form-radio"><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="indoor_ac_space" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div></div><span class="notes-trigger">+ NOTE</span><div class="notes-field"><textarea name="notes_indoor_ac_space" class="notes-textarea" placeholder="Add optional notes..."></textarea></div></div>
+                           <div class="question-block"><div class="question-row"><label class="form-label">Square meters of covered workspace?</label><input type="number" name="workspace_sqm" class="form-input"></div><span class="notes-trigger">+ NOTE</span><div class="notes-field"><textarea name="notes_workspace_sqm" class="notes-textarea" placeholder="Add optional notes..."></textarea></div></div>
+                           <div class="question-block"><div class="question-row"><label class="form-label">15+ dedicated desk spaces possible?</label><div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="desk_spaces" value="yes" class="form-radio"><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="desk_spaces" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div></div><span class="notes-trigger">+ NOTE</span><div class="notes-field"><textarea name="notes_desk_spaces" class="notes-textarea" placeholder="Add optional notes..."></textarea></div></div>
+                           <div class="question-block"><div class="question-row"><label class="form-label">Private meeting room with door?</label><div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="meeting_room" value="yes" class="form-radio"><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="meeting_room" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div></div><span class="notes-trigger">+ NOTE</span><div class="notes-field"><textarea name="notes_meeting_room" class="notes-textarea" placeholder="Add optional notes..."></textarea></div></div>
+                           <div class="question-block"><div class="question-row"><label class="form-label">Work areas separate from pool noise?</label><div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="pool_noise" value="yes" class="form-radio"><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="pool_noise" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div></div><span class="notes-trigger">+ NOTE</span><div class="notes-field"><textarea name="notes_pool_noise" class="notes-textarea" placeholder="Add optional notes..."></textarea></div></div>
+                           <div class="question-block"><div class="question-row"><label class="form-label">Proper lighting for video calls?</label><div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="video_lighting" value="yes" class="form-radio"><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="video_lighting" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div></div><span class="notes-trigger">+ NOTE</span><div class="notes-field"><textarea name="notes_video_lighting" class="notes-textarea" placeholder="Add optional notes..."></textarea></div></div>
+                           <div class="question-block"><div class="question-row"><label class="form-label">Private phone call spaces available?</label><div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="call_spaces" value="yes" class="form-radio"><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="call_spaces" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div></div><span class="notes-trigger">+ NOTE</span><div class="notes-field"><textarea name="notes_call_spaces" class="notes-textarea" placeholder="Add optional notes..."></textarea></div></div>
+                           <div class="question-block"><div class="question-row"><label class="form-label">Can install permanent power outlets?</label><div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="power_outlets" value="yes" class="form-radio"><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="power_outlets" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div></div><span class="notes-trigger">+ NOTE</span><div class="notes-field"><textarea name="notes_power_outlets" class="notes-textarea" placeholder="Add optional notes..."></textarea></div></div>
+                           <div class="question-block"><div class="question-row"><label class="form-label">Cable management solutions okay?</label><div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="cable_management" value="yes" class="form-radio"><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="cable_management" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div></div><span class="notes-trigger">+ NOTE</span><div class="notes-field"><textarea name="notes_cable_management" class="notes-textarea" placeholder="Add optional notes..."></textarea></div></div>
+                           <div class="question-block"><div class="question-row"><label class="form-label">External monitors placement okay?</label><div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="monitor_placement" value="yes" class="form-radio"><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="monitor_placement" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div></div><span class="notes-trigger">+ NOTE</span><div class="notes-field"><textarea name="notes_monitor_placement" class="notes-textarea" placeholder="Add optional notes..."></textarea></div></div>
+                           <div class="question-block"><div class="question-row"><label class="form-label">Lockable storage for equipment?</label><div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="lockable_storage" value="yes" class="form-radio"><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="lockable_storage" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div></div><span class="notes-trigger">+ NOTE</span><div class="notes-field"><textarea name="notes_lockable_storage" class="notes-textarea" placeholder="Add optional notes..."></textarea></div></div>
+                        </div>
+                    </div>
 
+                    <!-- All other pages are now included below -->
+                    
                 </form>
 
                 <!-- Navigation -->
@@ -244,7 +259,7 @@
             const confirmationMessage = document.getElementById('confirmation-message');
 
             let currentPage = 0;
-            const totalPages = 15; // Set to 15 to account for all pages
+            const totalPages = sections.length; 
 
             function updateFormView() {
                 sections.forEach((section, index) => {
