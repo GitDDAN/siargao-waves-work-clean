@@ -11,7 +11,6 @@
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
-            /* UPDATED: New background image of the actual villa */
             background-image: url('https://lh3.googleusercontent.com/p/AF1QipPnfy_1ml9-RAGKsziSG0jsNv_NlrjoR_5m00xI=s680-w680-h510-rw');
             background-size: cover;
             background-position: center;
@@ -31,14 +30,15 @@
         .form-label {
             @apply text-base text-gray-700 flex items-center;
         }
+        /* UPDATED: Increased vertical padding (py-4) for a more spacious feel */
         .form-input {
-            @apply block w-full max-w-xs px-4 py-2.5 bg-white/70 border border-gray-300/80 rounded-md shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-black/80 focus:border-black/80 transition;
+            @apply block w-full max-w-xs px-5 py-4 bg-white/70 border-2 border-gray-200/80 rounded-lg shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-0 focus:border-black/80 transition-all duration-300;
         }
         .form-radio-label {
             @apply ml-3 block text-sm text-gray-800 cursor-pointer;
         }
         .form-radio {
-            @apply h-4 w-4 text-black border-gray-400 focus:ring-black cursor-pointer;
+            @apply h-4 w-4 text-black border-gray-400 focus:ring-black focus:ring-offset-0 cursor-pointer;
         }
         .btn {
             @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 transition-colors;
@@ -65,28 +65,37 @@
         .radio-option {
             @apply flex items-center p-2 border border-transparent rounded-md hover:bg-gray-100/50 cursor-pointer;
         }
-        .form-grid {
+        .question-block {
+            @apply py-6 border-b border-gray-900/10;
+        }
+        .question-row {
             display: grid;
-            /* Adjusted for better spacing */
             grid-template-columns: 1fr auto;
-            gap: 1.25rem 2rem; 
+            gap: 1rem 2rem;
             align-items: center;
         }
-        .form-grid-full {
-             display: grid;
-             grid-template-columns: 1fr;
-             gap: 0.5rem;
-             padding-top: 1rem;
-        }
-        .notes-icon {
-            @apply ml-2 text-gray-400 hover:text-black cursor-pointer transition-colors;
+        /* UPDATED: Made notes trigger smaller, uppercase, and more subtle */
+        .notes-trigger {
+            @apply text-gray-400 hover:text-black cursor-pointer transition-colors font-medium uppercase;
+            font-size: 10px; /* Tiny font size */
+            letter-spacing: 0.5px; /* Wider spacing for clarity */
+            grid-column: 1;
+            padding-top: 0.5rem;
+            justify-self: start;
         }
         .notes-field {
-            @apply hidden mt-2;
-            grid-column: 1 / -1; /* Span full width of the grid */
+            @apply mt-3;
+            grid-column: 1 / -1;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, margin-top 0.5s ease-in-out;
         }
+        .notes-field.open {
+            max-height: 200px;
+        }
+        /* UPDATED: Increased padding on notes textarea to match input */
         .notes-textarea {
-            @apply block w-full px-4 py-2.5 bg-gray-50/80 border border-gray-300/80 rounded-md shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-black/80 focus:border-black/80 transition;
+            @apply block w-full px-5 py-4 bg-gray-50/80 border-2 border-gray-200/80 rounded-lg shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-0 focus:border-black/80 transition-all duration-300;
         }
 
     </style>
@@ -128,28 +137,64 @@
 
                     <!-- Page 1: Critical Requirements -->
                     <div class="form-section" data-page="1">
-                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Section 1: Critical Requirements</h2>
-                        <div class="form-grid">
-                            <label class="form-label">Do you have Starlink internet? <span class="notes-icon" title="Add note">&#9998;</span></label><div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="starlink" value="yes" class="form-radio" checked><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="starlink" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div>
-                            <div class="notes-field"><textarea name="notes_starlink" class="notes-textarea" placeholder="Add optional notes..."></textarea></div>
-                            
-                            <label for="internet_speed" class="form-label">What's your internet speed in Mbps? <span class="notes-icon" title="Add note">&#9998;</span></label><input type="text" name="internet_speed" id="internet_speed" class="form-input" value="250-500 Mbps">
-                            <div class="notes-field"><textarea name="notes_internet_speed" class="notes-textarea" placeholder="Add optional notes..."></textarea></div>
-
-                            <label for="backup_power" class="form-label">Backup internet and generator? <span class="notes-icon" title="Add note">&#9998;</span></label><input type="text" name="backup_power" id="backup_power" class="form-input" placeholder="e.g., Fiber backup, 15kW gen">
-                            <div class="notes-field"><textarea name="notes_backup_power" class="notes-textarea" placeholder="Add optional notes..."></textarea></div>
-
-                            <label for="bedrooms_total" class="form-label">How many bedrooms total? <span class="notes-icon" title="Add note">&#9998;</span></label><input type="number" name="bedrooms_total" id="bedrooms_total" class="form-input" value="6">
-                            <div class="notes-field"><textarea name="notes_bedrooms_total" class="notes-textarea" placeholder="Add optional notes..."></textarea></div>
-
-                            <label for="walk_to_cloud9" class="form-label">Walking minutes to Cloud 9? <span class="notes-icon" title="Add note">&#9998;</span></label><input type="number" name="walk_to_cloud9" id="walk_to_cloud9" class="form-input">
-                            <div class="notes-field"><textarea name="notes_walk_to_cloud9" class="notes-textarea" placeholder="Add optional notes..."></textarea></div>
-
-                            <label class="form-label">Business/commercial use okay? <span class="notes-icon" title="Add note">&#9998;</span></label><div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="commercial_use" value="yes" class="form-radio" checked><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="commercial_use" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div>
-                            <div class="notes-field"><textarea name="notes_commercial_use" class="notes-textarea" placeholder="Add optional notes..."></textarea></div>
-                            
-                            <label class="form-label">1-month rental agreements okay? <span class="notes-icon" title="Add note">&#9998;</span></label><div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="one_month_rental" value="yes" class="form-radio"><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="one_month_rental" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div>
-                             <div class="notes-field"><textarea name="notes_one_month_rental" class="notes-textarea" placeholder="Add optional notes..."></textarea></div>
+                        <h2 class="text-xl font-semibold text-gray-900 mb-2">Section 1: Critical Requirements</h2>
+                        <div class="space-y-2">
+                            <div class="question-block">
+                                <div class="question-row">
+                                    <label class="form-label">Do you have Starlink internet?</label>
+                                    <div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="starlink" value="yes" class="form-radio" checked><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="starlink" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div>
+                                </div>
+                                <span class="notes-trigger">+ NOTE</span>
+                                <div class="notes-field"><textarea name="notes_starlink" class="notes-textarea" placeholder="Add optional notes..."></textarea></div>
+                            </div>
+                            <div class="question-block">
+                                <div class="question-row">
+                                    <label for="internet_speed" class="form-label">What's your internet speed in Mbps?</label>
+                                    <input type="text" name="internet_speed" id="internet_speed" class="form-input" value="250-500 Mbps">
+                                </div>
+                                <span class="notes-trigger">+ NOTE</span>
+                                <div class="notes-field"><textarea name="notes_internet_speed" class="notes-textarea" placeholder="Add optional notes..."></textarea></div>
+                            </div>
+                            <div class="question-block">
+                                <div class="question-row">
+                                    <label for="backup_power" class="form-label">Backup internet and generator?</label>
+                                    <input type="text" name="backup_power" id="backup_power" class="form-input" placeholder="e.g., Fiber backup, 15kW gen">
+                                </div>
+                                <span class="notes-trigger">+ NOTE</span>
+                                <div class="notes-field"><textarea name="notes_backup_power" class="notes-textarea" placeholder="Add optional notes..."></textarea></div>
+                            </div>
+                            <div class="question-block">
+                                <div class="question-row">
+                                    <label for="bedrooms_total" class="form-label">How many bedrooms total?</label>
+                                    <input type="number" name="bedrooms_total" id="bedrooms_total" class="form-input" value="6">
+                                </div>
+                                <span class="notes-trigger">+ NOTE</span>
+                                <div class="notes-field"><textarea name="notes_bedrooms_total" class="notes-textarea" placeholder="Add optional notes..."></textarea></div>
+                            </div>
+                            <div class="question-block">
+                                <div class="question-row">
+                                    <label for="walk_to_cloud9" class="form-label">Walking minutes to Cloud 9?</label>
+                                    <input type="number" name="walk_to_cloud9" id="walk_to_cloud9" class="form-input">
+                                </div>
+                                <span class="notes-trigger">+ NOTE</span>
+                                <div class="notes-field"><textarea name="notes_walk_to_cloud9" class="notes-textarea" placeholder="Add optional notes..."></textarea></div>
+                            </div>
+                            <div class="question-block">
+                                <div class="question-row">
+                                    <label class="form-label">Business/commercial use okay?</label>
+                                    <div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="commercial_use" value="yes" class="form-radio" checked><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="commercial_use" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div>
+                                </div>
+                                <span class="notes-trigger">+ NOTE</span>
+                                <div class="notes-field"><textarea name="notes_commercial_use" class="notes-textarea" placeholder="Add optional notes..."></textarea></div>
+                            </div>
+                            <div class="question-block">
+                                <div class="question-row">
+                                    <label class="form-label">1-month rental agreements okay?</label>
+                                    <div class="flex items-center space-x-4"><label class="radio-option"><input type="radio" name="one_month_rental" value="yes" class="form-radio"><span class="form-radio-label">Yes</span></label><label class="radio-option"><input type="radio" name="one_month_rental" value="no" class="form-radio"><span class="form-radio-label">No</span></label></div>
+                                </div>
+                                <span class="notes-trigger">+ NOTE</span>
+                                <div class="notes-field"><textarea name="notes_one_month_rental" class="notes-textarea" placeholder="Add optional notes..."></textarea></div>
+                            </div>
                         </div>
                     </div>
 
@@ -199,7 +244,7 @@
             const confirmationMessage = document.getElementById('confirmation-message');
 
             let currentPage = 0;
-            const totalPages = sections.length;
+            const totalPages = 15; // Set to 15 to account for all pages
 
             function updateFormView() {
                 sections.forEach((section, index) => {
@@ -265,12 +310,12 @@
                 });
             });
 
-            // Add functionality for notes icons
-            document.querySelectorAll('.notes-icon').forEach(icon => {
-                icon.addEventListener('click', () => {
-                    const notesField = icon.closest('.form-grid > *, .form-grid-full > *').nextElementSibling;
+            // Add functionality for notes links
+            document.querySelectorAll('.notes-trigger').forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    const notesField = e.target.nextElementSibling;
                     if (notesField && notesField.classList.contains('notes-field')) {
-                        notesField.classList.toggle('hidden');
+                        notesField.classList.toggle('open');
                     }
                 });
             });
