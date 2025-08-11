@@ -17,7 +17,8 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  Expand
+  Expand,
+  AlertTriangle
 } from "lucide-react";
 
 // ====================================================================
@@ -261,10 +262,10 @@ const AccommodationSection = () => {
       monthlyPrice: "₱33,000",
       weeklyPrice: "₱9,500",
       image: ensuiteMasterImage,
-      perfectFor: "Digital nomads seeking premium coliving with privacy and focused coworking space.",
-      socialTagline: "🌊 Premium Coliving Suite with Private Bathroom & Coworking Space in Paradise! Perfect for Digital Nomads seeking luxury island living.",
-      features: ["Private ensuite bathroom", "Dedicated coworking workspace", "Queen bed with premium linens", "AC + ceiling fan comfort", "High-speed fiber WiFi", "New Linen & Towels Weekly", "Weekly Cleaning Service", "Extra Large balcony with Hammock"],
-      popular: false,
+      perfectFor: "Digital nomads seeking private coliving with privacy and focused coworking space.",
+      socialTagline: "🌊 Private Coliving Suite with Private Bathroom & Coworking Space in Paradise! Perfect for Digital Nomads seeking luxury island living.",
+      features: ["Private ensuite bathroom", "Dedicated coworking workspace", "Queen bed with premium linens", "Air conditioning comfort", "High-speed fiber WiFi", "New Linen & Towels Weekly", "Weekly Cleaning Service", "Extra Large balcony", "Hammock with jungle tree view"],
+      popular: true,
       capacity: "Max 2 guests",
       amenities: [Bath, Bed, Wifi, AirVent, Shield]
     },
@@ -277,7 +278,7 @@ const AccommodationSection = () => {
       perfectFor: "Couples enjoying coliving lifestyle with outdoor morning routines and collaborative workspace.",
       socialTagline: "🌴 Wake Up to Jungle Views Every Day! Coliving Suite with Private Balcony - Perfect for Couples & Digital Nomads in Siargao Paradise.",
       features: ["Private balcony with jungle views", "Coworking space with nature views", "Queen bed in tropical setting", "AC + natural ventilation", "High-speed fiber WiFi", "New Linen & Towels Weekly", "Weekly Cleaning Service", "Perfect for couples or solo nomads"],
-      popular: true,
+      popular: false,
       capacity: "Max 2 guests",
       amenities: [Bed, Wifi, AirVent, Coffee]
     },
@@ -296,19 +297,44 @@ const AccommodationSection = () => {
     }
   ];
 
+  // Updated availability dates function with status support
   const getAvailabilityDates = (room) => {
     const availabilityMap = {
-      "Cozy Room": { nextAvailable: new Date(2025, 7, 7), availableUntil: new Date(2025, 11, 31) },
-      "Ensuite Master": { nextAvailable: new Date(2025, 7, 15), availableUntil: new Date(2025, 11, 31) },
-      "Balcony Room": { nextAvailable: new Date(2025, 7, 15), availableUntil: new Date(2025, 11, 31) }
+      "Cozy Room": { 
+        nextAvailable: new Date(2025, 11, 25), // December 25, 2025
+        availableUntil: new Date(2025, 11, 31),
+        status: "booked",
+        bookedUntil: new Date(2025, 11, 25)
+      },
+      "Ensuite Master": { 
+        nextAvailable: new Date(2025, 7, 23), // August 23, 2025
+        availableUntil: new Date(2025, 11, 25), // December 25, 2025
+        status: "available"
+      },
+      "Balcony Room": { 
+        nextAvailable: new Date(2025, 8, 15), // September 15, 2025
+        availableUntil: new Date(2025, 11, 31),
+        status: "booked",
+        bookedUntil: new Date(2025, 8, 15),
+        extensionWarning: true,
+        possibleExtensionUntil: new Date(2025, 9, 15) // October 15, 2025
+      }
     };
+    
     const roomData = availabilityMap[room.title];
+    const isBooked = roomData.status === "booked";
+    const displayDate = isBooked ? roomData.bookedUntil : roomData.nextAvailable;
+    
     return {
-      from: format(roomData.nextAvailable, 'MMM dd, yyyy'),
+      from: format(displayDate, 'MMM dd, yyyy'),
       until: format(roomData.availableUntil, 'MMM dd, yyyy'),
-      fromShort: format(roomData.nextAvailable, 'MMM dd'),
-      monthYear: format(roomData.nextAvailable, 'MMMM yyyy'),
-      nextAvailable: roomData.nextAvailable
+      fromShort: format(displayDate, 'MMM dd'),
+      monthYear: format(displayDate, 'MMMM yyyy'),
+      nextAvailable: displayDate,
+      status: roomData.status,
+      isBooked,
+      extensionWarning: roomData.extensionWarning || false,
+      possibleExtensionUntil: roomData.possibleExtensionUntil ? format(roomData.possibleExtensionUntil, 'MMM dd') : null
     };
   };
 
@@ -323,12 +349,17 @@ const AccommodationSection = () => {
     const currentUrl = window.location.href.split('#')[0];
     const roomUrl = `${currentUrl}#${room.title.toLowerCase().replace(/ /g, '-')}`;
     let imageUrl = new URL(room.image, window.location.origin).href;
+    
+    const statusText = availability.isBooked ? 
+      `📅 Currently booked until: ${availability.from}` : 
+      `📅 Available from: ${availability.from}`;
+    
     const enhancedShareText = `
 🏝️ Check out the "${room.title}" room at Siargao Salamat Villa Coliving!
 
 ${room.socialTagline}
 
-📅 Available from: ${availability.from}
+${statusText}
 💰 Price: ${room.monthlyPrice}/month
 
 ✨ Highlights:
@@ -355,9 +386,13 @@ Book your stay or see more details here: ${roomUrl}
 
   const updateMetaTags = (room, availability, roomUrl, imageUrl) => {
     document.querySelectorAll('meta[property^="og:"], meta[name^="twitter:"]').forEach(meta => meta.remove());
+    const statusText = availability.isBooked ? 
+      `Currently booked until ${availability.from}` : 
+      `Available from ${availability.from}`;
+    
     const metaTags = [
       { property: 'og:title', content: `${room.title} - Siargao Salamat Villa Coliving` },
-      { property: 'og:description', content: `${room.socialTagline} Available from ${availability.from}.` },
+      { property: 'og:description', content: `${room.socialTagline} ${statusText}.` },
       { property: 'og:image', content: imageUrl },
       { property: 'og:url', content: roomUrl },
     ];
@@ -371,7 +406,14 @@ Book your stay or see more details here: ${roomUrl}
 
   const openWhatsApp = (room) => {
     const availability = getAvailabilityDates(room);
-    const message = `Hi! I'm interested in booking the "${room.title}" room at Siargao Salamat Villa Coliving. I saw it's available from ${availability.from}. Could you please provide more details on booking?`;
+    let message;
+    
+    if (availability.isBooked) {
+      message = `Hi! I'm interested in joining the waitlist for the "${room.title}" room at Siargao Salamat Villa Coliving. I saw it's currently booked until ${availability.from}. Could you please add me to the waitlist and let me know about future availability?`;
+    } else {
+      message = `Hi! I'm interested in booking the "${room.title}" room at Siargao Salamat Villa Coliving. I saw it's available from ${availability.from}. Could you please provide more details on booking?`;
+    }
+    
     const whatsappUrl = `https://wa.me/639476170167?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -384,6 +426,19 @@ Book your stay or see more details here: ${roomUrl}
     { icon: Users, label: "Live-in Hosts for 24/7 Support", description: "On-property team for all your needs" },
     { icon: Heart, label: "Island Partnership Network", description: "Best local guides & experiences" }
   ];
+
+  // Get available rooms summary for header
+  const getAvailabilitysSummary = () => {
+    const availableRooms = roomTypes.filter(room => !getAvailabilityDates(room).isBooked);
+    if (availableRooms.length === 0) {
+      return "All suites currently booked - Join waitlist for next availability";
+    }
+    const earliestAvailable = availableRooms
+      .map(room => ({ room, date: getAvailabilityDates(room).nextAvailable }))
+      .sort((a, b) => a.date.getTime() - b.date.getTime())[0];
+    
+    return `Next Available: ${earliestAvailable.room.title} from ${format(earliestAvailable.date, 'MMM dd')}`;
+  };
 
   return (
     <>
@@ -399,71 +454,187 @@ Book your stay or see more details here: ${roomUrl}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">Your Dream Island Living & Coworking Space Awaits</p>
             <div className="bg-primary/5 p-4 rounded-lg inline-block">
-              <h3 className="text-lg font-semibold text-primary mb-2">Next Available Suites:</h3>
-              <p className="text-sm text-muted-foreground">🌟 Cozy Room from Aug 7 | Ensuite &amp; Balcony from Aug 15</p>
+              <h3 className="text-lg font-semibold text-primary mb-2">Current Suite Status:</h3>
+              <p className="text-sm text-muted-foreground">{getAvailabilitysSummary()}</p>
             </div>
           </div>
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {roomTypes
-              .sort((a, b) => { const dateA = getAvailabilityDates(a).nextAvailable; const dateB = getAvailabilityDates(b).nextAvailable; return dateA.getTime() - dateB.getTime(); })
-              .map((room, index) => (
-              <Card key={index} id={room.title.toLowerCase().replace(/ /g, '-')} className={`relative flex flex-col hover:shadow-xl transition-all duration-300 hover:scale-[1.02] ${room.popular ? 'ring-2 ring-primary shadow-lg' : ''}`}>
-                {room.popular && (<Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-white z-10">Most Popular</Badge>)}
-                <CardHeader className="pb-4">
-                  <div className="relative rounded-lg overflow-hidden mb-4 group">
-                    <img src={room.image} alt={`${room.title} - ${room.subtitle}`} className="w-full h-48 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105" onClick={() => openGallery(room, 0)} />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center cursor-pointer" onClick={() => openGallery(room, 0)}>
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 p-3 rounded-full"><Expand className="w-6 h-6 text-black" /></div>
-                    </div>
-                    <Button variant="secondary" size="sm" className="absolute top-3 right-3 bg-white/90 hover:bg-white text-black transition-all hover:scale-105 z-10" onClick={(e) => { e.stopPropagation(); shareRoom(room); }}>
-                      <Share2 className="w-3 h-3 mr-1" /> Share
-                    </Button>
-                    <div className="absolute bottom-3 left-3 bg-primary text-white px-2 py-1 rounded-md text-xs font-medium">Available {getAvailabilityDates(room).fromShort}</div>
-                    <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1">
-                      <Expand className="w-3 h-3" /> {roomGalleries[room.title].length} photos
-                    </div>
-                  </div>
-                  <CardTitle className="text-xl">{room.title}</CardTitle>
-                  <p className="text-sm text-muted-foreground mb-3">{room.subtitle}</p>
-                  <div className="space-y-2">
-                    <div className="flex items-baseline space-x-2"><span className="text-2xl font-bold text-primary">{room.monthlyPrice}</span><span className="text-muted-foreground">/month</span></div>
-                    <div className="flex items-baseline space-x-2"><span className="text-lg font-semibold text-secondary">{room.weeklyPrice}</span><span className="text-muted-foreground text-sm">/week</span></div>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm text-muted-foreground mt-2"><Users className="w-4 h-4" /><span>{room.capacity}</span></div>
-                  <div className="flex flex-col gap-2 mt-3 bg-primary/5 p-3 rounded-lg border border-primary/10">
-                    <div className="flex items-center space-x-2 text-sm"><Calendar className="w-4 h-4 text-primary" /><span className="font-medium">Suite Availability:</span></div>
-                    <span className="text-sm text-primary font-medium">Move in from {getAvailabilityDates(room).from}</span>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-6 flex-grow flex flex-col justify-between">
-                  <div>
-                    <div className="bg-muted/50 p-3 rounded-lg mb-6"><p className="text-sm font-medium mb-1">Perfect For:</p><p className="text-sm text-muted-foreground">{room.perfectFor}</p></div>
-                    <div className="flex justify-center space-x-4 mb-6">{room.amenities.map((Icon, iconIndex) => (<div key={iconIndex} className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center"><Icon className="w-5 h-5 text-primary" /></div>))}</div>
-                    <ul className="space-y-2">{room.features.map((feature, featureIndex) => (<li key={featureIndex} className="flex items-center space-x-3 text-sm"><div className="w-2 h-2 bg-accent rounded-full flex-shrink-0" /><span>{feature}</span></li>))}</ul>
-                  </div>
-                  <div className="flex gap-2 pt-6">
-                    <Button variant={room.popular ? "default" : "outline"} size="lg" className={`flex-1 ${room.popular ? 'bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0' : ''}`} onClick={() => openWhatsApp(room)}><MessageCircle className="w-4 h-4 mr-2" />Book Now</Button>
-                    <Button variant="outline" size="lg" onClick={() => shareRoom(room)} className="hover:scale-105 transition-transform" aria-label="Share this room"><Share2 className="w-4 h-4" /></Button>
-                  </div>
-                </CardContent>
-              </Card>
+            {roomTypes.map((room, index) => {
+                const availability = getAvailabilityDates(room);
+                const isBooked = availability.isBooked;
+                
+                const isCozyRoom = room.title === "Cozy Room";
+                const isBalconyRoom = room.title === "Balcony Room";
+                const isEnsuiteMaster = room.title === "Ensuite Master";
+                const bookedRingColor = isCozyRoom ? 'ring-red-500' : 'ring-orange-400';
+                const bookedBadgeColor = isCozyRoom ? 'bg-red-500' : 'bg-orange-500';
+                
+                return (
+                  <Card key={index} id={room.title.toLowerCase().replace(/ /g, '-')} className={`relative flex flex-col hover:shadow-xl transition-all duration-300 hover:scale-[1.02] ${room.popular && !isBooked ? 'ring-2 ring-green-500 shadow-lg' : ''} ${isBooked ? `ring-2 ${bookedRingColor} shadow-lg` : ''}`}>
+                    {room.popular && !isBooked && (<Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-600 text-white z-10">Available Due to Late Cancellation</Badge>)}
+                    {isBooked && (<Badge className={`absolute -top-3 left-1/2 transform -translate-x-1/2 ${bookedBadgeColor} text-white z-10`}>Currently Booked</Badge>)}
+                    {isBalconyRoom && availability.extensionWarning && (
+                      <Badge className="absolute -top-3 right-4 bg-blue-500 text-white z-10 text-xs">Extension Pending</Badge>
+                    )}
+                    
+                    <CardHeader className="pb-4">
+                      <div className="relative rounded-lg overflow-hidden mb-4 group">
+                        <img src={room.image} alt={`${room.title} - ${room.subtitle}`} className="w-full h-48 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105" onClick={() => openGallery(room, 0)} />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center cursor-pointer" onClick={() => openGallery(room, 0)}>
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 p-3 rounded-full"><Expand className="w-6 h-6 text-black" /></div>
+                        </div>
+                        <Button variant="secondary" size="sm" className="absolute top-3 right-3 bg-white/90 hover:bg-white text-black transition-all hover:scale-105 z-10" onClick={(e) => { e.stopPropagation(); shareRoom(room); }}>
+                          <Share2 className="w-3 h-3 mr-1" /> Share
+                        </Button>
+                        
+                        <div className={`absolute bottom-3 left-3 px-2 py-1 rounded-md text-xs font-medium ${isBooked ? (isCozyRoom ? 'bg-red-500 text-white' : 'bg-orange-500 text-white') : 'bg-green-600 text-white'}`}>
+                          {isBooked ? `Booked until ${availability.fromShort}` : `Available ${availability.fromShort}`}
+                        </div>
+                        
+                        <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1">
+                          <Expand className="w-3 h-3" /> {roomGalleries[room.title].length} photos
+                        </div>
+                      </div>
+                      
+                      <CardTitle className="text-xl">{room.title}</CardTitle>
+                      <p className="text-sm text-muted-foreground mb-3">{room.subtitle}</p>
+                      
+                      <div className="space-y-2">
+                        <div className="flex items-baseline space-x-2"><span className="text-2xl font-bold text-primary">{room.monthlyPrice}</span><span className="text-muted-foreground">/month</span></div>
+                        <div className="flex items-baseline space-x-2"><span className="text-lg font-semibold text-secondary">{room.weeklyPrice}</span><span className="text-muted-foreground text-sm">/week</span></div>
+                      </div>
+                      
+                      <div className="flex items-center space-x-2 text-sm text-muted-foreground mt-2"><Users className="w-4 h-4" /><span>{room.capacity}</span></div>
+                      
+                      <div className={`flex flex-col gap-2 mt-3 p-3 rounded-lg border ${isBooked ? (isCozyRoom ? 'bg-red-50 border-red-200' : 'bg-orange-50 border-orange-200') : 'bg-green-50 border-green-200'}`}>
+                        <div className="flex items-center space-x-2 text-sm">
+                          <Calendar className={`w-4 h-4 ${isBooked ? (isCozyRoom ? 'text-red-600' : 'text-orange-600') : 'text-green-600'}`} />
+                          <span className="font-medium">{isBooked ? 'Booked Until:' : 'Available From:'}</span>
+                        </div>
+                        <span className={`text-sm font-medium ${isBooked ? (isCozyRoom ? 'text-red-700' : 'text-orange-700') : 'text-green-700'}`}>
+                          {availability.from}
+                        </span>
+                        {!isBooked && isEnsuiteMaster && (
+                          <div className="mt-2 pt-2 border-t border-green-200">
+                            <span className="text-xs text-green-600 font-medium">Available until Dec 25, 2025</span>
+                          </div>
+                        )}
+                      </div>
+                      
+                      {availability.extensionWarning && (
+                        <div className="flex flex-col gap-2 mt-3 p-3 rounded-lg border bg-yellow-50 border-yellow-200">
+                          <div className="flex items-center space-x-2 text-sm">
+                            <AlertTriangle className="w-4 h-4 text-yellow-600" />
+                            <span className="font-medium text-yellow-700">Extension Possible</span>
+                          </div>
+                          <span className="text-sm text-yellow-700">
+                            Guest may extend until {availability.possibleExtensionUntil}
+                          </span>
+                        </div>
+                      )}
+                    </CardHeader>
+                    
+                    <CardContent className="space-y-6 flex-grow flex flex-col justify-between">
+                      <div>
+                        <div className="bg-muted/50 p-3 rounded-lg mb-6">
+                          <p className="text-sm font-medium mb-1">Perfect For:</p>
+                          <p className="text-sm text-muted-foreground">{room.perfectFor}</p>
+                        </div>
+                        
+                        <div className="flex justify-center space-x-4 mb-6">
+                          {room.amenities.map((Icon, iconIndex) => (
+                            <div key={iconIndex} className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+                              <Icon className="w-5 h-5 text-primary" />
+                            </div>
+                          ))}
+                        </div>
+                        
+                        <ul className="space-y-2">
+                          {room.features.map((feature, featureIndex) => (
+                            <li key={featureIndex} className="flex items-center space-x-3 text-sm">
+                              <div className="w-2 h-2 bg-accent rounded-full flex-shrink-0" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div className="flex gap-2 pt-6">
+                        <Button 
+                          variant={isBooked ? "outline" : (room.popular ? "default" : "outline")} 
+                          size="lg" 
+                          className={`flex-1 ${
+                            isBooked 
+                              ? (isCozyRoom ? 'border-red-500 text-red-600 hover:bg-red-50' : 'border-orange-500 text-orange-600 hover:bg-orange-50')
+                              : room.popular 
+                                ? 'bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0' 
+                                : ''
+                          }`} 
+                          onClick={() => openWhatsApp(room)}
+                        >
+                          <MessageCircle className="w-4 h-4 mr-2" />
+                          {isBooked ? 'Join Waitlist' : 'Book Now'}
+                        </Button>
+                        <Button variant="outline" size="lg" onClick={() => shareRoom(room)} className="hover:scale-105 transition-transform" aria-label="Share this room">
+                          <Share2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {amenities.map((amenity, index) => (
+              <div key={index} className="flex items-start space-x-4 p-6 bg-muted/50 rounded-xl hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <amenity.icon className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-1">{amenity.label}</h4>
+                  <p className="text-sm text-muted-foreground">{amenity.description}</p>
+                </div>
+              </div>
             ))}
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">{amenities.map((amenity, index) => (<div key={index} className="flex items-start space-x-4 p-6 bg-muted/50 rounded-xl hover:shadow-md transition-shadow"><div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0"><amenity.icon className="w-6 h-6 text-primary" /></div><div><h4 className="font-semibold mb-1">{amenity.label}</h4><p className="text-sm text-muted-foreground">{amenity.description}</p></div></div>))}</div>
+          
           <div className="mb-16">
             <h3 className="text-2xl font-bold mb-8 text-center">Your Coliving Concierge Services</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {[ { icon: "✈️", title: "Arrival Coordination", description: "Seamless coliving guest arrivals" }, { icon: "🗺️", title: "Community Orientation", description: "Island integration for coliving members" }, { icon: "🏄", title: "Surf Buddy Connections", description: "Connect with surf-loving colivers" }, { icon: "☕", title: "Best Coworking Cafés", description: "Local workspace recommendations" }, { icon: "🏢", title: "External Coworking Partnerships", description: "Access to Coco Space & more" }, { icon: "💆", title: "Wellness Recommendations", description: "Maintain health during long-term stays" }, { icon: "📅", title: "Weekly Community Activities", description: "Regular coliving events & meetups" }, { icon: "🏍️", title: "Transportation Arrangements", description: "Motorbike rentals & island transport" } ].map((service, index) => (<div key={index} className="text-center p-4 bg-muted/30 rounded-lg"><div className="text-2xl mb-2">{service.icon}</div><h4 className="font-medium mb-1 text-sm">{service.title}</h4><p className="text-xs text-muted-foreground">{service.description}</p></div>))}
+              {[ 
+                { icon: "✈️", title: "Arrival Coordination", description: "Seamless coliving guest arrivals" }, 
+                { icon: "🗺️", title: "Community Orientation", description: "Island integration for coliving members" }, 
+                { icon: "🏄", title: "Surf Buddy Connections", description: "Connect with surf-loving colivers" }, 
+                { icon: "☕", title: "Best Coworking Cafés", description: "Local workspace recommendations" }, 
+                { icon: "🏢", title: "External Coworking Partnerships", description: "Access to Coco Space & more" }, 
+                { icon: "💆", title: "Wellness Recommendations", description: "Maintain health during long-term stays" }, 
+                { icon: "📅", title: "Weekly Community Activities", description: "Regular coliving events & meetups" }, 
+                { icon: "🏍️", title: "Transportation Arrangements", description: "Motorbike rentals & island transport" } 
+              ].map((service, index) => (
+                <div key={index} className="text-center p-4 bg-muted/30 rounded-lg">
+                  <div className="text-2xl mb-2">{service.icon}</div>
+                  <h4 className="font-medium mb-1 text-sm">{service.title}</h4>
+                  <p className="text-xs text-muted-foreground">{service.description}</p>
+                </div>
+              ))}
             </div>
           </div>
+          
           <div className="text-center bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8">
             <h3 className="text-2xl font-bold mb-4">Ready to Join Our Coliving Community?</h3>
             <p className="text-muted-foreground mb-6 max-w-xl mx-auto">Experience authentic tropical coliving with professional coworking facilities</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="default" size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0" onClick={() => { const message = "Hi! I'm interested in joining your coliving community at Siargao. Can you share more details about availability for both short and long-term stays?"; window.open(`https://wa.me/639476170167?text=${encodeURIComponent(message)}`, '_blank'); }}>
+              <Button variant="default" size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0" onClick={() => { 
+                const message = "Hi! I'm interested in joining your coliving community at Siargao. Can you share more details about availability for both short and long-term stays?"; 
+                window.open(`https://wa.me/639476170167?text=${encodeURIComponent(message)}`, '_blank'); 
+              }}>
                 <MessageCircle className="w-4 h-4 mr-2" /> Join Our Coliving Community
               </Button>
-              <Button variant="outline" size="lg" className="hover:bg-primary/10 hover:border-primary/50 transition-colors" onClick={() => { const message = "Hi! I'd like to schedule a virtual tour of your coliving space. When would be a good time?"; window.open(`https://wa.me/639476170167?text=${encodeURIComponent(message)}`, '_blank'); }}>
+              <Button variant="outline" size="lg" className="hover:bg-primary/10 hover:border-primary/50 transition-colors" onClick={() => { 
+                const message = "Hi! I'd like to schedule a virtual tour of your coliving space. When would be a good time?"; 
+                window.open(`https://wa.me/639476170167?text=${encodeURIComponent(message)}`, '_blank'); 
+              }}>
                 Schedule Virtual Tour
               </Button>
             </div>
