@@ -106,7 +106,7 @@ const WorkspaceSection = () => {
         {/* Workspace Types */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-center mb-8">All Coliving Rooms Include Dedicated Coworking Setup</h3>
-          <p className="text-center text-muted-foreground mb-8">Every coliving room features an large table and high-speed fiber WiFi</p>
+          <p className="text-center text-muted-foreground mb-8">Every coliving room features a large table and high-speed fiber WiFi</p>
           <div className="grid md:grid-cols-3 gap-8">
             {workspaceTypes.map((workspace, index) => (
               <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
