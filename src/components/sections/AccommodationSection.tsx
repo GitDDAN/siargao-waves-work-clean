@@ -19,16 +19,15 @@ import {
   ChevronRight,
   Expand,
   AlertTriangle,
-  Star // Added for the special offer icon
+  Star
 } from "lucide-react";
 
-// ====================================================================
-// ==  VITE IMAGE PATH FIX (Importing assets)
-// ====================================================================
-import ensuiteMasterImage from '/src/assets/Gallery/ensuite-master.png';
-import balconyRoomImage from '/src/assets/Gallery/balcony-room.png';
-import cozyRoomImage from '/src/assets/Gallery/cozy-room.png';
-// ====================================================================
+// NOTE: The direct import of images was causing a compilation error in this environment.
+// I have replaced the imports with direct string paths. The images may appear broken
+// in the preview if the assets are not available at these specific paths on the server.
+const ensuiteMasterImage = '/src/assets/Gallery/ensuite-master.png';
+const balconyRoomImage = '/src/assets/Gallery/balcony-room.png';
+const cozyRoomImage = '/src/assets/Gallery/cozy-room.png';
 
 // Simple toast implementation
 const useToast = () => {
@@ -148,44 +147,44 @@ const AccommodationSection = () => {
 
   const roomGalleries: Record<string, ImageItem[]> = {
     "Ensuite Master": [
-      { url: new URL('/src/assets/Gallery/ensuite-master.png', import.meta.url).href, alt: "Ensuite Master Bedroom", caption: "Spacious master bedroom with ensuite bathroom", type: "image" },
-      { url: new URL('/src/assets/Gallery/921e3861-a745-4e7a-bf07-ead82a89490b.png', import.meta.url).href, alt: "Master Bedroom View", caption: "Premium master suite with Jungle views", type: "image" },
-      { url: new URL('/src/assets/Gallery/8897ba46-4d01-419c-9f3d-91a11338672e.png', import.meta.url).href, alt: "Private Bathroom", caption: "Modern private bathroom with hot shower", type: "image" },
-      { url: new URL('/src/assets/Gallery/48738a79-c51e-45f7-adae-d1f3d13355e5.png', import.meta.url).href, alt: "Work Desk", caption: "Dedicated workspace with natural light", type: "image" },
-      { url: new URL('/src/assets/Gallery/821784fc-6b6d-46e9-a51e-26ad2ad93522.png', import.meta.url).href, alt: "Master Room Details", caption: "Comfortable bedroom with premium amenities", type: "image" },
-      { url: new URL('/src/assets/Gallery/b2f1d8e7-69c7-431d-a562-d0a45f9a3dcf.png', import.meta.url).href, alt: "Jungle View", caption: "Beautiful Jungle views from the room", type: "image" },
-      { url: new URL('/src/assets/Gallery/95a8fd83-4039-4385-8acb-b3a404901043.png', import.meta.url).href, alt: "Room Interior", caption: "Queen bed with tropical ambiance", type: "image" },
-      { url: new URL('/src/assets/Gallery/b5ba0685-11ca-4d09-be1d-5415e33d66fe.png', import.meta.url).href, alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
-      { url: new URL('/src/assets/Gallery/tropical-common-area.png', import.meta.url).href, alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
-      { url: new URL('/src/assets/Gallery/1CCTVInstalled.jpg', import.meta.url).href, alt: "Security", caption: "24/7 CCTV security system", type: "image" },
-      { url: new URL('/src/assets/Gallery/1InternetSpeed.jpg', import.meta.url).href, alt: "High Speed Internet", caption: "Fast fiber internet throughout", type: "image" },
-      { url: new URL('/src/assets/Gallery/Walkthroughtour.mp4', import.meta.url).href, alt: "Villa Walkthrough", caption: "Complete tour of the master suite", type: "video" }
+      { url: '/src/assets/Gallery/ensuite-master.png', alt: "Ensuite Master Bedroom", caption: "Spacious master bedroom with ensuite bathroom", type: "image" },
+      { url: '/src/assets/Gallery/921e3861-a745-4e7a-bf07-ead82a89490b.png', alt: "Master Bedroom View", caption: "Premium master suite with Jungle views", type: "image" },
+      { url: '/src/assets/Gallery/8897ba46-4d01-419c-9f3d-91a11338672e.png', alt: "Private Bathroom", caption: "Modern private bathroom with hot shower", type: "image" },
+      { url: '/src/assets/Gallery/48738a79-c51e-45f7-adae-d1f3d13355e5.png', alt: "Work Desk", caption: "Dedicated workspace with natural light", type: "image" },
+      { url: '/src/assets/Gallery/821784fc-6b6d-46e9-a51e-26ad2ad93522.png', alt: "Master Room Details", caption: "Comfortable bedroom with premium amenities", type: "image" },
+      { url: '/src/assets/Gallery/b2f1d8e7-69c7-431d-a562-d0a45f9a3dcf.png', alt: "Jungle View", caption: "Beautiful Jungle views from the room", type: "image" },
+      { url: '/src/assets/Gallery/95a8fd83-4039-4385-8acb-b3a404901043.png', alt: "Room Interior", caption: "Queen bed with tropical ambiance", type: "image" },
+      { url: '/src/assets/Gallery/b5ba0685-11ca-4d09-be1d-5415e33d66fe.png', alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
+      { url: '/src/assets/Gallery/tropical-common-area.png', alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
+      { url: '/src/assets/Gallery/1CCTVInstalled.jpg', alt: "Security", caption: "24/7 CCTV security system", type: "image" },
+      { url: '/src/assets/Gallery/1InternetSpeed.jpg', alt: "High Speed Internet", caption: "Fast fiber internet throughout", type: "image" },
+      { url: '/src/assets/Gallery/Walkthroughtour.mp4', alt: "Villa Walkthrough", caption: "Complete tour of the master suite", type: "video" }
     ],
     "Balcony Room": [
-      { url: new URL('/src/assets/Gallery/balcony-room.png', import.meta.url).href, alt: "Balcony Room", caption: "Bright room with private balcony access", type: "image" },
-      { url: new URL('/src/assets/Gallery/BalconyRoomDoors.jpg', import.meta.url).href, alt: "Balcony Doors", caption: "Private balcony doors opening to paradise", type: "image" },
-      { url: new URL('/src/assets/Gallery/BalconyRoomstorage.jpg', import.meta.url).href, alt: "Storage Space", caption: "Ample storage for extended stays", type: "image" },
-      { url: new URL('/src/assets/Gallery/cb48cf65-05f7-452c-9969-05e7c527e62d.png', import.meta.url).href, alt: "Tropical Views", caption: "Wake up to tropical jungle views", type: "image" },
-      { url: new URL('/src/assets/Gallery/26a3f37c-c09b-4051-b6b9-2da2c9866038.png', import.meta.url).href, alt: "Balcony Space", caption: "2 bathrooms shared between 2 rooms, 1 with shower", type: "image" },
-      { url: new URL('/src/assets/Gallery/5c657536-0c6a-45fe-82c9-c3dd37af1b6b.png', import.meta.url).href, alt: "Additional View", caption: "Downstairs area", type: "image" },
-      { url: new URL('/src/assets/Gallery/b5ba0685-11ca-4d09-be1d-5415e33d66fe.png', import.meta.url).href, alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
-      { url: new URL('/src/assets/Gallery/tropical-common-area.png', import.meta.url).href, alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
-      { url: new URL('/src/assets/Gallery/1CCTVInstalled.jpg', import.meta.url).href, alt: "Security", caption: "24/7 CCTV security system", type: "image" },
-      { url: new URL('/src/assets/Gallery/1InternetSpeed.jpg', import.meta.url).href, alt: "High Speed Internet", caption: "Fast fiber internet throughout", type: "image" }
+      { url: '/src/assets/Gallery/balcony-room.png', alt: "Balcony Room", caption: "Bright room with private balcony access", type: "image" },
+      { url: '/src/assets/Gallery/BalconyRoomDoors.jpg', alt: "Balcony Doors", caption: "Private balcony doors opening to paradise", type: "image" },
+      { url: '/src/assets/Gallery/BalconyRoomstorage.jpg', alt: "Storage Space", caption: "Ample storage for extended stays", type: "image" },
+      { url: '/src/assets/Gallery/cb48cf65-05f7-452c-9969-05e7c527e62d.png', alt: "Tropical Views", caption: "Wake up to tropical jungle views", type: "image" },
+      { url: '/src/assets/Gallery/26a3f37c-c09b-4051-b6b9-2da2c9866038.png', alt: "Balcony Space", caption: "2 bathrooms shared between 2 rooms, 1 with shower", type: "image" },
+      { url: '/src/assets/Gallery/5c657536-0c6a-45fe-82c9-c3dd37af1b6b.png', alt: "Additional View", caption: "Downstairs area", type: "image" },
+      { url: '/src/assets/Gallery/b5ba0685-11ca-4d09-be1d-5415e33d66fe.png', alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
+      { url: '/src/assets/Gallery/tropical-common-area.png', alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
+      { url: '/src/assets/Gallery/1CCTVInstalled.jpg', alt: "Security", caption: "24/7 CCTV security system", type: "image" },
+      { url: '/src/assets/Gallery/1InternetSpeed.jpg', alt: "High Speed Internet", caption: "Fast fiber internet throughout", type: "image" }
     ],
     "Cozy Room": [
-      { url: new URL('/src/assets/Gallery/cozy-room.png', import.meta.url).href, alt: "Cozy Room", caption: "Comfortable room with Jungle views", type: "image" },
-      { url: new URL('/src/assets/Gallery/PrivateRoom.jpg', import.meta.url).href, alt: "Private Room", caption: "Your private sanctuary", type: "image" },
-      { url: new URL('/src/assets/Gallery/b5ba0685-11ca-4d09-be1d-5415e33d66fe.png', import.meta.url).href, alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
-      { url: new URL('/src/assets/Gallery/ec9eb930-e69a-466d-9b13-4c2201461a79.png', import.meta.url).href, alt: "Room Features", caption: "Downstairs Kitchen", type: "image" },
-      { url: new URL('/src/assets/Gallery/f27cb854-871b-4105-b007-0eae90fb8d40.png', import.meta.url).href, alt: "Garden Access", caption: "Location / Shortcut access to main road", type: "image" },
-      { url: new URL('/src/assets/Gallery/f81897b9-695c-4f23-a935-71908f648dd4.jpg', import.meta.url).href, alt: "Room Details", caption: "Cozy room amenities", type: "image" },
-      { url: new URL('/src/assets/Gallery/TeaCommonArea.jpg', import.meta.url).href, alt: "Common Area", caption: "Access to shared tea area", type: "image" },
-      { url: new URL('/src/assets/Gallery/tropical-common-area.png', import.meta.url).href, alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
-      { url: new URL('/src/assets/Gallery/1CCTVInstalled.jpg', import.meta.url).href, alt: "Security", caption: "24/7 CCTV security system", type: "image" },
-      { url: new URL('/src/assets/Gallery/1InternetSpeed.jpg', import.meta.url).href, alt: "High Speed Internet", caption: "Fast fiber internet throughout", type: "image" },
-      { url: new URL('/src/assets/Gallery/PrivateRoomVideo.mp4', import.meta.url).href, alt: "Room Tour", caption: "Video tour of the cozy room", type: "video" },
-      { url: new URL('/src/assets/Gallery/CuteRoomShort.mp4', import.meta.url).href, alt: "Quick Room Tour", caption: "Quick tour of the cozy room", type: "video" }
+      { url: '/src/assets/Gallery/cozy-room.png', alt: "Cozy Room", caption: "Comfortable room with Jungle views", type: "image" },
+      { url: '/src/assets/Gallery/PrivateRoom.jpg', alt: "Private Room", caption: "Your private sanctuary", type: "image" },
+      { url: '/src/assets/Gallery/b5ba0685-11ca-4d09-be1d-5415e33d66fe.png', alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
+      { url: '/src/assets/Gallery/ec9eb930-e69a-466d-9b13-4c2201461a79.png', alt: "Room Features", caption: "Downstairs Kitchen", type: "image" },
+      { url: '/src/assets/Gallery/f27cb854-871b-4105-b007-0eae90fb8d40.png', alt: "Garden Access", caption: "Location / Shortcut access to main road", type: "image" },
+      { url: '/src/assets/Gallery/f81897b9-695c-4f23-a935-71908f648dd4.jpg', alt: "Room Details", caption: "Cozy room amenities", type: "image" },
+      { url: '/src/assets/Gallery/TeaCommonArea.jpg', alt: "Common Area", caption: "Access to shared tea area", type: "image" },
+      { url: '/src/assets/Gallery/tropical-common-area.png', alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
+      { url: '/src/assets/Gallery/1CCTVInstalled.jpg', alt: "Security", caption: "24/7 CCTV security system", type: "image" },
+      { url: '/src/assets/Gallery/1InternetSpeed.jpg', alt: "High Speed Internet", caption: "Fast fiber internet throughout", type: "image" },
+      { url: '/src/assets/Gallery/PrivateRoomVideo.mp4', alt: "Room Tour", caption: "Video tour of the cozy room", type: "video" },
+      { url: '/src/assets/Gallery/CuteRoomShort.mp4', alt: "Quick Room Tour", caption: "Quick tour of the cozy room", type: "video" }
     ]
   };
 
@@ -196,20 +195,17 @@ const AccommodationSection = () => {
   ];
 
   const getAvailabilityDates = (room: { title: string }) => {
+    const today = new Date();
     const availabilityMap: Record<string, any> = {
       "Ensuite Master": {
         status: "available",
-        nextAvailable: new Date(2025, 7, 23),
-        availableUntil: new Date(2025, 7, 31),
-        nextMajorAvailability: new Date(2025, 10, 25),
-        specialOffer: { rate: "₱900", period: "per night" }
+        nextAvailable: today, // Set as available from today
+        availableUntil: new Date(2025, 7, 31), // Available until August 31, 2025
+        specialOffer: { rate: "₱1100", period: "per night" } // Updated special offer price
       },
       "Cozy Room": {
-        status: "available",
-        nextAvailable: new Date(2025, 7, 23),
-        availableUntil: new Date(2025, 7, 31),
-        nextMajorAvailability: new Date(2025, 10, 25),
-        specialOffer: { rate: "₱900", period: "per night" }
+        status: "booked", // Marked as booked
+        bookedUntil: new Date(2025, 10, 25), // Booked until November 25, 2025
       },
       "Balcony Room": {
         status: "booked",
@@ -221,6 +217,8 @@ const AccommodationSection = () => {
     };
     
     const roomData = availabilityMap[room.title];
+    if (!roomData) return {}; // handle case where room title doesn't match
+    
     const isBooked = roomData.status === "booked";
     const displayDate = isBooked ? roomData.bookedUntil : roomData.nextAvailable;
     
@@ -269,9 +267,32 @@ const AccommodationSection = () => {
     return `Next Available: ${earliestAvailable.room.title} from ${format(earliestAvailable.date, 'MMM dd')}`;
   };
 
-  // SHARE FUNCTION - NOT SHOWN IN SHORTENED VIEW, BUT PRESENT IN FINAL CODE
   const shareRoom = async (room: any) => {
-    // ... Function logic is here
+    const availability = getAvailabilityDates(room);
+    const url = window.location.href.split('#')[0] + '#' + room.title.toLowerCase().replace(/ /g, '-');
+    const text = `Check out the ${room.title} at Coliving Siargao Villa! ${room.socialTagline}. It's currently ${availability.isBooked ? `booked until ${availability.from}` : `available from ${availability.from}`}. More info here:`;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `Coliving Siargao Villa - ${room.title}`,
+          text: text,
+          url: url,
+        });
+        toast({ title: 'Room Shared!', description: 'The link has been copied to your clipboard.' });
+      } catch (error) {
+        console.error('Error sharing:', error);
+        toast({ title: 'Sharing Failed', description: 'Could not share the room at this time.' });
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(`${text} ${url}`);
+        toast({ title: 'Link Copied!', description: 'The share link is in your clipboard.' });
+      } catch (err) {
+        console.error('Failed to copy: ', err);
+        toast({ title: 'Copy Failed', description: 'Could not copy the link.' });
+      }
+    }
   };
 
   return (
@@ -295,6 +316,7 @@ const AccommodationSection = () => {
                 const availability = getAvailabilityDates(room);
                 const { isBooked, from, fromShort, extensionWarning, possibleExtensionUntil, nextMajorAvailability, specialOffer, availableUntilDate } = availability;
                 const isBalconyRoom = room.title === "Balcony Room";
+                const isCozyRoom = room.title === "Cozy Room";
                 const bookedRingColor = isBalconyRoom ? 'ring-orange-400' : 'ring-red-500';
                 const bookedBadgeColor = isBalconyRoom ? 'bg-orange-500' : 'bg-red-500';
                 
@@ -304,7 +326,7 @@ const AccommodationSection = () => {
                     {isBooked && (<Badge className={`absolute -top-3 left-1/2 transform -translate-x-1/2 ${bookedBadgeColor} text-white z-10`}>Currently Booked</Badge>)}
                     {isBalconyRoom && extensionWarning && (<Badge className="absolute -top-3 right-4 bg-blue-500 text-white z-10 text-xs">Extension Pending</Badge>)}
                     
-                    <CardHeader className="pb-4">
+                    <CardHeader className="p-4">
                       <div className="relative rounded-lg overflow-hidden mb-4 group">
                         <img src={room.image} alt={`${room.title} - ${room.subtitle}`} className="w-full h-48 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105" onClick={() => openGallery(room, 0)} />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center cursor-pointer" onClick={() => openGallery(room, 0)}>
@@ -323,60 +345,59 @@ const AccommodationSection = () => {
                         <div className="flex items-baseline space-x-2"><span className="text-lg font-semibold text-secondary">{room.weeklyPrice}</span><span className="text-muted-foreground text-sm">/week</span></div>
                       </div>
                       <div className="flex items-center space-x-2 text-sm text-muted-foreground mt-2"><Users className="w-4 h-4" /><span>{room.capacity}</span></div>
-                      
-                      <div className={`flex flex-col gap-2 mt-3 p-3 rounded-lg border ${isBooked ? (isBalconyRoom ? 'bg-orange-50 border-orange-200' : 'bg-red-50 border-red-200') : 'bg-green-50 border-green-200'}`}>
-                        <div className="flex items-center space-x-2 text-sm">
-                          <Calendar className={`w-4 h-4 ${isBooked ? (isBalconyRoom ? 'text-orange-600' : 'text-red-600') : 'text-green-600'}`} />
-                          <span className="font-medium">{isBooked ? 'Booked Until:' : 'Available From:'}</span>
-                        </div>
-                        <span className={`text-lg font-bold ${isBooked ? (isBalconyRoom ? 'text-orange-700' : 'text-red-700') : 'text-green-700'}`}>{from}</span>
-                        {!isBooked && nextMajorAvailability && (
-                          <div className="mt-2 pt-2 border-t border-green-200">
-                            <p className="text-xs text-green-800 font-medium">Available until {format(availableUntilDate, 'MMM dd, yyyy')}</p>
-                            <p className="text-xs text-muted-foreground mt-1">Next opening is {nextMajorAvailability}</p>
-                          </div>
-                        )}
-                      </div>
-
-                      {specialOffer && (
-                        <div className="flex flex-col gap-1 mt-3 p-3 rounded-lg border bg-yellow-50 border-yellow-200 text-yellow-900">
-                           <div className="flex items-center space-x-2 text-sm font-bold">
-                             <Star className="w-4 h-4 text-yellow-600" fill="currentColor" />
-                             <span>Special Offer (Aug 23-31)</span>
-                           </div>
-                           <p className="text-sm font-medium pl-6">
-                             <span className="font-bold">{specialOffer.rate}</span> {specialOffer.period}
-                           </p>
-                        </div>
-                      )}
-                      
-                      {extensionWarning && (
-                        <div className="flex flex-col gap-2 mt-3 p-3 rounded-lg border bg-yellow-50 border-yellow-200">
-                          <div className="flex items-center space-x-2 text-sm">
-                            <AlertTriangle className="w-4 h-4 text-yellow-600" />
-                            <span className="font-medium text-yellow-700">Extension Possible</span>
-                          </div>
-                          <span className="text-sm text-yellow-700">Guest may extend until {possibleExtensionUntil}</span>
-                        </div>
-                      )}
                     </CardHeader>
                     
-                    <CardContent className="space-y-6 flex-grow flex flex-col justify-between">
+                    <CardContent className="p-4 space-y-4 flex-grow flex flex-col justify-between">
                       <div>
-                        <div className="bg-muted/50 p-3 rounded-lg mb-6">
+                        <div className={`flex flex-col gap-2 p-3 rounded-lg border ${isBooked ? (isBalconyRoom ? 'bg-orange-50 border-orange-200' : 'bg-red-50 border-red-200') : 'bg-green-50 border-green-200'}`}>
+                            <div className="flex items-center space-x-2 text-sm">
+                              <Calendar className={`w-4 h-4 ${isBooked ? (isBalconyRoom ? 'text-orange-600' : 'text-red-600') : 'text-green-600'}`} />
+                              <span className="font-medium">{isBooked ? 'Next Available:' : 'Available From:'}</span>
+                            </div>
+                            <span className={`text-lg font-bold ${isBooked ? (isBalconyRoom ? 'text-orange-700' : 'text-red-700') : 'text-green-700'}`}>{from}</span>
+                            {!isBooked && availableUntilDate && (
+                              <div className="mt-2 pt-2 border-t border-green-200">
+                                <p className="text-xs text-green-800 font-medium">Available until {format(availableUntilDate, 'MMM dd, yyyy')}</p>
+                              </div>
+                            )}
+                        </div>
+
+                        {specialOffer && !isBooked && (
+                          <div className="flex flex-col gap-1 mt-3 p-3 rounded-lg border bg-yellow-50 border-yellow-200 text-yellow-900">
+                              <div className="flex items-center space-x-2 text-sm font-bold">
+                                <Star className="w-4 h-4 text-yellow-600" fill="currentColor" />
+                                <span>Special Nightly Rate</span>
+                              </div>
+                              <p className="text-sm font-medium pl-6">
+                                <span className="font-bold">{specialOffer.rate}</span> {specialOffer.period}
+                              </p>
+                          </div>
+                        )}
+                        
+                        {extensionWarning && (
+                          <div className="flex flex-col gap-2 mt-3 p-3 rounded-lg border bg-yellow-50 border-yellow-200">
+                            <div className="flex items-center space-x-2 text-sm">
+                              <AlertTriangle className="w-4 h-4 text-yellow-600" />
+                              <span className="font-medium text-yellow-700">Extension Possible</span>
+                            </div>
+                            <span className="text-sm text-yellow-700">Guest may extend until {possibleExtensionUntil}</span>
+                          </div>
+                        )}
+
+                        <div className="bg-muted/50 p-3 rounded-lg my-4">
                           <p className="text-sm font-medium mb-1">Perfect For:</p>
                           <p className="text-sm text-muted-foreground">{room.perfectFor}</p>
                         </div>
-                        <div className="flex justify-center space-x-4 mb-6">
+                        <div className="flex justify-center space-x-4 mb-4">
                           {room.amenities.map((Icon, iconIndex) => (<div key={iconIndex} className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center"><Icon className="w-5 h-5 text-primary" /></div>))}
                         </div>
                         <ul className="space-y-2">
                           {room.features.map((feature, featureIndex) => (<li key={featureIndex} className="flex items-center space-x-3 text-sm"><div className="w-2 h-2 bg-accent rounded-full flex-shrink-0" /><span>{feature}</span></li>))}
                         </ul>
                       </div>
-                      <div className="pt-6">
+                      <div className="pt-4">
                         <div className="flex gap-2">
-                          <Button variant={isBooked ? "outline" : (room.popular ? "default" : "outline")} size="lg" className={`flex-1 ${isBooked ? (isBalconyRoom ? 'border-orange-500 text-orange-600 hover:bg-orange-50' : 'border-red-500 text-red-600 hover:bg-red-50') : room.popular ? 'bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0' : ''}`} onClick={() => openWhatsApp(room)}>
+                          <Button variant={isBooked ? "outline" : (room.popular ? "default" : "outline")} size="lg" className={`flex-1 ${isBooked ? (isCozyRoom ? 'border-red-500 text-red-600 hover:bg-red-50' : 'border-orange-500 text-orange-600 hover:bg-orange-50') : room.popular ? 'bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0' : ''}`} onClick={() => openWhatsApp(room)}>
                             <MessageCircle className="w-4 h-4 mr-2" />{isBooked ? 'Join Waitlist' : 'Book Now'}
                           </Button>
                           <Button variant="outline" size="lg" onClick={() => shareRoom(room)} className="hover:scale-105 transition-transform" aria-label="Share this room"><Share2 className="w-4 h-4" /></Button>
