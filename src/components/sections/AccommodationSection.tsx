@@ -194,23 +194,19 @@ const AccommodationSection = () => {
 
   const getAvailabilityDates = (room: { title: string }) => {
     const today = new Date();
+    // Note: JavaScript months are 0-indexed (e.g., 8 is September, 10 is November)
     const availabilityMap: Record<string, any> = {
       "Ensuite Master": {
-        status: "available",
-        nextAvailable: today, // Set as available from today
-        availableUntil: new Date(2025, 7, 31), // Available until August 31, 2025
-        specialOffer: { rate: "₱1100", period: "per night" } // Updated special offer price
+        status: "booked", // Marked as booked
+        bookedUntil: new Date(2025, 10, 25), // Available on November 25, 2025
       },
       "Cozy Room": {
-        status: "booked", // Marked as booked
-        bookedUntil: new Date(2025, 10, 25), // Booked until November 25, 2025
+        status: "available", // Marked as available
+        nextAvailable: new Date(2025, 8, 15), // Available from September 15, 2025
       },
       "Balcony Room": {
-        status: "booked",
-        bookedUntil: new Date(2025, 8, 15),
-        availableUntil: new Date(2025, 11, 31),
-        extensionWarning: true,
-        possibleExtensionUntil: new Date(2025, 9, 15)
+        status: "available", // Marked as available
+        nextAvailable: new Date(2025, 8, 15), // Available from September 15, 2025
       }
     };
     
@@ -348,27 +344,27 @@ const AccommodationSection = () => {
                     <CardContent className="p-4 space-y-4 flex-grow flex flex-col justify-between">
                       <div>
                         <div className={`flex flex-col gap-2 p-3 rounded-lg border ${isBooked ? (isBalconyRoom ? 'bg-orange-50 border-orange-200' : 'bg-red-50 border-red-200') : 'bg-green-50 border-green-200'}`}>
-                            <div className="flex items-center space-x-2 text-sm">
-                              <Calendar className={`w-4 h-4 ${isBooked ? (isBalconyRoom ? 'text-orange-600' : 'text-red-600') : 'text-green-600'}`} />
-                              <span className="font-medium">{isBooked ? 'Next Available:' : 'Available From:'}</span>
-                            </div>
-                            <span className={`text-lg font-bold ${isBooked ? (isBalconyRoom ? 'text-orange-700' : 'text-red-700') : 'text-green-700'}`}>{from}</span>
-                            {!isBooked && availableUntilDate && (
-                              <div className="mt-2 pt-2 border-t border-green-200">
-                                <p className="text-xs text-green-800 font-medium">Available until {format(availableUntilDate, 'MMM dd, yyyy')}</p>
+                              <div className="flex items-center space-x-2 text-sm">
+                                <Calendar className={`w-4 h-4 ${isBooked ? (isBalconyRoom ? 'text-orange-600' : 'text-red-600') : 'text-green-600'}`} />
+                                <span className="font-medium">{isBooked ? 'Next Available:' : 'Available From:'}</span>
                               </div>
-                            )}
+                              <span className={`text-lg font-bold ${isBooked ? (isBalconyRoom ? 'text-orange-700' : 'text-red-700') : 'text-green-700'}`}>{from}</span>
+                              {!isBooked && availableUntilDate && (
+                                <div className="mt-2 pt-2 border-t border-green-200">
+                                  <p className="text-xs text-green-800 font-medium">Available until {format(availableUntilDate, 'MMM dd, yyyy')}</p>
+                                </div>
+                              )}
                         </div>
 
                         {specialOffer && !isBooked && (
                           <div className="flex flex-col gap-1 mt-3 p-3 rounded-lg border bg-yellow-50 border-yellow-200 text-yellow-900">
-                              <div className="flex items-center space-x-2 text-sm font-bold">
-                                <Star className="w-4 h-4 text-yellow-600" fill="currentColor" />
-                                <span>Special Nightly Rate</span>
-                              </div>
-                              <p className="text-sm font-medium pl-6">
-                                <span className="font-bold">{specialOffer.rate}</span> {specialOffer.period}
-                              </p>
+                                <div className="flex items-center space-x-2 text-sm font-bold">
+                                  <Star className="w-4 h-4 text-yellow-600" fill="currentColor" />
+                                  <span>Special Nightly Rate</span>
+                                </div>
+                                <p className="text-sm font-medium pl-6">
+                                  <span className="font-bold">{specialOffer.rate}</span> {specialOffer.period}
+                                </p>
                           </div>
                         )}
                         
