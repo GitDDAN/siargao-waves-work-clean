@@ -196,18 +196,24 @@ const AccommodationSection = () => {
     const today = new Date();
     // Note: JavaScript months are 0-indexed (e.g., 8 is September, 10 is November)
     const availabilityMap: Record<string, any> = {
+ 
+
       "Ensuite Master": {
         status: "booked", // Marked as booked
         bookedUntil: new Date(2025, 10, 25), // Available on November 25, 2025
       },
       "Cozy Room": {
         status: "available", // Marked as available
-        nextAvailable: new Date(2025, 8, 29), // Available from September 29, 2025
+        nextAvailable: new Date(2025, 10, 2), // Available from September 29, 2025
       },
       "Balcony Room": {
-        status: "available", // Marked as available
-        nextAvailable: new Date(2025, 8, 29), // Available from September 29, 2025
+        status: "booked", // Marked as available
+        bookedUntil: new Date(2025, 11, 25), // Available from September 29, 2025
       }
+
+
+
+
     };
     
     const roomData = availabilityMap[room.title];

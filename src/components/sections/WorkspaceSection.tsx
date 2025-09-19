@@ -70,9 +70,9 @@ const WorkspaceSection = () => {
     },
     {
       title: "Private Zones", 
-      description: "Shared Working Balcony areas designed for coliving community projects",
-      capacity: "2-4 people",
-      features: ["Bamboo architecture", "Group workspace", "Community collaboration"],
+      description: "Shared Working Balcony areas",
+      capacity: "Your Room",
+      features: ["Workspace", "Private desk"],
       hourlyRate: "Included",
       icon: Monitor
     },

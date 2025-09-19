@@ -27,7 +27,7 @@ const format = (date: Date, formatStr: string): string => {
 
 const BalconyPromoSection = () => {
   const thumbnails = [thumbnail1, thumbnail2, thumbnail3, thumbnail4, thumbnail5, thumbnail6];
-  const availableDate = new Date(2025, 8, 29); // September 29, 2025
+  const availableDate = new Date(2025, 11, 25); // September 29, 2025
 
   const openWhatsApp = () => {
     const message = `Hi! I'm interested in booking the "Balcony Room", available from September 29th. Could you provide more details?`;
