@@ -27,10 +27,11 @@ const format = (date: Date, formatStr: string): string => {
 
 const BalconyPromoSection = () => {
   const thumbnails = [thumbnail1, thumbnail2, thumbnail3, thumbnail4, thumbnail5, thumbnail6];
-  const availableDate = new Date(2025, 11, 25); // September 29, 2025
+  const availableDate = new Date(2025, 8, 26); // September 26, 2025
+  const endDate = new Date(2025, 9, 2); // October 2, 2025
 
   const openWhatsApp = () => {
-    const message = `Hi! I'm interested in booking the "Balcony Room", available from September 29th. Could you provide more details?`;
+    const message = `Hi! I'm interested in the special promo for the "Balcony Room" at ₱997/night from September 26th to October 2nd (6 nights available). Could you provide more details?`;
     const whatsappUrl = `https://wa.me/639476170167?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -48,22 +49,22 @@ const BalconyPromoSection = () => {
                 alt="Bright Balcony Room with Paradise Views" 
                 className="w-full h-auto object-cover"
               />
-              <div className="absolute top-4 left-4 bg-green-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-md">
-                Now Available
+              <div className="absolute top-4 left-4 bg-red-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-md">
+                SPECIAL PROMO
               </div>
             </div>
           </div>
 
           {/* Content Column */}
           <div className="w-full md:w-1/2 text-center md:text-left">
-            <h2 className="text-sm font-bold uppercase text-blue-600 tracking-widest mb-2">
-              RARE LAST-MINUTE OPENING
+            <h2 className="text-sm font-bold uppercase text-red-600 tracking-widest mb-2">
+              LIMITED TIME SPECIAL OFFER
             </h2>
             <h3 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4 leading-tight">
-              The Balcony Room is Available!
+              The Balcony Room - Special Promo!
             </h3>
             <p className="text-lg text-gray-600 mb-6 max-w-lg mx-auto md:mx-0">
-              Due to a late cancellation, our beautiful Balcony Room is now open. Enjoy paradise views, a private balcony, and our vibrant coliving community.
+              Don't miss this amazing deal! Our beautiful Balcony Room is available at a special promotional rate. Enjoy paradise views, a private balcony, and our vibrant coliving community.
             </p>
 
             {/* Key Features Section */}
@@ -78,16 +79,17 @@ const BalconyPromoSection = () => {
               </div>
             </div>
 
-            <div className="bg-blue-100 border-l-4 border-blue-500 text-blue-800 p-4 rounded-r-lg mb-8 inline-block text-left">
+            <div className="bg-red-100 border-l-4 border-red-500 text-red-800 p-4 rounded-r-lg mb-8 inline-block text-left">
               <div className="flex items-center gap-4">
                 <Star className="w-10 h-10 text-yellow-500 flex-shrink-0" fill="currentColor" />
                 <div>
                   <p className="font-bold text-lg">
-                    Available From: {format(availableDate, 'MMM dd')}
+                    Promo Period: {format(availableDate, 'MMM dd')} - {format(endDate, 'MMM dd')}
                   </p>
-                  <div className="text-md flex items-baseline gap-4">
-                    <span><span className="font-extrabold text-2xl">₱31,000</span>/month</span>
-                    <span><span className="font-extrabold text-xl">₱8,500</span>/week</span>
+                  <p className="text-sm text-red-600 mb-2">6 nights available</p>
+                  <div className="text-md">
+                    <span className="font-extrabold text-3xl text-red-700">₱997</span>
+                    <span className="text-lg">/night</span>
                   </div>
                 </div>
               </div>
@@ -96,14 +98,14 @@ const BalconyPromoSection = () => {
             <div>
               <Button 
                 size="lg" 
-                className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg text-lg px-8 py-6 rounded-full transform hover:scale-105 transition-transform duration-300"
+                className="bg-red-600 hover:bg-red-700 text-white shadow-lg text-lg px-8 py-6 rounded-full transform hover:scale-105 transition-transform duration-300"
                 onClick={openWhatsApp}
               >
                 <MessageCircle className="w-6 h-6 mr-3" />
-                Book This Suite Now
+                Book This Promo Now
               </Button>
               <p className="text-xs text-gray-500 mt-3">
-                This offer won't last long. Contact us to secure your stay!
+                Limited time offer - only 6 nights available at this special rate!
               </p>
             </div>
             
@@ -126,4 +128,3 @@ const BalconyPromoSection = () => {
 };
 
 export default BalconyPromoSection;
-
