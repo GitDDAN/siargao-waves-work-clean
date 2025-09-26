@@ -6,7 +6,7 @@ import { Star, MessageCircle, Wifi, MapPin } from "lucide-react";
 // ==  IMAGE PATH FIX
 // ====================================================================
 // Using absolute paths from the project root to ensure the build tool can resolve them.
-import balconyRoomImage from '/src/assets/Gallery/balcony-room.png';
+import balconyRoomImage from '/src/assets/Gallery/balcony2-room-BE-uQFjk.png';
 import thumbnail1 from '/src/assets/Gallery/BalconyRoomDoors.jpg';
 import thumbnail2 from '/src/assets/Gallery/tropical-common-area.png';
 import thumbnail3 from '/src/assets/Gallery/BalconyRoomstorage.jpg';
