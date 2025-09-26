@@ -204,11 +204,11 @@ const AccommodationSection = () => {
       },
       "Cozy Room": {
         status: "available", // Marked as available
-        nextAvailable: new Date(2025, 10, 2), // Available from September 29, 2025
+        nextAvailable: new Date(2025, 11, 1), // Available from September 29, 2025
       },
       "Balcony Room": {
         status: "booked", // Marked as available
-        bookedUntil: new Date(2025, 11, 25), // Available from September 29, 2025
+        bookedUntil: new Date(2025, 11, 1), // Available from September 29, 2025
       }
 
 
