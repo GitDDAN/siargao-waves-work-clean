@@ -146,15 +146,15 @@ const AccommodationSection = () => {
   const roomGalleries: Record<string, ImageItem[]> = {
     "Ensuite Master": [
       { url: new URL('/src/assets/Gallery/ensuite-master.png', import.meta.url).href, alt: "Ensuite Master Bedroom", caption: "Spacious master bedroom with ensuite bathroom", type: "image" },
-      { url: new URL('/src/assets/Gallery/921e3861-a745-4e7a-bf07-ead82a89490b.png', import.meta.url).href, alt: "Master Bedroom View", caption: "Premium master suite with Jungle views", type: "image" },
-      { url: new URL('/src/assets/Gallery/8897ba46-4d01-419c-9f3d-91a11338672e.png', import.meta.url).href, alt: "Private Bathroom", caption: "Modern private bathroom with hot shower", type: "image" },
-      { url: new URL('/src/assets/Gallery/48738a79-c51e-45f7-adae-d1f3d13355e5.png', import.meta.url).href, alt: "Work Desk", caption: "Dedicated workspace with natural light", type: "image" },
-      { url: new URL('/src/assets/Gallery/821784fc-6b6d-46e9-a51e-26ad2ad93522.png', import.meta.url).href, alt: "Master Room Details", caption: "Comfortable bedroom with premium amenities", type: "image" },
-      { url: new URL('/src/assets/Gallery/b2f1d8e7-69c7-431d-a562-d0a45f9a3dcf.png', import.meta.url).href, alt: "Jungle View", caption: "Beautiful Jungle views from the room", type: "image" },
       { url: new URL('/src/assets/Gallery/95a8fd83-4039-4385-8acb-b3a404901043.png', import.meta.url).href, alt: "Room Interior", caption: "Queen bed with tropical ambiance", type: "image" },
+      { url: new URL('/src/assets/Gallery/921e3861-a745-4e7a-bf07-ead82a89490b.png', import.meta.url).href, alt: "Master Bedroom View", caption: "Master suite with Jungle views", type: "image" },
+      { url: new URL('/src/assets/Gallery/48738a79-c51e-45f7-adae-d1f3d13355e5.png', import.meta.url).href, alt: "Work Desk", caption: "Dedicated workspace with natural light", type: "image" },
+
       { url: new URL('/src/assets/Gallery/b5ba0685-11ca-4d09-be1d-5415e33d66fe.png', import.meta.url).href, alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
       { url: new URL('/src/assets/Gallery/tropical-common-area.png', import.meta.url).href, alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
       { url: new URL('/src/assets/Gallery/1CCTVInstalled.jpg', import.meta.url).href, alt: "Security", caption: "24/7 CCTV security system", type: "image" },
+      { url: new URL('/src/assets/Gallery/2bafcf0c-8134-4a42-957c-ed899552c935.png', import.meta.url).href, alt: "Bathroom", caption: "Private Ensuite Bathroom", type: "image" },
+      { url: new URL('/src/assets/Gallery/8bbdbcb9-e10f-4a92-9d49-fc6875d5fd6a.png', import.meta.url).href, alt: "Bathroom", caption: "Hot Private Shower", type: "image" },
       { url: new URL('/src/assets/Gallery/1InternetSpeed.jpg', import.meta.url).href, alt: "High Speed Internet", caption: "Fast fiber internet throughout", type: "image" },
       { url: new URL('/src/assets/Gallery/Walkthroughtour.mp4', import.meta.url).href, alt: "Villa Walkthrough", caption: "Complete tour of the master suite", type: "video" }
     ],
@@ -203,8 +203,8 @@ const AccommodationSection = () => {
         nextAvailable: new Date(2025, 9, 8), // Available on October 8, 2025
       },
       "Cozy Room": {
-        status: "available", // Marked as available
-        nextAvailable: new Date(2025, 11, 1), // Available from September 29, 2025
+        status: "booked", // Marked as available
+        bookedUntil: new Date(2025, 11, 1), // Available from September 29, 2025
       },
       "Balcony Room": {
         status: "booked", // Marked as available
@@ -317,8 +317,8 @@ const AccommodationSection = () => {
                 const { isBooked, from, fromShort, extensionWarning, possibleExtensionUntil, nextMajorAvailability, specialOffer, availableUntilDate } = availability;
                 const isBalconyRoom = room.title === "Balcony Room";
                 const isCozyRoom = room.title === "Cozy Room";
-                const bookedRingColor = isBalconyRoom ? 'ring-orange-400' : 'ring-red-500';
-                const bookedBadgeColor = isBalconyRoom ? 'bg-orange-500' : 'bg-red-500';
+                const bookedRingColor = isBalconyRoom ? 'ring-red-400' : 'ring-red-500';
+                const bookedBadgeColor = isBalconyRoom ? 'bg-red-500' : 'bg-red-500';
                 
                 return (
                   <Card key={room.title} id={room.title.toLowerCase().replace(/ /g, '-')} className={`relative flex flex-col hover:shadow-xl transition-all duration-300 hover:scale-[1.02] ${room.popular && !isBooked ? 'ring-2 ring-green-500 shadow-lg' : ''} ${isBooked ? `ring-2 ${bookedRingColor} shadow-lg` : ''}`}>
@@ -335,7 +335,7 @@ const AccommodationSection = () => {
                         <Button variant="secondary" size="sm" className="absolute top-3 right-3 bg-white/90 hover:bg-white text-black transition-all hover:scale-105 z-10" onClick={(e) => { e.stopPropagation(); shareRoom(room); }}>
                           <Share2 className="w-3 h-3 mr-1" /> Share
                         </Button>
-                        <div className={`absolute bottom-3 left-3 px-2 py-1 rounded-md text-xs font-medium ${isBooked ? (isBalconyRoom ? 'bg-orange-500 text-white' : 'bg-red-500 text-white') : 'bg-green-600 text-white'}`}>{isBooked ? `Booked until ${fromShort}` : `Available ${fromShort}`}</div>
+                        <div className={`absolute bottom-3 left-3 px-2 py-1 rounded-md text-xs font-medium ${isBooked ? (isBalconyRoom ? 'bg-red-500 text-white' : 'bg-red-500 text-white') : 'bg-green-600 text-white'}`}>{isBooked ? `Booked until ${fromShort}` : `Available ${fromShort}`}</div>
                         <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1"><Expand className="w-3 h-3" /> {roomGalleries[room.title].length} photos</div>
                       </div>
                       <CardTitle className="text-xl">{room.title}</CardTitle>
@@ -349,12 +349,12 @@ const AccommodationSection = () => {
                     
                     <CardContent className="p-4 space-y-4 flex-grow flex flex-col justify-between">
                       <div>
-                        <div className={`flex flex-col gap-2 p-3 rounded-lg border ${isBooked ? (isBalconyRoom ? 'bg-orange-50 border-orange-200' : 'bg-red-50 border-red-200') : 'bg-green-50 border-green-200'}`}>
+                        <div className={`flex flex-col gap-2 p-3 rounded-lg border ${isBooked ? (isBalconyRoom ? 'bg-red-50 border-red-200' : 'bg-red-50 border-red-200') : 'bg-green-50 border-green-200'}`}>
                               <div className="flex items-center space-x-2 text-sm">
-                                <Calendar className={`w-4 h-4 ${isBooked ? (isBalconyRoom ? 'text-orange-600' : 'text-red-600') : 'text-green-600'}`} />
+                                <Calendar className={`w-4 h-4 ${isBooked ? (isBalconyRoom ? 'text-red-600' : 'text-red-600') : 'text-green-600'}`} />
                                 <span className="font-medium">{isBooked ? 'Next Available:' : 'Available From:'}</span>
                               </div>
-                              <span className={`text-lg font-bold ${isBooked ? (isBalconyRoom ? 'text-orange-700' : 'text-red-700') : 'text-green-700'}`}>{from}</span>
+                              <span className={`text-lg font-bold ${isBooked ? (isBalconyRoom ? 'text-red-700' : 'text-red-700') : 'text-green-700'}`}>{from}</span>
                               {!isBooked && availableUntilDate && (
                                 <div className="mt-2 pt-2 border-t border-green-200">
                                   <p className="text-xs text-green-800 font-medium">Available until {format(availableUntilDate, 'MMM dd, yyyy')}</p>
