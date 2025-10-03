@@ -193,27 +193,23 @@ const AccommodationSection = () => {
   ];
 
   const getAvailabilityDates = (room: { title: string }) => {
-    const today = new Date();
     // Note: JavaScript months are 0-indexed (e.g., 9 is October)
     const availabilityMap: Record<string, any> = {
-
-
       "Ensuite Master": {
-        status: "available", // Marked as available
-        nextAvailable: new Date(2025, 9, 8), // Available on October 8, 2025
+        status: "available",
+        nextAvailable: new Date(2025, 9, 8),   // Oct 8, 2025
+        availableUntil: new Date(2025, 9, 12), // Oct 12, 2025
+        specialOffer: { rate: "₱1,800", period: "per night (4-night stay)" },
+        nextMajorAvailability: new Date(2025, 11, 5), // Next availability: Dec 5, 2025
       },
       "Cozy Room": {
-        status: "booked", // Marked as available
-        bookedUntil: new Date(2025, 11, 1), // Available from September 29, 2025
+        status: "booked",
+        bookedUntil: new Date(2025, 11, 1), // Booked until Dec 1, 2025
       },
       "Balcony Room": {
-        status: "booked", // Marked as available
-        bookedUntil: new Date(2025, 11, 1), // Available from September 29, 2025
+        status: "booked",
+        bookedUntil: new Date(2025, 11, 2), // Booked until Dec 1, 2025
       }
-
-
-
-
     };
     
     const roomData = availabilityMap[room.title];
@@ -322,8 +318,8 @@ const AccommodationSection = () => {
                 
                 return (
                   <Card key={room.title} id={room.title.toLowerCase().replace(/ /g, '-')} className={`relative flex flex-col hover:shadow-xl transition-all duration-300 hover:scale-[1.02] ${room.popular && !isBooked ? 'ring-2 ring-green-500 shadow-lg' : ''} ${isBooked ? `ring-2 ${bookedRingColor} shadow-lg` : ''}`}>
-                    {room.popular && !isBooked && (<Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-600 text-white z-10">Available Due to Late Cancellation</Badge>)}
-                    {isBooked && (<Badge className={`absolute -top-3 left-1/2 transform -translate-x-1/2 ${bookedBadgeColor} text-white z-10`}>Currently Booked</Badge>)}
+                    {room.popular && !isBooked && (<Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-600 text-white z-10">Available Oct 8 - Oct 12</Badge>)}
+                    {isBooked && (<Badge className={`absolute -top-3 left-1/2 transform -translatex-1/2 ${bookedBadgeColor} text-white z-10`}>Currently Booked</Badge>)}
                     {isBalconyRoom && extensionWarning && (<Badge className="absolute -top-3 right-4 bg-blue-500 text-white z-10 text-xs">Extension Pending</Badge>)}
                     
                     <CardHeader className="p-4">
@@ -358,6 +354,11 @@ const AccommodationSection = () => {
                               {!isBooked && availableUntilDate && (
                                 <div className="mt-2 pt-2 border-t border-green-200">
                                   <p className="text-xs text-green-800 font-medium">Available until {format(availableUntilDate, 'MMM dd, yyyy')}</p>
+                                </div>
+                              )}
+                              {nextMajorAvailability && (
+                                <div className="mt-2 pt-2 border-t border-dashed border-gray-300">
+                                  <p className="text-xs text-gray-600 font-medium mt-2">Next opening after this is {nextMajorAvailability}</p>
                                 </div>
                               )}
                         </div>
