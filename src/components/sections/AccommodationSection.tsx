@@ -199,7 +199,7 @@ const AccommodationSection = () => {
         status: "available",
         nextAvailable: new Date(2025, 9, 8),   // Oct 8, 2025
         availableUntil: new Date(2025, 9, 12), // Oct 12, 2025
-        specialOffer: { rate: "₱1,800", period: "per night (4-night stay)" },
+        specialOffer: { rate: "₱1,199", period: "per night (4-night stay)" },
         nextMajorAvailability: new Date(2025, 11, 5), // Next availability: Dec 5, 2025
       },
       "Cozy Room": {
