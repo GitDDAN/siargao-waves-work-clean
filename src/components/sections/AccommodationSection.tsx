@@ -144,45 +144,46 @@ const AccommodationSection = () => {
   const balconyRoomImage = '/src/assets/Gallery/balcony-room.png';
   const cozyRoomImage = '/src/assets/Gallery/cozy-room.png';
 
-  const roomGalleries: Record<string, ImageItem[]> = {
+ const roomGalleries: Record<string, ImageItem[]> = {
     "Ensuite Master": [
-      { url: '/src/assets/Gallery/ensuite-master.png', alt: "Ensuite Master Bedroom", caption: "Spacious master bedroom with ensuite bathroom", type: "image" },
-      { url: '/src/assets/Gallery/95a8fd83-4039-4385-8acb-b3a404901043.png', alt: "Room Interior", caption: "Queen bed with tropical ambiance", type: "image" },
-      { url: '/src/assets/Gallery/921e3861-a745-4e7a-bf07-ead82a89490b.png', alt: "Master Bedroom View", caption: "Master suite with Jungle views", type: "image" },
-      { url: '/src/assets/Gallery/48738a79-c51e-45f7-adae-d1f3d13355e5.png', alt: "Work Desk", caption: "Dedicated workspace with natural light", type: "image" },
-      { url: '/src/assets/Gallery/b5ba0685-11ca-4d09-be1d-5415e33d66fe.png', alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
-      { url: '/src/assets/Gallery/tropical-common-area.png', alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
-      { url: '/src/assets/Gallery/1CCTVInstalled.jpg', alt: "Security", caption: "24/7 CCTV security system", type: "image" },
-      { url: '/src/assets/Gallery/2bafcf0c-8134-4a42-957c-ed899552c935.png', alt: "Bathroom", caption: "Private Ensuite Bathroom", type: "image" },
-      { url: '/src/assets/Gallery/8bbdbcb9-e10f-4a92-9d49-fc6875d5fd6a.png', alt: "Bathroom", caption: "Hot Private Shower", type: "image" },
-      { url: '/src/assets/Gallery/1InternetSpeed.jpg', alt: "High Speed Internet", caption: "Fast fiber internet throughout", type: "image" },
-      { url: '/src/assets/Gallery/Walkthroughtour.mp4', alt: "Villa Walkthrough", caption: "Complete tour of the master suite", type: "video" }
+      { url: new URL('/src/assets/Gallery/ensuite-master.png', import.meta.url).href, alt: "Ensuite Master Bedroom", caption: "Spacious master bedroom with ensuite bathroom", type: "image" },
+      { url: new URL('/src/assets/Gallery/95a8fd83-4039-4385-8acb-b3a404901043.png', import.meta.url).href, alt: "Room Interior", caption: "Queen bed with tropical ambiance", type: "image" },
+      { url: new URL('/src/assets/Gallery/921e3861-a745-4e7a-bf07-ead82a89490b.png', import.meta.url).href, alt: "Master Bedroom View", caption: "Master suite with Jungle views", type: "image" },
+      { url: new URL('/src/assets/Gallery/48738a79-c51e-45f7-adae-d1f3d13355e5.png', import.meta.url).href, alt: "Work Desk", caption: "Dedicated workspace with natural light", type: "image" },
+
+      { url: new URL('/src/assets/Gallery/b5ba0685-11ca-4d09-be1d-5415e33d66fe.png', import.meta.url).href, alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
+      { url: new URL('/src/assets/Gallery/tropical-common-area.png', import.meta.url).href, alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
+      { url: new URL('/src/assets/Gallery/1CCTVInstalled.jpg', import.meta.url).href, alt: "Security", caption: "24/7 CCTV security system", type: "image" },
+      { url: new URL('/src/assets/Gallery/2bafcf0c-8134-4a42-957c-ed899552c935.png', import.meta.url).href, alt: "Bathroom", caption: "Private Ensuite Bathroom", type: "image" },
+      { url: new URL('/src/assets/Gallery/8bbdbcb9-e10f-4a92-9d49-fc6875d5fd6a.png', import.meta.url).href, alt: "Bathroom", caption: "Hot Private Shower", type: "image" },
+      { url: new URL('/src/assets/Gallery/1InternetSpeed.jpg', import.meta.url).href, alt: "High Speed Internet", caption: "Fast fiber internet throughout", type: "image" },
+      { url: new URL('/src/assets/Gallery/Walkthroughtour.mp4', import.meta.url).href, alt: "Villa Walkthrough", caption: "Complete tour of the master suite", type: "video" }
     ],
     "Balcony Room": [
-      { url: '/src/assets/Gallery/balcony-room.png', alt: "Balcony Room", caption: "Bright room with private balcony access", type: "image" },
-      { url: '/src/assets/Gallery/BalconyRoomDoors.jpg', alt: "Balcony Doors", caption: "Private balcony doors opening to paradise", type: "image" },
-      { url: '/src/assets/Gallery/BalconyRoomstorage.jpg', alt: "Storage Space", caption: "Ample storage for extended stays", type: "image" },
-      { url: '/src/assets/Gallery/cb48cf65-05f7-452c-9969-05e7c527e62d.png', alt: "Tropical Views", caption: "Wake up to tropical jungle views", type: "image" },
-      { url: '/src/assets/Gallery/26a3f37c-c09b-4051-b6b9-2da2c9866038.png', alt: "Balcony Space", caption: "2 bathrooms shared between 2 rooms, 1 with shower", type: "image" },
-      { url: '/src/assets/Gallery/5c657536-0c6a-45fe-82c9-c3dd37af1b6b.png', alt: "Additional View", caption: "Downstairs area", type: "image" },
-      { url: '/src/assets/Gallery/b5ba0685-11ca-4d09-be1d-5415e33d66fe.png', alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
-      { url: '/src/assets/Gallery/tropical-common-area.png', alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
-      { url: '/src/assets/Gallery/1CCTVInstalled.jpg', alt: "Security", caption: "24/7 CCTV security system", type: "image" },
-      { url: '/src/assets/Gallery/1InternetSpeed.jpg', alt: "High Speed Internet", caption: "Fast fiber internet throughout", type: "image" }
+      { url: new URL('/src/assets/Gallery/balcony-room.png', import.meta.url).href, alt: "Balcony Room", caption: "Bright room with private balcony access", type: "image" },
+      { url: new URL('/src/assets/Gallery/BalconyRoomDoors.jpg', import.meta.url).href, alt: "Balcony Doors", caption: "Private balcony doors opening to paradise", type: "image" },
+      { url: new URL('/src/assets/Gallery/BalconyRoomstorage.jpg', import.meta.url).href, alt: "Storage Space", caption: "Ample storage for extended stays", type: "image" },
+      { url: new URL('/src/assets/Gallery/cb48cf65-05f7-452c-9969-05e7c527e62d.png', import.meta.url).href, alt: "Tropical Views", caption: "Wake up to tropical jungle views", type: "image" },
+      { url: new URL('/src/assets/Gallery/26a3f37c-c09b-4051-b6b9-2da2c9866038.png', import.meta.url).href, alt: "Balcony Space", caption: "2 bathrooms shared between 2 rooms, 1 with shower", type: "image" },
+      { url: new URL('/src/assets/Gallery/5c657536-0c6a-45fe-82c9-c3dd37af1b6b.png', import.meta.url).href, alt: "Additional View", caption: "Downstairs area", type: "image" },
+      { url: new URL('/src/assets/Gallery/b5ba0685-11ca-4d09-be1d-5415e33d66fe.png', import.meta.url).href, alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
+      { url: new URL('/src/assets/Gallery/tropical-common-area.png', import.meta.url).href, alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
+      { url: new URL('/src/assets/Gallery/1CCTVInstalled.jpg', import.meta.url).href, alt: "Security", caption: "24/7 CCTV security system", type: "image" },
+      { url: new URL('/src/assets/Gallery/1InternetSpeed.jpg', import.meta.url).href, alt: "High Speed Internet", caption: "Fast fiber internet throughout", type: "image" }
     ],
     "Cozy Room": [
-      { url: '/src/assets/Gallery/cozy-room.png', alt: "Cozy Room", caption: "Comfortable room with Jungle views", type: "image" },
-      { url: '/src/assets/Gallery/PrivateRoom.jpg', alt: "Private Room", caption: "Your private sanctuary", type: "image" },
-      { url: '/src/assets/Gallery/b5ba0685-11ca-4d09-be1d-5415e33d66fe.png', alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
-      { url: '/src/assets/Gallery/ec9eb930-e69a-466d-9b13-4c2201461a79.png', alt: "Room Features", caption: "Downstairs Kitchen", type: "image" },
-      { url: '/src/assets/Gallery/f27cb854-871b-4105-b007-0eae90fb8d40.png', alt: "Garden Access", caption: "Location / Shortcut access to main road", type: "image" },
-      { url: '/src/assets/Gallery/f81897b9-695c-4f23-a935-71908f648dd4.jpg', alt: "Room Details", caption: "Cozy room amenities", type: "image" },
-      { url: '/src/assets/Gallery/TeaCommonArea.jpg', alt: "Common Area", caption: "Access to shared tea area", type: "image" },
-      { url: '/src/assets/Gallery/tropical-common-area.png', alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
-      { url: '/src/assets/Gallery/1CCTVInstalled.jpg', alt: "Security", caption: "24/7 CCTV security system", type: "image" },
-      { url: '/src/assets/Gallery/1InternetSpeed.jpg', alt: "High Speed Internet", caption: "Fast fiber internet throughout", type: "image" },
-      { url: '/src/assets/Gallery/PrivateRoomVideo.mp4', alt: "Room Tour", caption: "Video tour of the cozy room", type: "video" },
-      { url: '/src/assets/Gallery/CuteRoomShort.mp4', alt: "Quick Room Tour", caption: "Quick tour of the cozy room", type: "video" }
+      { url: new URL('/src/assets/Gallery/cozy-room.png', import.meta.url).href, alt: "Cozy Room", caption: "Comfortable room with Jungle views", type: "image" },
+      { url: new URL('/src/assets/Gallery/PrivateRoom.jpg', import.meta.url).href, alt: "Private Room", caption: "Your private sanctuary", type: "image" },
+      { url: new URL('/src/assets/Gallery/b5ba0685-11ca-4d09-be1d-5415e33d66fe.png', import.meta.url).href, alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
+      { url: new URL('/src/assets/Gallery/ec9eb930-e69a-466d-9b13-4c2201461a79.png', import.meta.url).href, alt: "Room Features", caption: "Downstairs Kitchen", type: "image" },
+      { url: new URL('/src/assets/Gallery/f27cb854-871b-4105-b007-0eae90fb8d40.png', import.meta.url).href, alt: "Garden Access", caption: "Location / Shortcut access to main road", type: "image" },
+      { url: new URL('/src/assets/Gallery/f81897b9-695c-4f23-a935-71908f648dd4.jpg', import.meta.url).href, alt: "Room Details", caption: "Cozy room amenities", type: "image" },
+      { url: new URL('/src/assets/Gallery/TeaCommonArea.jpg', import.meta.url).href, alt: "Common Area", caption: "Access to shared tea area", type: "image" },
+      { url: new URL('/src/assets/Gallery/tropical-common-area.png', import.meta.url).href, alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
+      { url: new URL('/src/assets/Gallery/1CCTVInstalled.jpg', import.meta.url).href, alt: "Security", caption: "24/7 CCTV security system", type: "image" },
+      { url: new URL('/src/assets/Gallery/1InternetSpeed.jpg', import.meta.url).href, alt: "High Speed Internet", caption: "Fast fiber internet throughout", type: "image" },
+      { url: new URL('/src/assets/Gallery/PrivateRoomVideo.mp4', import.meta.url).href, alt: "Room Tour", caption: "Video tour of the cozy room", type: "video" },
+      { url: new URL('/src/assets/Gallery/CuteRoomShort.mp4', import.meta.url).href, alt: "Quick Room Tour", caption: "Quick tour of the cozy room", type: "video" }
     ]
   };
 
