@@ -138,13 +138,12 @@ const AccommodationSection = () => {
   const [selectedRoom, setSelectedRoom] = useState<any>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  // Using a simple require for assets which is more common in Create React App environments
-  // NOTE: This assumes a bundler like Webpack or Vite is configured to handle these imports.
-  const ensuiteMasterImage = '/src/assets/Gallery/ensuite-master.png';
-  const balconyRoomImage = '/src/assets/Gallery/balcony-room.png';
-  const cozyRoomImage = '/src/assets/Gallery/cozy-room.png';
+  // Reverting to the new URL pattern for all images to fix path resolution issues in Vite.
+  const ensuiteMasterImage = new URL('/src/assets/Gallery/ensuite-master.png', import.meta.url).href;
+  const balconyRoomImage = new URL('/src/assets/Gallery/balcony-room.png', import.meta.url).href;
+  const cozyRoomImage = new URL('/src/assets/Gallery/cozy-room.png', import.meta.url).href;
 
- const roomGalleries: Record<string, ImageItem[]> = {
+  const roomGalleries: Record<string, ImageItem[]> = {
     "Ensuite Master": [
       { url: new URL('/src/assets/Gallery/ensuite-master.png', import.meta.url).href, alt: "Ensuite Master Bedroom", caption: "Spacious master bedroom with ensuite bathroom", type: "image" },
       { url: new URL('/src/assets/Gallery/95a8fd83-4039-4385-8acb-b3a404901043.png', import.meta.url).href, alt: "Room Interior", caption: "Queen bed with tropical ambiance", type: "image" },
@@ -194,11 +193,14 @@ const AccommodationSection = () => {
   ];
 
   const getAvailabilityDates = (room: { title: string }) => {
-    // Note: JavaScript months are 0-indexed (e.g., 11 is December)
+    // Note: JavaScript months are 0-indexed (e.g., 9 is October)
     const availabilityMap: Record<string, any> = {
       "Ensuite Master": {
-        status: "booked",
-        bookedUntil: new Date(2025, 11, 5), // Next available Dec 5, 2025
+        status: "available",
+        nextAvailable: new Date(2025, 9, 8),   // Oct 8, 2025
+        availableUntil: new Date(2025, 9, 12), // Oct 12, 2025
+        specialOffer: { rate: "₱1,199", period: "per night (4-night stay)" },
+        nextMajorAvailability: new Date(2025, 11, 5), // Next availability: Dec 5, 2025
       },
       "Cozy Room": {
         status: "booked",
@@ -206,7 +208,7 @@ const AccommodationSection = () => {
       },
       "Balcony Room": {
         status: "booked",
-        bookedUntil: new Date(2025, 11, 2), // Booked until Dec 2, 2025
+        bookedUntil: new Date(2025, 11, 2), // Booked until Dec 1, 2025
       }
     };
     
@@ -255,25 +257,11 @@ const AccommodationSection = () => {
   };
 
   const getAvailabilitySummary = () => {
-    const roomAvailabilities = roomTypes.map(room => ({ ...room, nextAvailable: getAvailabilityDates(room).nextAvailable }));
-    const earliestAvailable = roomAvailabilities.sort((a, b) => a.nextAvailable.getTime() - b.nextAvailable.getTime())[0];
-    
-    const now = new Date();
-    // Filter for rooms that will be available in the future
-    const futureAvailabilities = roomAvailabilities.filter(r => r.nextAvailable > now);
-
-    if (futureAvailabilities.length === 0) {
-        // If no future availabilities, it implies all are booked for the foreseeable future.
-        // Show the soonest opening among all rooms.
-        return `All suites currently booked. Next opening is ${earliestAvailable.title} from ${format(earliestAvailable.nextAvailable, 'MMM dd')}`;
-    }
-
-    // Of the rooms that have a future availability, which one is the soonest
-    const nextEarliest = futureAvailabilities.sort((a,b)=> a.nextAvailable.getTime() - b.nextAvailable.getTime())[0];
-    
-    return `Next Available: ${nextEarliest.title} from ${format(nextEarliest.nextAvailable, 'MMM dd')}`;
-};
-
+    const availableRooms = roomTypes.filter(room => !getAvailabilityDates(room).isBooked);
+    if (availableRooms.length === 0) return "All suites currently booked - Join waitlist for next availability";
+    const earliestAvailable = availableRooms.map(room => ({ room, date: getAvailabilityDates(room).nextAvailable })).sort((a, b) => a.date.getTime() - b.date.getTime())[0];
+    return `Next Available: ${earliestAvailable.room.title} from ${format(earliestAvailable.date, 'MMM dd')}`;
+  };
 
   const shareRoom = async (room: any) => {
     const availability = getAvailabilityDates(room);
@@ -331,7 +319,7 @@ const AccommodationSection = () => {
                 return (
                   <Card key={room.title} id={room.title.toLowerCase().replace(/ /g, '-')} className={`relative flex flex-col hover:shadow-xl transition-all duration-300 hover:scale-[1.02] ${room.popular && !isBooked ? 'ring-2 ring-green-500 shadow-lg' : ''} ${isBooked ? `ring-2 ${bookedRingColor} shadow-lg` : ''}`}>
                     {room.popular && !isBooked && (<Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-600 text-white z-10">Available Oct 8 - Oct 12</Badge>)}
-                    {isBooked && (<Badge className={`absolute -top-3 left-1/2 transform -translate-x-1/2 ${bookedBadgeColor} text-white z-10`}>Currently Booked</Badge>)}
+                    {isBooked && (<Badge className={`absolute -top-3 left-1/2 transform -translatex-1/2 ${bookedBadgeColor} text-white z-10`}>Currently Booked</Badge>)}
                     {isBalconyRoom && extensionWarning && (<Badge className="absolute -top-3 right-4 bg-blue-500 text-white z-10 text-xs">Extension Pending</Badge>)}
                     
                     <CardHeader className="p-4">
@@ -377,13 +365,13 @@ const AccommodationSection = () => {
 
                         {specialOffer && !isBooked && (
                           <div className="flex flex-col gap-1 mt-3 p-3 rounded-lg border bg-yellow-50 border-yellow-200 text-yellow-900">
-                                  <div className="flex items-center space-x-2 text-sm font-bold">
-                                    <Star className="w-4 h-4 text-yellow-600" fill="currentColor" />
-                                    <span>Special Nightly Rate</span>
-                                  </div>
-                                  <p className="text-sm font-medium pl-6">
-                                    <span className="font-bold">{specialOffer.rate}</span> {specialOffer.period}
-                                  </p>
+                                <div className="flex items-center space-x-2 text-sm font-bold">
+                                  <Star className="w-4 h-4 text-yellow-600" fill="currentColor" />
+                                  <span>Special Nightly Rate</span>
+                                </div>
+                                <p className="text-sm font-medium pl-6">
+                                  <span className="font-bold">{specialOffer.rate}</span> {specialOffer.period}
+                                </p>
                           </div>
                         )}
                         
@@ -431,4 +419,3 @@ const AccommodationSection = () => {
 };
 
 export default AccommodationSection;
-
