@@ -51,12 +51,12 @@ const Footer = () => {
     {
       icon: Phone,
       label: "+63 908 333 9477",
-      href: "tel:+639476170167"
+      href: "tel:+639083339477"
     },
     {
       icon: MessageCircle,
       label: "WhatsApp",
-      href: "https://wa.me/639476170167?text=Hi!%20I'd%20like%20to%20ask%20a%20question%20about%20Siargao%20Salamat%20Villa%20Coliving."
+      href: "https://wa.me/639083339477?text=Hi!%20I'd%20like%20to%20ask%20a%20question%20about%20Siargao%20Salamat%20Villa%20Coliving."
     }
   ];
 
@@ -143,7 +143,7 @@ const Footer = () => {
                 onClick={() => {
                   // --- UPDATED: WhatsApp message with new name ---
                   const message = "Hi! I'm interested in booking a stay at Siargao Salamat Villa Coliving. Can you share more details about availability?";
-                  window.open(`https://wa.me/639476170167?text=${encodeURIComponent(message)}`, '_blank');
+                  window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
                 }}
               >
                 Book Now

@@ -213,19 +213,19 @@ const AccommodationSection = () => {
   ];
 
   const getAvailabilityDates = (room: { title: string }) => {
-    // Note: JavaScript months are 0-indexed (e.g., 11 is December)
+    // Note: JavaScript months are 0-indexed (e.g., 1 is February)
     const availabilityMap: Record<string, any> = {
       "Ensuite Master": {
         status: "available",
-        nextAvailable: new Date(2025, 11, 5), // Dec 5, 2025
+        nextAvailable: new Date(2026, 1, 27), // Feb 27, 2026
       },
       "Cozy Room": {
-        status: "booked",
-        bookedUntil: new Date(2025, 11, 1), // Booked until Dec 1, 2025
+        status: "available",
+        nextAvailable: new Date(2026, 1, 20), // Feb 20, 2026
       },
       "Balcony Room": {
-        status: "booked",
-        bookedUntil: new Date(2025, 11, 2), // Booked until Dec 2, 2025
+        status: "available",
+        nextAvailable: new Date(2026, 1, 20), // Feb 20, 2026
       }
     };
     
@@ -263,13 +263,13 @@ const AccommodationSection = () => {
       let offerText = availability.specialOffer ? ` I'm interested in the special offer of ${availability.specialOffer.rate} ${availability.specialOffer.period}.` : '';
       message = `Hi! I'm interested in booking the "${room.title}" room, available from ${availability.from}.${offerText} Could you provide more details?`;
     }
-    const whatsappUrl = `https://wa.me/639476170167?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/639083339477?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   const openWhatsAppForWaitlist = (room: any) => {
     const message = `Hi! I'd like to be added to the waitlist for the "${room.title}" room for future dates. Please keep me updated on any new openings!`;
-    const whatsappUrl = `https://wa.me/639476170167?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/639083339477?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 

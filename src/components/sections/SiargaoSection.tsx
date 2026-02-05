@@ -1,10 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { 
-  Waves, 
-  MapPin, 
-  DollarSign, 
+import {
+  Waves,
+  MapPin,
+  DollarSign,
   Thermometer,
   Utensils,
   Car,
@@ -14,7 +14,9 @@ import {
   Mountain,
   Dumbbell,
   Music,
-  Camera
+  Camera,
+  Bike,
+  ExternalLink
 } from "lucide-react";
 
 const SiargaoSection = () => {
@@ -25,7 +27,7 @@ const SiargaoSection = () => {
       description: "Affordable paradise with quality infrastructure",
       details: [
         "Meals from ₱150-400",
-        "Motorbike rental ₱300/day", 
+        "Motorbike rental ₱350/day via GoldenBellSiargao.com", 
         "Local transport ₱50-100",
         "Massage ₱500/hour"
       ],
@@ -108,6 +110,14 @@ const SiargaoSection = () => {
       distance: "300m Walk",
       activity: "Sunrise views, beach bars",
       icon: Sun
+    },
+    {
+      name: "Golden Bell Siargao",
+      distance: "Partner Service",
+      activity: "Trusted motorbike rentals",
+      icon: Bike,
+      featured: true,
+      link: "https://goldenbellsiargao.com"
     },
     {
       name: "Sayak Airport",
@@ -193,15 +203,36 @@ const SiargaoSection = () => {
         <div className="bg-muted/50 rounded-2xl p-8 mb-16">
           <h3 className="text-2xl font-bold text-center mb-8">Perfect Location - Everything Within Walking Distance</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {locations.map((location, index) => (
-              <div key={index} className="text-center p-6 bg-background rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <location.icon className="w-6 h-6 text-primary" />
+            {locations.map((location: any, index) => (
+              location.featured ? (
+                <a
+                  key={index}
+                  href={location.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-center p-6 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-yellow-400 hover:scale-105 cursor-pointer block"
+                >
+                  <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <location.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex items-center justify-center gap-1 mb-1">
+                    <h4 className="font-bold text-yellow-700">{location.name}</h4>
+                    <ExternalLink className="w-4 h-4 text-yellow-600" />
+                  </div>
+                  <p className="text-yellow-600 font-bold text-sm mb-2">🏍️ Recommended Partner</p>
+                  <p className="text-sm text-gray-600">{location.activity}</p>
+                  <p className="text-xs text-yellow-700 mt-2 font-medium">Click to visit website →</p>
+                </a>
+              ) : (
+                <div key={index} className="text-center p-6 bg-background rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <location.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h4 className="font-semibold mb-1">{location.name}</h4>
+                  <p className="text-primary font-bold text-lg mb-2">{location.distance}</p>
+                  <p className="text-sm text-muted-foreground">{location.activity}</p>
                 </div>
-                <h4 className="font-semibold mb-1">{location.name}</h4>
-                <p className="text-primary font-bold text-lg mb-2">{location.distance}</p>
-                <p className="text-sm text-muted-foreground">{location.activity}</p>
-              </div>
+              )
             ))}
           </div>
           <div className="text-center mt-6">
@@ -311,7 +342,7 @@ const SiargaoSection = () => {
               className="hover:bg-primary/10 hover:border-primary/50 transition-colors"
               onClick={() => {
                 const message = "Hi Ali, please send me the Welcome Package!";
-                window.open(`https://wa.me/639476170167?text=${encodeURIComponent(message)}`, '_blank');
+                window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
               }}
             >
               Request Welcome Package
@@ -322,7 +353,7 @@ const SiargaoSection = () => {
               className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
               onClick={() => {
                 const message = "Hi Ali, I'd like to join the community WhatsApp group!";
-                window.open(`https://wa.me/639476170167?text=${encodeURIComponent(message)}`, '_blank');
+                window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
               }}
             >
               Join Community WhatsApp
