@@ -121,7 +121,7 @@ const HeroSection = () => {
                     <div className="pt-4">
                         <div className="md:flex md:flex-row justify-center items-center md:gap-4 bg-white/5 backdrop-blur-lg rounded-2xl p-4 w-full max-w-sm mx-auto md:max-w-none md:bg-transparent md:p-0">
                             {[
-                                { number: "₱25k/mo", label: "Starting From Coliving Rates" },
+                                { number: "₱26k/mo", label: "Starting From Coliving Rates" },
                                 { number: "100+ Fiber", label: "Fast WiFi Up & Down" },
                                 { number: "24/7", label: "Backup Cafe 200m" },
                             ].map((stat, index) => (
