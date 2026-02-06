@@ -64,14 +64,14 @@ const CommunitySection = () => {
       <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 z-20">
         <div className="container mx-auto px-4">
           <div className="bg-gradient-to-r from-primary via-secondary to-accent rounded-xl shadow-lg p-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <div className="flex items-center space-x-3">
-                <div className="flex space-x-2">
+                <div className="hidden sm:flex space-x-2">
                   <Sparkles className="w-4 h-4 text-yellow-300 animate-pulse" />
                   <Clock className="w-4 h-4 text-white animate-bounce" />
                 </div>
                 <div>
-                  <h3 className="text-base md:text-xl font-bold text-white">
+                  <h3 className="text-sm sm:text-base md:text-xl font-bold text-white">
                     🚀 Community Hub Launching August 2025
                   </h3>
                   <p className="text-xs text-white/90 hidden md:block">
@@ -79,10 +79,10 @@ const CommunitySection = () => {
                   </p>
                 </div>
               </div>
-              <Button 
+              <Button
                 variant="default"
                 size="sm"
-                className="bg-white text-primary hover:bg-white/90 font-semibold px-3 py-1 rounded-full text-sm border-0 flex-shrink-0"
+                className="bg-white text-primary hover:bg-white/90 font-semibold px-3 py-1 rounded-full text-sm border-0 flex-shrink-0 w-full sm:w-auto"
                 onClick={() => {
                   const message = "Hi! I'm interested in joining the community when it launches. Can you add me to the early access list?";
                   window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');

@@ -33,5 +33,3 @@ const Index = () => {
 };
 
 export default Index;
-
-<script type="module" src="/src/main.tsx"></script>

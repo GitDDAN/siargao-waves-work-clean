@@ -54,7 +54,7 @@ ${formData.message || 'None'}
       <div className="container mx-auto px-4">
         {/* Section Header — frosted pill */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-white/70 backdrop-blur-md rounded-2xl px-8 py-6 shadow-lg shadow-black/5 border border-white/50">
+          <div className="inline-block bg-white/70 backdrop-blur-md rounded-2xl px-4 py-4 sm:px-8 sm:py-6 shadow-lg shadow-black/5 border border-white/50">
             <Badge variant="outline" className="mb-4 bg-white/80 border-primary/30">Book Your Tropical Escape</Badge>
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">

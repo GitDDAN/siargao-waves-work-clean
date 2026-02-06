@@ -160,7 +160,7 @@ const SiargaoSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header — frosted pill */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-white/70 backdrop-blur-md rounded-2xl px-8 py-6 shadow-lg shadow-black/5 border border-white/50">
+          <div className="inline-block bg-white/70 backdrop-blur-md rounded-2xl px-4 py-4 sm:px-8 sm:py-6 shadow-lg shadow-black/5 border border-white/50">
             <Badge variant="outline" className="mb-4 bg-white/80 border-primary/30">
               <MapPin className="w-3 h-3 mr-1" />
               Siargao Island Experience
@@ -276,7 +276,7 @@ const SiargaoSection = () => {
         {/* Community Impact */}
         <div className="bg-white/65 backdrop-blur-md rounded-2xl p-6 md:p-8 mb-12 relative overflow-hidden shadow-lg shadow-black/5 border border-white/40">
           {/* Future Goals Stamp - Updated with tropical colors */}
-          <div className="absolute top-4 right-4 transform rotate-12">
+          <div className="hidden sm:block absolute top-4 right-4 transform rotate-12">
             <div className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-lg border-2 border-white shadow-lg">
               <div className="text-center">
                 <div className="text-xs font-bold uppercase tracking-wider">Future Goals</div>

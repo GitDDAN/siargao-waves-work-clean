@@ -92,7 +92,7 @@ const WorkspaceSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header — frosted pill */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-white/70 backdrop-blur-md rounded-2xl px-8 py-6 shadow-lg shadow-black/5 border border-white/50">
+          <div className="inline-block bg-white/70 backdrop-blur-md rounded-2xl px-4 py-4 sm:px-8 sm:py-6 shadow-lg shadow-black/5 border border-white/50">
             <Badge variant="outline" className="mb-4 bg-white/80 border-primary/30">
               Work-Friendly Setup
             </Badge>
@@ -115,7 +115,7 @@ const WorkspaceSection = () => {
             <div className="grid md:grid-cols-3 gap-6">
               {workspaceTypes.map((workspace, index) => (
                 <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] bg-white/80 backdrop-blur-sm border-white/60 shadow-md shadow-black/5">
-                  <CardContent className="p-8">
+                  <CardContent className="p-5 md:p-8">
                     <div className="flex items-center space-x-3 mb-4">
                       <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                         <workspace.icon className="w-5 h-5 text-primary" />

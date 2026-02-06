@@ -190,9 +190,8 @@ const Footer = () => {
 
         {/* Bottom */}
         <div className="border-t border-background/20 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-4 text-sm text-background/70">
-              {/* --- UPDATED: Copyright with new name --- */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-sm text-background/70 text-center">
               <span>&copy; 2026 Salamat Villa Siargao. All rights reserved.</span>
               <div className="flex items-center space-x-1">
                 <span>Made with</span>
@@ -201,7 +200,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-6 text-sm">
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm">
               <a href="#" className="text-background/70 hover:text-primary transition-colors">
                 Privacy Policy
               </a>

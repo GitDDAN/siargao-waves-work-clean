@@ -62,7 +62,7 @@ const CozyRoomPromoSection = () => {
                 <span className="text-sm font-semibold text-green-700 uppercase tracking-wider">Limited Time Offer</span>
               </div>
 
-              <h3 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
                 <span className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent">The Cozy Room</span>
                 <span className="block text-2xl md:text-3xl mt-1 bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">is Available!</span>
               </h3>
@@ -116,7 +116,7 @@ const CozyRoomPromoSection = () => {
               </div>
 
               {/* Thumbnail Row */}
-              <div className="grid grid-cols-6 gap-2 mt-8">
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mt-8">
                 {thumbnails.map((thumb, index) => (
                   <div key={index} className="aspect-square overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer ring-2 ring-white">
                     <img

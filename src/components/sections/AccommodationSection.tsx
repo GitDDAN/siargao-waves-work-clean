@@ -147,12 +147,12 @@ const ImageGalleryModal: React.FC<ImageGalleryModalProps> = ({ isOpen, onClose, 
             <button className="text-white hover:text-gray-300" onClick={onClose}><X className="w-8 h-8" /></button>
         </div>
         <div className="relative w-full h-full flex items-center justify-center">
-            <button className="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black/50 p-2 rounded-full z-50" onClick={handlePrev}><ChevronLeft className="w-8 h-8" /></button>
-            <div className="flex flex-col items-center justify-center p-4 h-full" onClick={(e) => e.stopPropagation()}>
-                {currentItem.type === 'video' ? <video key={currentItem.url} src={currentItem.url} controls autoPlay muted className="max-w-full max-h-[80vh] object-contain rounded-lg" /> : <img key={currentItem.url} src={currentItem.url} alt={currentItem.alt} className="max-w-full max-h-[80vh] object-contain rounded-lg" />}
+            <button className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white bg-black/50 p-1.5 sm:p-2 rounded-full z-50" onClick={handlePrev}><ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" /></button>
+            <div className="flex flex-col items-center justify-center px-10 sm:px-16 py-4 h-full" onClick={(e) => e.stopPropagation()}>
+                {currentItem.type === 'video' ? <video key={currentItem.url} src={currentItem.url} controls autoPlay muted className="max-w-full max-h-[75vh] sm:max-h-[80vh] object-contain rounded-lg" /> : <img key={currentItem.url} src={currentItem.url} alt={currentItem.alt} className="max-w-full max-h-[75vh] sm:max-h-[80vh] object-contain rounded-lg" />}
                 {currentItem.caption && <p className="text-white text-center mt-4 text-sm max-w-2xl">{currentItem.caption}</p>}
             </div>
-            <button className="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black/50 p-2 rounded-full z-50" onClick={handleNext}><ChevronRight className="w-8 h-8" /></button>
+            <button className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white bg-black/50 p-1.5 sm:p-2 rounded-full z-50" onClick={handleNext}><ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" /></button>
         </div>
     </div>
   );
@@ -324,7 +324,7 @@ const AccommodationSection = () => {
               <p className="text-sm text-muted-foreground">{getAvailabilitySummary()}</p>
             </div>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-16">
             {roomTypes.map((room) => {
               const availability = getAvailabilityDates(room);
               const { isBooked, from, fromShort, extensionWarning, possibleExtensionUntil, nextMajorAvailability, specialOffer, availableUntilDate } = availability;
@@ -348,7 +348,7 @@ const AccommodationSection = () => {
                         <Share2 className="w-3 h-3 mr-1" /> Share
                       </Button>
                       <div className={`absolute bottom-3 left-3 px-2 py-1 rounded-md text-xs font-medium ${isBooked ? (isBalconyRoom ? 'bg-red-500 text-white' : 'bg-red-500 text-white') : 'bg-green-600 text-white'}`}>{isBooked ? `Booked until ${fromShort}` : `Available ${fromShort}`}</div>
-                      <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1"><Expand className="w-3 h-3" /> {roomGalleries[room.title].length} photos</div>
+                      <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded-md text-xs font-medium hidden sm:flex items-center gap-1"><Expand className="w-3 h-3" /> {roomGalleries[room.title].length} photos</div>
                     </div>
                     <CardTitle className="text-xl">{room.title}</CardTitle>
                     <p className="text-sm text-muted-foreground mb-3">{room.subtitle}</p>
