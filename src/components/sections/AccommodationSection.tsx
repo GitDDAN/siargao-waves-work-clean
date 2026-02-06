@@ -315,16 +315,16 @@ const AccommodationSection = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 md:mb-16">
             <Badge variant="outline" className="mb-4">Tropical Paradise Living</Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Salamat Villa Siargao</span> Private Suites
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">Your Dream Island Living Awaits</p>
-            <div className="bg-primary/5 p-4 rounded-lg inline-block">
-              <h3 className="text-lg font-semibold text-primary mb-2">Current Suite Status:</h3>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-4">Your Dream Island Living Awaits</p>
+            <div className="bg-primary/5 p-3 sm:p-4 rounded-lg inline-block">
+              <h3 className="text-base sm:text-lg font-semibold text-primary mb-2">Current Suite Status:</h3>
               <p className="text-sm text-muted-foreground">{getAvailabilitySummary()}</p>
             </div>
           </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 md:mb-16">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-6 md:gap-8 mb-8 md:mb-16 pt-2">
             {roomTypes.map((room) => {
               const availability = getAvailabilityDates(room);
               const { isBooked, from, fromShort, extensionWarning, possibleExtensionUntil, nextMajorAvailability, specialOffer, availableUntilDate } = availability;

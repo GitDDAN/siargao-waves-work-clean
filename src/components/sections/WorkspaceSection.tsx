@@ -93,15 +93,15 @@ const WorkspaceSection = () => {
         {/* Section Header — frosted pill */}
         <div className="text-center mb-8 md:mb-16">
           <div className="inline-block bg-white/70 backdrop-blur-md rounded-2xl px-4 py-4 sm:px-8 sm:py-6 shadow-lg shadow-black/5 border border-white/50">
-            <Badge variant="outline" className="mb-4 bg-white/80 border-primary/30">
+            <Badge variant="outline" className="mb-3 sm:mb-4 bg-white/80 border-primary/30">
               Work-Friendly Setup
             </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent drop-shadow-sm">
                 Free Coffee - True Island Spirit
               </span>
             </h2>
-            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
               Work from the hammock, dining table, garden, or bedroom desk — choose your daily spot! Every room has a desk and 100+ Mbps fiber WiFi. For AC comfort or a change of scenery, we know the best work-friendly cafes on the island.
             </p>
           </div>
@@ -110,8 +110,8 @@ const WorkspaceSection = () => {
         {/* Workspace Types */}
         <div className="mb-16">
           <div className="bg-white/60 backdrop-blur-md rounded-2xl p-3 sm:p-5 md:p-8 shadow-lg shadow-black/5 border border-white/40">
-            <h3 className="text-2xl font-bold text-center mb-2">Every Room is Set Up for Remote Work</h3>
-            <p className="text-center text-muted-foreground mb-8">A desk, fast WiFi, and your choice of work spots around the villa</p>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2">Every Room is Set Up for Remote Work</h3>
+            <p className="text-center text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">A desk, fast WiFi, and your choice of work spots around the villa</p>
             <div className="grid md:grid-cols-3 gap-6">
               {workspaceTypes.map((workspace, index) => (
                 <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] bg-white/80 backdrop-blur-sm border-white/60 shadow-md shadow-black/5">
@@ -150,7 +150,7 @@ const WorkspaceSection = () => {
 
         {/* Success Stories */}
         <div className="bg-white/65 backdrop-blur-md rounded-2xl p-4 sm:p-6 md:p-8 mb-12 shadow-lg shadow-black/5 border border-white/40">
-          <h3 className="text-2xl font-bold text-center mb-8">What Our Guests Say</h3>
+          <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-6 sm:mb-8">What Our Guests Say</h3>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white/80 rounded-xl p-4 sm:p-6 shadow-md shadow-black/5 border border-white/50">
               <div className="flex items-start space-x-4">
@@ -194,7 +194,7 @@ const WorkspaceSection = () => {
 
         {/* CTA */}
         <div className="text-center bg-white/65 backdrop-blur-md rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg shadow-black/5 border border-white/40">
-          <h3 className="text-2xl font-bold mb-4">Ready to work from paradise?</h3>
+          <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">Ready to work from paradise?</h3>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
             Fast WiFi, a desk in every room, and the flexibility to work wherever you feel like
           </p>

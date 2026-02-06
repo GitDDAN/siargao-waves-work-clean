@@ -55,13 +55,13 @@ ${formData.message || 'None'}
         {/* Section Header — frosted pill */}
         <div className="text-center mb-8 md:mb-16">
           <div className="inline-block bg-white/70 backdrop-blur-md rounded-2xl px-4 py-4 sm:px-8 sm:py-6 shadow-lg shadow-black/5 border border-white/50">
-            <Badge variant="outline" className="mb-4 bg-white/80 border-primary/30">Book Your Tropical Escape</Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            <Badge variant="outline" className="mb-3 sm:mb-4 bg-white/80 border-primary/30">Book Your Tropical Escape</Badge>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 Reserve Your Suite
               </span>
             </h2>
-            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
               Fill out the form below. We'll confirm your booking and details instantly via WhatsApp.
             </p>
           </div>
@@ -195,7 +195,7 @@ ${formData.message || 'None'}
             <Card className="backdrop-blur-md bg-white/70 border-white/50 shadow-lg shadow-black/5">
               <CardContent className="p-4 sm:p-6 md:p-8 text-center">
                 <Users className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-4">Join Our Community</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">Join Our Community</h3>
                 <p className="text-muted-foreground mb-6">
                   Beyond just a room, become part of our vibrant digital nomad family.
                 </p>

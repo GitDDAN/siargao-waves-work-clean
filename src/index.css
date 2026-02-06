@@ -159,7 +159,7 @@ All colors MUST be HSL. Jungle greens, ocean blues, sunset vibes.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
   }
 }
 

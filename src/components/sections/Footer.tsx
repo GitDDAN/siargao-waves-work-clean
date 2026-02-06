@@ -168,21 +168,21 @@ const Footer = () => {
 
         {/* Stats Bar */}
         <div className="border-t border-background/20 pt-8 mb-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
             <div>
-              <div className="text-2xl font-bold text-primary">Goal 150+</div>
+              <div className="text-lg sm:text-2xl font-bold text-primary">Goal 150+</div>
               <div className="text-xs text-background/70">Community Members</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-secondary">100+</div>
+              <div className="text-lg sm:text-2xl font-bold text-secondary">100+</div>
               <div className="text-xs text-background/70">WiFi Speed</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-accent">4.9</div>
+              <div className="text-lg sm:text-2xl font-bold text-accent">4.9</div>
               <div className="text-xs text-background/70">Average Rating</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-primary">24/7</div>
+              <div className="text-lg sm:text-2xl font-bold text-primary">24/7</div>
               <div className="text-xs text-background/70">Community Support</div>
             </div>
           </div>

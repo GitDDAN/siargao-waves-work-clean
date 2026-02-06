@@ -122,7 +122,7 @@ const CommunitySection = () => {
                 alt="Digital nomads collaborating"
                 className="rounded-xl shadow-lg w-full h-24 sm:h-32 md:h-[150px] object-cover"
               />
-              <div className="absolute -bottom-2 -right-2 bg-white rounded-lg p-2 shadow-lg">
+              <div className="absolute -bottom-2 right-2 bg-white rounded-lg p-2 shadow-lg">
                 <div className="flex items-center space-x-1">
                   <MessageCircle className="w-3 h-3 text-primary" />
                   <span className="text-xs font-medium">24/7 Community Chat</span>

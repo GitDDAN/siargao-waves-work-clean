@@ -15,7 +15,7 @@ import siargaoAerial from "@/assets/siargao-aerial.jpg";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <Header />
       <HeroSection />
       <Promo />

@@ -33,7 +33,7 @@ const HeroSection = () => {
 
             {/* Content Container */}
             {/* --- UPDATED: Increased bottom padding to ensure scroll pill is visible --- */}
-            <div className="relative z-20 w-full pt-16 pb-20 md:pt-24 md:pb-32">
+            <div className="relative z-20 w-full pt-24 pb-20 md:pt-28 md:pb-32">
                 <div className="max-w-6xl mx-auto px-4 flex flex-col gap-5 md:gap-8 lg:gap-10">
                     {/* Location Badge */}
                     <div className="text-center">

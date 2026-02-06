@@ -62,9 +62,9 @@ const CozyRoomPromoSection = () => {
                 <span className="text-sm font-semibold text-green-700 uppercase tracking-wider">Limited Time Offer</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 leading-tight">
+              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight">
                 <span className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent">The Cozy Room</span>
-                <span className="block text-2xl md:text-3xl mt-1 bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">is Available!</span>
+                <span className="block text-lg sm:text-xl md:text-2xl mt-1 bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">is Available!</span>
               </h3>
 
               <p className="text-gray-600 mb-6 max-w-lg mx-auto md:mx-0 leading-relaxed">
@@ -84,10 +84,10 @@ const CozyRoomPromoSection = () => {
               </div>
 
               {/* Price Card */}
-              <div className="bg-gradient-to-br from-green-500 to-emerald-600 text-white p-3 sm:p-4 md:p-5 rounded-2xl mb-6 inline-block shadow-lg">
-                <div className="flex items-center gap-4">
-                  <div className="bg-white/20 p-3 rounded-xl">
-                    <Star className="w-8 h-8 text-yellow-300" fill="currentColor" />
+              <div className="bg-gradient-to-br from-green-500 to-emerald-600 text-white p-3 sm:p-4 md:p-5 rounded-2xl mb-6 w-full sm:w-auto sm:inline-block shadow-lg">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="bg-white/20 p-2 sm:p-3 rounded-xl flex-shrink-0">
+                    <Star className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-300" fill="currentColor" />
                   </div>
                   <div>
                     <p className="text-green-100 text-sm font-medium">
@@ -104,7 +104,7 @@ const CozyRoomPromoSection = () => {
               <div className="space-y-3">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white shadow-xl text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 rounded-full transform hover:scale-105 transition-all duration-300 w-full md:w-auto"
+                  className="bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white shadow-xl text-sm sm:text-base md:text-lg px-5 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 rounded-full transform hover:scale-105 transition-all duration-300 w-full md:w-auto"
                   onClick={openWhatsApp}
                 >
                   <MessageCircle className="w-5 h-5 mr-2" />
@@ -116,9 +116,9 @@ const CozyRoomPromoSection = () => {
               </div>
 
               {/* Thumbnail Row */}
-              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mt-8">
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5 sm:gap-2 mt-6 sm:mt-8">
                 {thumbnails.map((thumb, index) => (
-                  <div key={index} className="aspect-square overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer ring-2 ring-white">
+                  <div key={index} className="aspect-square overflow-hidden rounded-lg sm:rounded-xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer ring-1 sm:ring-2 ring-white">
                     <img
                       src={thumb}
                       alt={`Villa amenity ${index + 1}`}
