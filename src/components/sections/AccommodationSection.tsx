@@ -148,8 +148,8 @@ const ImageGalleryModal: React.FC<ImageGalleryModalProps> = ({ isOpen, onClose, 
         </div>
         <div className="relative w-full h-full flex items-center justify-center">
             <button className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white bg-black/50 p-1.5 sm:p-2 rounded-full z-50" onClick={handlePrev}><ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" /></button>
-            <div className="flex flex-col items-center justify-center px-10 sm:px-16 py-4 h-full" onClick={(e) => e.stopPropagation()}>
-                {currentItem.type === 'video' ? <video key={currentItem.url} src={currentItem.url} controls autoPlay muted className="max-w-full max-h-[75vh] sm:max-h-[80vh] object-contain rounded-lg" /> : <img key={currentItem.url} src={currentItem.url} alt={currentItem.alt} className="max-w-full max-h-[75vh] sm:max-h-[80vh] object-contain rounded-lg" />}
+            <div className="flex flex-col items-center justify-center px-2 sm:px-6 md:px-10 lg:px-16 py-4 h-full" onClick={(e) => e.stopPropagation()}>
+                {currentItem.type === 'video' ? <video key={currentItem.url} src={currentItem.url} controls autoPlay muted className="max-w-full max-h-[70dvh] sm:max-h-[75dvh] md:max-h-[80dvh] object-contain rounded-lg" /> : <img key={currentItem.url} src={currentItem.url} alt={currentItem.alt} className="max-w-full max-h-[70dvh] sm:max-h-[75dvh] md:max-h-[80dvh] object-contain rounded-lg" />}
                 {currentItem.caption && <p className="text-white text-center mt-4 text-sm max-w-2xl">{currentItem.caption}</p>}
             </div>
             <button className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white bg-black/50 p-1.5 sm:p-2 rounded-full z-50" onClick={handleNext}><ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" /></button>
@@ -311,11 +311,11 @@ const AccommodationSection = () => {
   return (
     <>
       {galleryOpen && selectedRoom && ( <ImageGalleryModal isOpen={galleryOpen} onClose={() => setGalleryOpen(false)} images={roomGalleries[selectedRoom.title]} initialIndex={selectedImageIndex} roomTitle={selectedRoom.title} /> )}
-      <section id="rooms" className="py-20 bg-background">
+      <section id="rooms" className="py-10 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-16">
             <Badge variant="outline" className="mb-4">Tropical Paradise Living</Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Salamat Villa Siargao</span> Private Suites
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">Your Dream Island Living Awaits</p>
@@ -324,7 +324,7 @@ const AccommodationSection = () => {
               <p className="text-sm text-muted-foreground">{getAvailabilitySummary()}</p>
             </div>
           </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-16">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 md:mb-16">
             {roomTypes.map((room) => {
               const availability = getAvailabilityDates(room);
               const { isBooked, from, fromShort, extensionWarning, possibleExtensionUntil, nextMajorAvailability, specialOffer, availableUntilDate } = availability;
@@ -340,7 +340,7 @@ const AccommodationSection = () => {
                   
                   <CardHeader className="p-4">
                     <div className="relative rounded-lg overflow-hidden mb-4 group">
-                      <img src={room.image} alt={`${room.title} - ${room.subtitle}`} className="w-full h-48 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105" onClick={() => openGallery(room, 0)} />
+                      <img src={room.image} alt={`${room.title} - ${room.subtitle}`} className="w-full h-36 sm:h-44 md:h-48 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105" onClick={() => openGallery(room, 0)} />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center cursor-pointer" onClick={() => openGallery(room, 0)}>
                         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 p-3 rounded-full"><Expand className="w-6 h-6 text-black" /></div>
                       </div>

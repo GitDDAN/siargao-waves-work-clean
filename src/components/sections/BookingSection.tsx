@@ -50,13 +50,13 @@ ${formData.message || 'None'}
   };
 
   return (
-    <section id="booking" className="py-20 bg-gradient-to-b from-sky-50/40 to-white">
+    <section id="booking" className="py-10 md:py-20 bg-gradient-to-b from-sky-50/40 to-white">
       <div className="container mx-auto px-4">
         {/* Section Header — frosted pill */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <div className="inline-block bg-white/70 backdrop-blur-md rounded-2xl px-4 py-4 sm:px-8 sm:py-6 shadow-lg shadow-black/5 border border-white/50">
             <Badge variant="outline" className="mb-4 bg-white/80 border-primary/30">Book Your Tropical Escape</Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 Reserve Your Suite
               </span>
@@ -67,7 +67,7 @@ ${formData.message || 'None'}
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+        <div className="grid lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12 items-start">
           {/* --- REDESIGNED: Booking Form takes up 3 columns --- */}
           <Card className="lg:col-span-3 shadow-xl shadow-black/10 bg-white/75 backdrop-blur-lg border-white/50">
             <CardHeader>
@@ -193,7 +193,7 @@ ${formData.message || 'None'}
               </CardContent>
             </Card>
             <Card className="backdrop-blur-md bg-white/70 border-white/50 shadow-lg shadow-black/5">
-              <CardContent className="p-8 text-center">
+              <CardContent className="p-4 sm:p-6 md:p-8 text-center">
                 <Users className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-2xl font-bold mb-4">Join Our Community</h3>
                 <p className="text-muted-foreground mb-6">

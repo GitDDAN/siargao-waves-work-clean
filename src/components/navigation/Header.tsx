@@ -91,7 +91,7 @@ const Header = () => {
       </div>
       
       {/* Navigation content */}
-      <div className="flex flex-col h-[calc(100vh-4rem)] bg-background">
+      <div className="flex flex-col h-[calc(100dvh-4rem)] bg-background">
         {/* Navigation items */}
         <div className="flex-1 flex flex-col justify-center px-4">
           <nav className="space-y-6">

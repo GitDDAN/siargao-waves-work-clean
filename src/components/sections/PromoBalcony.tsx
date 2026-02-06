@@ -34,11 +34,11 @@ const CozyRoomPromoSection = () => {
   };
 
   return (
-    <section id="special-offer-cozy" className="py-20 bg-gradient-to-b from-green-50/40 to-white">
+    <section id="special-offer-cozy" className="py-10 md:py-20 bg-gradient-to-b from-green-50/40 to-white">
       <div className="container mx-auto px-4">
         <div className="relative rounded-3xl shadow-xl shadow-black/10 overflow-hidden bg-white/65 backdrop-blur-md border border-white/40">
 
-          <div className="relative flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 p-8 md:p-12">
+          <div className="relative flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 p-4 sm:p-6 md:p-8 lg:p-12">
             {/* Image Column */}
             <div className="w-full md:w-1/2 lg:w-5/12">
               <div className="relative rounded-2xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition-transform duration-500">
@@ -62,7 +62,7 @@ const CozyRoomPromoSection = () => {
                 <span className="text-sm font-semibold text-green-700 uppercase tracking-wider">Limited Time Offer</span>
               </div>
 
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 leading-tight">
                 <span className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent">The Cozy Room</span>
                 <span className="block text-2xl md:text-3xl mt-1 bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">is Available!</span>
               </h3>
@@ -84,7 +84,7 @@ const CozyRoomPromoSection = () => {
               </div>
 
               {/* Price Card */}
-              <div className="bg-gradient-to-br from-green-500 to-emerald-600 text-white p-5 rounded-2xl mb-6 inline-block shadow-lg">
+              <div className="bg-gradient-to-br from-green-500 to-emerald-600 text-white p-3 sm:p-4 md:p-5 rounded-2xl mb-6 inline-block shadow-lg">
                 <div className="flex items-center gap-4">
                   <div className="bg-white/20 p-3 rounded-xl">
                     <Star className="w-8 h-8 text-yellow-300" fill="currentColor" />
@@ -94,7 +94,7 @@ const CozyRoomPromoSection = () => {
                       {format(availableDate, 'MMM dd')} - {format(endDate, 'MMM dd')}
                     </p>
                     <div className="flex items-baseline gap-1">
-                      <span className="font-extrabold text-4xl">₱26,500</span>
+                      <span className="font-extrabold text-2xl sm:text-3xl md:text-4xl">₱26,500</span>
                       <span className="text-green-100">/month</span>
                     </div>
                   </div>
@@ -104,7 +104,7 @@ const CozyRoomPromoSection = () => {
               <div className="space-y-3">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white shadow-xl text-lg px-8 py-6 rounded-full transform hover:scale-105 transition-all duration-300 w-full md:w-auto"
+                  className="bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white shadow-xl text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 rounded-full transform hover:scale-105 transition-all duration-300 w-full md:w-auto"
                   onClick={openWhatsApp}
                 >
                   <MessageCircle className="w-5 h-5 mr-2" />

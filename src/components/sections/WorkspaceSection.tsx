@@ -88,15 +88,15 @@ const WorkspaceSection = () => {
   ];
 
   return (
-    <section id="remote-work" className="py-20 bg-white">
+    <section id="remote-work" className="py-10 md:py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header — frosted pill */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <div className="inline-block bg-white/70 backdrop-blur-md rounded-2xl px-4 py-4 sm:px-8 sm:py-6 shadow-lg shadow-black/5 border border-white/50">
             <Badge variant="outline" className="mb-4 bg-white/80 border-primary/30">
               Work-Friendly Setup
             </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent drop-shadow-sm">
                 Free Coffee - True Island Spirit
               </span>
@@ -109,13 +109,13 @@ const WorkspaceSection = () => {
 
         {/* Workspace Types */}
         <div className="mb-16">
-          <div className="bg-white/60 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-lg shadow-black/5 border border-white/40">
+          <div className="bg-white/60 backdrop-blur-md rounded-2xl p-3 sm:p-5 md:p-8 shadow-lg shadow-black/5 border border-white/40">
             <h3 className="text-2xl font-bold text-center mb-2">Every Room is Set Up for Remote Work</h3>
             <p className="text-center text-muted-foreground mb-8">A desk, fast WiFi, and your choice of work spots around the villa</p>
             <div className="grid md:grid-cols-3 gap-6">
               {workspaceTypes.map((workspace, index) => (
                 <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] bg-white/80 backdrop-blur-sm border-white/60 shadow-md shadow-black/5">
-                  <CardContent className="p-5 md:p-8">
+                  <CardContent className="p-3 sm:p-4 md:p-6 lg:p-8">
                     <div className="flex items-center space-x-3 mb-4">
                       <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                         <workspace.icon className="w-5 h-5 text-primary" />
@@ -149,10 +149,10 @@ const WorkspaceSection = () => {
         </div>
 
         {/* Success Stories */}
-        <div className="bg-white/65 backdrop-blur-md rounded-2xl p-6 md:p-8 mb-12 shadow-lg shadow-black/5 border border-white/40">
+        <div className="bg-white/65 backdrop-blur-md rounded-2xl p-4 sm:p-6 md:p-8 mb-12 shadow-lg shadow-black/5 border border-white/40">
           <h3 className="text-2xl font-bold text-center mb-8">What Our Guests Say</h3>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white/80 rounded-xl p-6 shadow-md shadow-black/5 border border-white/50">
+            <div className="bg-white/80 rounded-xl p-4 sm:p-6 shadow-md shadow-black/5 border border-white/50">
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
                   TH
@@ -171,7 +171,7 @@ const WorkspaceSection = () => {
               </div>
             </div>
 
-            <div className="bg-white/80 rounded-xl p-6 shadow-md shadow-black/5 border border-white/50">
+            <div className="bg-white/80 rounded-xl p-4 sm:p-6 shadow-md shadow-black/5 border border-white/50">
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-secondary to-orange-400 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
                   AN
@@ -193,7 +193,7 @@ const WorkspaceSection = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center bg-white/65 backdrop-blur-md rounded-2xl p-8 shadow-lg shadow-black/5 border border-white/40">
+        <div className="text-center bg-white/65 backdrop-blur-md rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg shadow-black/5 border border-white/40">
           <h3 className="text-2xl font-bold mb-4">Ready to work from paradise?</h3>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
             Fast WiFi, a desk in every room, and the flexibility to work wherever you feel like

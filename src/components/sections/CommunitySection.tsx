@@ -59,7 +59,7 @@ const CommunitySection = () => {
 
   return (
     // --- UPDATED: Adjusted padding and removed max-height for better scaling ---
-    <section id="community" className="py-24 bg-muted/30 relative overflow-hidden">
+    <section id="community" className="py-12 md:py-24 bg-muted/30 relative overflow-hidden">
       {/* --- UPDATED: Banner is now vertically centered --- */}
       <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 z-20">
         <div className="container mx-auto px-4">
@@ -120,7 +120,7 @@ const CommunitySection = () => {
               <img
                 src={communityImage}
                 alt="Digital nomads collaborating"
-                className="rounded-xl shadow-lg w-full h-[150px] object-cover"
+                className="rounded-xl shadow-lg w-full h-24 sm:h-32 md:h-[150px] object-cover"
               />
               <div className="absolute -bottom-2 -right-2 bg-white rounded-lg p-2 shadow-lg">
                 <div className="flex items-center space-x-1">

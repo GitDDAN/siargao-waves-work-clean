@@ -33,13 +33,13 @@ const HeroSection = () => {
 
             {/* Content Container */}
             {/* --- UPDATED: Increased bottom padding to ensure scroll pill is visible --- */}
-            <div className="relative z-20 w-full pt-24 pb-32">
-                <div className="max-w-6xl mx-auto px-4 flex flex-col gap-8 md:gap-10">
+            <div className="relative z-20 w-full pt-16 pb-20 md:pt-24 md:pb-32">
+                <div className="max-w-6xl mx-auto px-4 flex flex-col gap-5 md:gap-8 lg:gap-10">
                     {/* Location Badge */}
                     <div className="text-center">
                         <Badge
                             variant="secondary"
-                            className="bg-white/10 hover:bg-white/20 text-white border-white/20 backdrop-blur-md px-4 py-2 md:px-8 md:py-3 text-sm md:text-base transition-all"
+                            className="bg-white/10 hover:bg-white/20 text-white border-white/20 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 md:px-8 md:py-3 text-sm md:text-base transition-all"
                         >
                             <MapPin className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3" />
                             <span className="font-semibold text-center">General Luna • Perfect for Digital Nomads</span>
@@ -48,7 +48,7 @@ const HeroSection = () => {
 
                     {/* Main Heading */}
                     <div className="space-y-2 md:space-y-4 text-center">
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-tight">
                             <span
                                 className="animate-gradient bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent block"
                                 style={{
@@ -58,7 +58,7 @@ const HeroSection = () => {
                             >
                                 {activities[currentActivity]}
                             </span>
-                            <span className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl block">
+                            <span className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl block">
                                 Coliving & Island Life
                             </span>
                         </h1>
@@ -99,7 +99,7 @@ const HeroSection = () => {
                             href="https://wa.me/639083339477"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group relative px-6 py-3 md:px-8 md:py-4 rounded-full overflow-hidden bg-gradient-to-r from-blue-500 via-cyan-400 to-green-400 hover:scale-105 transition-all duration-300"
+                            className="group relative px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full overflow-hidden bg-gradient-to-r from-blue-500 via-cyan-400 to-green-400 hover:scale-105 transition-all duration-300"
                         >
                             <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-200" />
                             <span className="relative flex items-center justify-center gap-2 text-white font-semibold text-base md:text-lg">
@@ -110,7 +110,7 @@ const HeroSection = () => {
 
                         <a
                             href="#rooms"
-                            className="group px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold text-base md:text-lg text-white border border-white/30 hover:bg-white/10 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                            className="group px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full font-semibold text-base md:text-lg text-white border border-white/30 hover:bg-white/10 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
                         >
                             <Laptop className="w-5 h-5 group-hover:animate-pulse" />
                             View Monthly Rates

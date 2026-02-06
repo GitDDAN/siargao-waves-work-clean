@@ -66,10 +66,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-foreground text-background py-16">
+    <footer className="bg-foreground text-background py-10 md:py-16">
       <div className="container mx-auto px-4">
         {/* Main Footer */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-8 md:mb-12">
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
