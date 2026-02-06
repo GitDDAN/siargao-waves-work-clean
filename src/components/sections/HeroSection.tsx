@@ -59,7 +59,7 @@ const HeroSection = () => {
                                 {activities[currentActivity]}
                             </span>
                             <span className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl block">
-                                Coliving & Coworking
+                                Coliving & Island Life
                             </span>
                         </h1>
 
@@ -79,7 +79,7 @@ const HeroSection = () => {
                             {[
                                 { icon: Laptop, text: "Fibre WiFi" },
                                 { icon: Users, text: "Nomad Community" },
-                                { icon: Coffee, text: "Coworking Ready" },
+                                { icon: Coffee, text: "Work-Friendly" },
                                 { icon: Waves, text: "5min to Cloud 9" },
                             ].map((feature, index) => (
                                 <div

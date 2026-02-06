@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea"; // Import Textarea
 import { format } from "date-fns";
 import { Calendar as CalendarIcon, Send, Users, MessageCircle, CheckCircle, Shield, Sparkles } from "lucide-react";
 
+
 const BookingSection = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -49,23 +50,26 @@ ${formData.message || 'None'}
   };
 
   return (
-    <section id="booking" className="py-20 bg-gradient-to-br from-background to-muted/30">
+    <section id="booking" className="py-20 bg-gradient-to-b from-sky-50/40 to-white">
       <div className="container mx-auto px-4">
+        {/* Section Header — frosted pill */}
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4 bg-background">Book Your Tropical Escape</Badge>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Reserve Your Suite
-            </span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Fill out the form below. We'll confirm your booking and details instantly via WhatsApp.
-          </p>
+          <div className="inline-block bg-white/70 backdrop-blur-md rounded-2xl px-8 py-6 shadow-lg shadow-black/5 border border-white/50">
+            <Badge variant="outline" className="mb-4 bg-white/80 border-primary/30">Book Your Tropical Escape</Badge>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Reserve Your Suite
+              </span>
+            </h2>
+            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+              Fill out the form below. We'll confirm your booking and details instantly via WhatsApp.
+            </p>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
           {/* --- REDESIGNED: Booking Form takes up 3 columns --- */}
-          <Card className="lg:col-span-3 shadow-2xl bg-background/80 backdrop-blur-lg border-primary/20">
+          <Card className="lg:col-span-3 shadow-xl shadow-black/10 bg-white/75 backdrop-blur-lg border-white/50">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2">
                 <CalendarIcon className="w-6 h-6 text-primary" />
@@ -78,23 +82,23 @@ ${formData.message || 'None'}
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name *</Label>
-                    <Input id="name" placeholder="John Doe" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required />
+                    <Input id="name" placeholder="John Doe" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required className="bg-white/60" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email (Optional)</Label>
-                    <Input id="email" type="email" placeholder="john.doe@example.com" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
+                    <Input id="email" type="email" placeholder="john.doe@example.com" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="bg-white/60" />
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                         <Label htmlFor="phone">Phone Number (Optional)</Label>
-                        <Input id="phone" placeholder="+63 912 345 6789" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} />
+                        <Input id="phone" placeholder="+63 912 345 6789" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="bg-white/60" />
                     </div>
                     <div className="space-y-2">
                         <Label>Room Type *</Label>
                         <Select onValueChange={(value) => setFormData({...formData, roomType: value})} required>
-                          <SelectTrigger><SelectValue placeholder="Select a room" /></SelectTrigger>
+                          <SelectTrigger className="bg-white/60"><SelectValue placeholder="Select a room" /></SelectTrigger>
                           <SelectContent>
                             <SelectItem value="Ensuite Master">Ensuite Master</SelectItem>
                             <SelectItem value="Balcony Room">Balcony Room</SelectItem>
@@ -109,7 +113,7 @@ ${formData.message || 'None'}
                     <Label>Check-in Date</Label>
                     <Popover>
                       <PopoverTrigger asChild>
-                        <Button variant="outline" className="w-full justify-start text-left font-normal hover:bg-primary/10">
+                        <Button variant="outline" className="w-full justify-start text-left font-normal hover:bg-primary/10 bg-white/60">
                           <CalendarIcon className="w-4 h-4 mr-2" />
                           {formData.checkIn ? format(formData.checkIn, 'PPP') : 'Pick a date'}
                         </Button>
@@ -121,7 +125,7 @@ ${formData.message || 'None'}
                     <Label>Check-out Date</Label>
                     <Popover>
                       <PopoverTrigger asChild>
-                        <Button variant="outline" className="w-full justify-start text-left font-normal hover:bg-primary/10">
+                        <Button variant="outline" className="w-full justify-start text-left font-normal hover:bg-primary/10 bg-white/60">
                           <CalendarIcon className="w-4 h-4 mr-2" />
                           {formData.checkOut ? format(formData.checkOut, 'PPP') : 'Pick a date'}
                         </Button>
@@ -130,11 +134,11 @@ ${formData.message || 'None'}
                     </Popover>
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
                     <Label>Number of Guests *</Label>
                     <Select onValueChange={(value) => setFormData({...formData, guests: value})} defaultValue="1">
-                        <SelectTrigger><SelectValue /></SelectTrigger>
+                        <SelectTrigger className="bg-white/60"><SelectValue /></SelectTrigger>
                         <SelectContent>
                             <SelectItem value="1">1 Guest</SelectItem>
                             <SelectItem value="2">2 Guests</SelectItem>
@@ -144,10 +148,10 @@ ${formData.message || 'None'}
 
                 <div className="space-y-2">
                     <Label htmlFor="message">Additional Message (Optional)</Label>
-                    <Textarea id="message" placeholder="Let us know if you have any special requests..." value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} />
+                    <Textarea id="message" placeholder="Let us know if you have any special requests..." value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="bg-white/60" />
                 </div>
 
-                <Button type="submit" size="lg" className="w-full bg-gradient-to-r from-primary to-secondary text-white text-lg font-bold hover:scale-[1.02] transition-transform">
+                <Button type="submit" size="lg" className="w-full bg-gradient-to-r from-primary to-secondary text-white text-lg font-bold hover:scale-[1.02] transition-transform shadow-md">
                   <Send className="w-5 h-5 mr-2" />
                   Book via WhatsApp
                 </Button>
@@ -157,7 +161,7 @@ ${formData.message || 'None'}
 
           {/* --- REDESIGNED: Info card takes up 2 columns --- */}
           <div className="lg:col-span-2 space-y-8">
-            <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
+            <Card className="bg-white/70 backdrop-blur-md border-white/50 shadow-lg shadow-black/5">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Sparkles className="w-6 h-6 text-accent" />
@@ -188,19 +192,19 @@ ${formData.message || 'None'}
                 </div>
               </CardContent>
             </Card>
-            <Card>
+            <Card className="backdrop-blur-md bg-white/70 border-white/50 shadow-lg shadow-black/5">
               <CardContent className="p-8 text-center">
                 <Users className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-2xl font-bold mb-4">Join Our Community</h3>
                 <p className="text-muted-foreground mb-6">
                   Beyond just a room, become part of our vibrant digital nomad family.
                 </p>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="w-full"
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full bg-white/80"
                   onClick={() => {
-                    window.open('https://wa.me/639083339477?text=Hi! I\'d like to learn more about joining the Siargao Coliving community!', '_blank');
+                    window.open('https://wa.me/639083339477?text=Hi! I\'d like to learn more about Salamat Villa Siargao!', '_blank');
                   }}
                 >
                   <MessageCircle className="w-4 h-4 mr-2" />

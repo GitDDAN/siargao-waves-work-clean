@@ -84,7 +84,7 @@ const CommunitySection = () => {
                 size="sm"
                 className="bg-white text-primary hover:bg-white/90 font-semibold px-3 py-1 rounded-full text-sm border-0 flex-shrink-0"
                 onClick={() => {
-                  const message = "Hi! I'm interested in joining the coliving community when it launches in August 2025. Can you add me to the early access list?";
+                  const message = "Hi! I'm interested in joining the community when it launches. Can you add me to the early access list?";
                   window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
                 }}
               >
@@ -107,11 +107,11 @@ const CommunitySection = () => {
             </Badge>
             <h2 className="text-xl md:text-2xl font-bold mb-3">
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Coliving
+                Our
               </span> Community Hub
             </h2>
             <p className="text-sm text-muted-foreground max-w-xl mx-auto">
-              Join our authentic coliving community where digital nomads connect, collaborate, and create amazing projects together
+              Join our community where digital nomads connect, collaborate, and create amazing projects together
             </p>
           </div>
 
@@ -149,7 +149,7 @@ const CommunitySection = () => {
                 <ul className="space-y-1 text-muted-foreground text-xs">
                   <li className="flex items-start space-x-2">
                     <div className="w-1 h-1 bg-primary rounded-full mt-1.5 flex-shrink-0" />
-                    <span>Daily co-working sessions with skill sharing</span>
+                    <span>Daily hangouts and skill sharing</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <div className="w-1 h-1 bg-accent rounded-full mt-1.5 flex-shrink-0" />
@@ -164,7 +164,7 @@ const CommunitySection = () => {
                 className="w-full opacity-70 cursor-not-allowed text-xs bg-gradient-to-r from-primary to-secondary text-white border-0"
                 disabled
               >
-                Join Our Coliving Community (Coming August 2025)
+                Join Our Community (Coming Soon)
               </Button>
             </div>
           </div>

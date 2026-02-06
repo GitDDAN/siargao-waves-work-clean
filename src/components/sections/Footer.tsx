@@ -37,7 +37,7 @@ const Footer = () => {
   const quickLinks = [
     { label: "Community", href: "#community" },
     { label: "Rooms", href: "#rooms" },
-    { label: "Workspace", href: "#workspace" },
+    { label: "Remote Work", href: "#remote-work" },
     { label: "Siargao Guide", href: "#siargao" }
   ];
 
@@ -56,7 +56,7 @@ const Footer = () => {
     {
       icon: MessageCircle,
       label: "WhatsApp",
-      href: "https://wa.me/639083339477?text=Hi!%20I'd%20like%20to%20ask%20a%20question%20about%20Siargao%20Salamat%20Villa%20Coliving."
+      href: "https://wa.me/639083339477?text=Hi!%20I'd%20like%20to%20ask%20a%20question%20about%20Salamat%20Villa%20Siargao."
     }
   ];
 
@@ -79,7 +79,7 @@ const Footer = () => {
               {/* --- UPDATED: Logo text changed --- */}
               <div className="flex flex-col">
                 <span className="text-lg font-bold">Siargao Salamat</span>
-                <span className="text-xs text-accent font-medium -mt-1">Villa Coliving</span>
+                <span className="text-xs text-accent font-medium -mt-1">Villa</span>
               </div>
             </div>
             <p className="text-sm text-background/70 max-w-xs">
@@ -142,7 +142,7 @@ const Footer = () => {
                 className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
                 onClick={() => {
                   // --- UPDATED: WhatsApp message with new name ---
-                  const message = "Hi! I'm interested in booking a stay at Siargao Salamat Villa Coliving. Can you share more details about availability?";
+                  const message = "Hi! I'm interested in booking a stay at Salamat Villa Siargao. Can you share more details about availability?";
                   window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
                 }}
               >
@@ -193,7 +193,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-4 text-sm text-background/70">
               {/* --- UPDATED: Copyright with new name --- */}
-              <span>&copy; 2025 Siargao Salamat Villa Coliving. All rights reserved.</span>
+              <span>&copy; 2026 Salamat Villa Siargao. All rights reserved.</span>
               <div className="flex items-center space-x-1">
                 <span>Made with</span>
                 <Heart className="w-4 h-4 text-red-500" />

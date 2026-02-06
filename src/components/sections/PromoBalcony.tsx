@@ -11,6 +11,7 @@ import thumbnail4 from '@/assets/Gallery/1InternetSpeed.jpg';
 import thumbnail5 from '@/assets/Gallery/bamboo-entrance.png';
 import thumbnail6 from '@/assets/Gallery/community-collab.jpg';
 
+
 // Date formatting helper
 const format = (date: Date, formatStr: string): string => {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -33,49 +34,9 @@ const CozyRoomPromoSection = () => {
   };
 
   return (
-    <section id="special-offer-cozy" className="py-20 bg-gradient-to-br from-green-50 via-teal-50 to-cyan-50 relative overflow-hidden">
-      {/* Decorative Siargao Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Palm leaves top right */}
-        <svg className="absolute -top-10 -right-10 w-64 h-64 text-green-200/40 rotate-45" viewBox="0 0 100 100" fill="currentColor">
-          <path d="M50 0 C60 30, 90 40, 100 50 C90 60, 60 70, 50 100 C40 70, 10 60, 0 50 C10 40, 40 30, 50 0" />
-        </svg>
-        {/* Wave pattern bottom */}
-        <svg className="absolute bottom-0 left-0 w-full h-24 text-cyan-200/30" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="currentColor">
-          <path d="M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z" />
-        </svg>
-        {/* Second wave layer */}
-        <svg className="absolute bottom-0 left-0 w-full h-20 text-teal-200/20" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="currentColor">
-          <path d="M0,80 C200,40 400,100 600,60 C800,20 1000,80 1200,40 L1200,120 L0,120 Z" />
-        </svg>
-        {/* Palm leaves bottom left */}
-        <svg className="absolute -bottom-5 -left-10 w-48 h-48 text-green-300/30 -rotate-12" viewBox="0 0 100 100" fill="currentColor">
-          <path d="M50 0 C60 30, 90 40, 100 50 C90 60, 60 70, 50 100 C40 70, 10 60, 0 50 C10 40, 40 30, 50 0" />
-        </svg>
-        {/* Surfboard silhouette */}
-        <svg className="absolute top-1/4 -left-4 w-16 h-40 text-teal-300/20 rotate-12" viewBox="0 0 30 100" fill="currentColor">
-          <ellipse cx="15" cy="50" rx="12" ry="48" />
-        </svg>
-        {/* Sun rays top left */}
-        <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-radial from-yellow-200/30 to-transparent rounded-full blur-2xl" />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="relative rounded-3xl shadow-2xl overflow-hidden">
-          {/* Card gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-teal-50" />
-
-          {/* Decorative elements inside card */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {/* Top right palm accent */}
-            <div className="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br from-green-200/40 to-teal-200/20 rounded-full blur-3xl" />
-            {/* Bottom left ocean accent */}
-            <div className="absolute -bottom-16 -left-16 w-56 h-56 bg-gradient-to-tr from-cyan-200/40 to-blue-200/20 rounded-full blur-3xl" />
-            {/* Subtle wave line */}
-            <svg className="absolute bottom-0 right-0 w-1/2 h-32 text-teal-100/50" viewBox="0 0 400 100" fill="currentColor">
-              <path d="M0,50 Q100,0 200,50 T400,50 L400,100 L0,100 Z" />
-            </svg>
-          </div>
+    <section id="special-offer-cozy" className="py-20 bg-gradient-to-b from-green-50/40 to-white">
+      <div className="container mx-auto px-4">
+        <div className="relative rounded-3xl shadow-xl shadow-black/10 overflow-hidden bg-white/65 backdrop-blur-md border border-white/40">
 
           <div className="relative flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 p-8 md:p-12">
             {/* Image Column */}

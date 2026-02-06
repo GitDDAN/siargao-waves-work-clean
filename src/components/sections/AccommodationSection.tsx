@@ -169,8 +169,8 @@ const AccommodationSection = () => {
       { url: ensuiteMasterImageSrc, alt: "Ensuite Master Bedroom", caption: "Spacious master bedroom with ensuite bathroom", type: "image" },
       { url: ensuiteImg2, alt: "Room Interior", caption: "Queen bed with tropical ambiance", type: "image" },
       { url: ensuiteImg3, alt: "Master Bedroom View", caption: "Master suite with Jungle views", type: "image" },
-      { url: ensuiteImg4, alt: "Work Desk", caption: "Dedicated workspace with natural light", type: "image" },
-      { url: commonImg1, alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
+      { url: ensuiteImg4, alt: "Work Desk", caption: "Room desk with natural light", type: "image" },
+      { url: commonImg1, alt: "Hammock", caption: "Downstairs Hammock", type: "image" },
       { url: commonImg2, alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
       { url: commonImg3, alt: "Security", caption: "24/7 CCTV security system", type: "image" },
       { url: ensuiteImg5, alt: "Bathroom", caption: "Private Ensuite Bathroom", type: "image" },
@@ -185,7 +185,7 @@ const AccommodationSection = () => {
       { url: balconyImg4, alt: "Tropical Views", caption: "Wake up to tropical jungle views", type: "image" },
       { url: balconyImg5, alt: "Balcony Space", caption: "2 bathrooms shared between 2 rooms, 1 with shower", type: "image" },
       { url: balconyImg6, alt: "Additional View", caption: "Downstairs area", type: "image" },
-      { url: commonImg1, alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
+      { url: commonImg1, alt: "Hammock", caption: "Downstairs Hammock", type: "image" },
       { url: commonImg2, alt: "Tropical Common Area", caption: "Shared tropical paradise space", type: "image" },
       { url: commonImg3, alt: "Security", caption: "24/7 CCTV security system", type: "image" },
       { url: commonImg4, alt: "High Speed Internet", caption: "Fast fiber internet throughout", type: "image" }
@@ -193,7 +193,7 @@ const AccommodationSection = () => {
     "Cozy Room": [
       { url: cozyRoomImageSrc, alt: "Cozy Room", caption: "Comfortable room with Jungle views", type: "image" },
       { url: cozyImg2, alt: "Private Room", caption: "Your private sanctuary", type: "image" },
-      { url: commonImg1, alt: "Workspace", caption: "Downstairs Hammock", type: "image" },
+      { url: commonImg1, alt: "Hammock", caption: "Downstairs Hammock", type: "image" },
       { url: cozyImg3, alt: "Room Features", caption: "Downstairs Kitchen", type: "image" },
       { url: cozyImg4, alt: "Garden Access", caption: "Location / Shortcut access to main road", type: "image" },
       { url: cozyImg5, alt: "Room Details", caption: "Cozy room amenities", type: "image" },
@@ -207,9 +207,9 @@ const AccommodationSection = () => {
   };
 
   const roomTypes = [
-    { title: "Ensuite Master", subtitle: "Your Private Coliving Suite", monthlyPrice: "₱33,000", weeklyPrice: "₱9,500", image: ensuiteMasterImageSrc, perfectFor: "Digital nomads seeking private coliving with privacy and focused coworking space.", socialTagline: "🌊 Private Coliving Suite with Private Bathroom & Coworking Space in Paradise! Perfect for Digital Nomads seeking luxury island living.", features: ["Private ensuite bathroom", "Dedicated coworking workspace", "Queen bed with premium linens", "Air conditioning comfort", "High-speed fiber WiFi", "New Linen & Towels Weekly", "Weekly Cleaning Service", "Extra Large balcony", "Hammock with jungle tree view"], popular: true, capacity: "Max 2 guests", amenities: [Bath, Bed, Wifi, AirVent, Shield] },
-    { title: "Balcony Room", subtitle: "Coliving with Paradise Views", monthlyPrice: "₱31,000", weeklyPrice: "₱8,500", image: balconyRoomImageSrc, perfectFor: "Couples enjoying coliving lifestyle with outdoor morning routines and collaborative workspace.", socialTagline: "🌴 Wake Up to Jungle Views Every Day! Coliving Suite with Private Balcony - Perfect for Couples & Digital Nomads in Siargao Paradise.", features: ["Private balcony with jungle views", "Coworking space with nature views", "Queen bed in tropical setting", "AC + natural ventilation", "High-speed fiber WiFi", "New Linen & Towels Weekly", "Weekly Cleaning Service", "Perfect for couples or solo nomads"], popular: false, capacity: "Max 2 guests", amenities: [Bed, Wifi, AirVent, Coffee] },
-    { title: "Cozy Room", subtitle: "Essential Coliving Experience", monthlyPrice: "₱28,000", weeklyPrice: "₱7,500", image: cozyRoomImageSrc, perfectFor: "Solo nomads maximizing coliving value for extended community living.", socialTagline: "🏄‍♂️ Budget-Friendly Island Coliving! Perfect for Solo Digital Nomads - Jungle Views, Great Community, Unbeatable Value in Siargao.", features: ["Jungle view workspace", "Comfortable double bed", "Air conditioning comfort", "High-speed fiber WiFi", "Shared bathroom with hot shower", "Perfect for budget-conscious nomads", "New Linen & Towels Weekly", "Weekly Cleaning Service"], popular: false, capacity: "Max 2 guest", amenities: [Bed, Wifi, AirVent, Coffee] }
+    { title: "Ensuite Master", subtitle: "Your Private Suite", monthlyPrice: "₱33,000", weeklyPrice: "₱9,500", image: ensuiteMasterImageSrc, perfectFor: "Digital nomads seeking privacy, comfort, and a dedicated desk for focused remote work.", socialTagline: "🌊 Private Suite with Ensuite Bathroom & Work Desk in Paradise! Perfect for Digital Nomads seeking comfortable island living.", features: ["Private ensuite bathroom", "In-room work desk", "Queen bed with premium linens", "Air conditioning comfort", "High-speed fiber WiFi", "New Linen & Towels Weekly", "Weekly Cleaning Service", "Extra Large balcony", "Hammock with jungle tree view"], popular: true, capacity: "Max 2 guests", amenities: [Bath, Bed, Wifi, AirVent, Shield] },
+    { title: "Balcony Room", subtitle: "Paradise Views & Balcony", monthlyPrice: "₱31,000", weeklyPrice: "₱8,500", image: balconyRoomImageSrc, perfectFor: "Couples or solo nomads who love outdoor mornings, jungle views, and a comfortable work setup.", socialTagline: "🌴 Wake Up to Jungle Views Every Day! Coliving Suite with Private Balcony - Perfect for Couples & Digital Nomads in Siargao Paradise.", features: ["Private balcony with jungle views", "Desk with nature views", "Queen bed in tropical setting", "AC + natural ventilation", "High-speed fiber WiFi", "New Linen & Towels Weekly", "Weekly Cleaning Service", "Perfect for couples or solo nomads"], popular: false, capacity: "Max 2 guests", amenities: [Bed, Wifi, AirVent, Coffee] },
+    { title: "Cozy Room", subtitle: "Smart & Comfortable", monthlyPrice: "₱28,000", weeklyPrice: "₱7,500", image: cozyRoomImageSrc, perfectFor: "Solo nomads seeking great value for extended island living with a community vibe.", socialTagline: "🏄‍♂️ Budget-Friendly Island Coliving! Perfect for Solo Digital Nomads - Jungle Views, Great Community, Unbeatable Value in Siargao.", features: ["Desk with jungle views", "Comfortable double bed", "Air conditioning comfort", "High-speed fiber WiFi", "Shared bathroom with hot shower", "Perfect for budget-conscious nomads", "New Linen & Towels Weekly", "Weekly Cleaning Service"], popular: false, capacity: "Max 2 guest", amenities: [Bed, Wifi, AirVent, Coffee] }
   ];
 
   const getAvailabilityDates = (room: { title: string }) => {
@@ -283,12 +283,12 @@ const AccommodationSection = () => {
   const shareRoom = async (room: any) => {
     const availability = getAvailabilityDates(room);
     const url = window.location.href.split('#')[0] + '#' + room.title.toLowerCase().replace(/ /g, '-');
-    const text = `Check out the ${room.title} at Coliving Siargao Villa! ${room.socialTagline}. It's currently ${availability.isBooked ? `booked until ${availability.from}` : `available from ${availability.from}`}. More info here:`;
+    const text = `Check out the ${room.title} at Salamat Villa Siargao! ${room.socialTagline}. It's currently ${availability.isBooked ? `booked until ${availability.from}` : `available from ${availability.from}`}. More info here:`;
 
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `Coliving Siargao Villa - ${room.title}`,
+          title: `Salamat Villa Siargao - ${room.title}`,
           text: text,
           url: url,
         });
@@ -314,11 +314,11 @@ const AccommodationSection = () => {
       <section id="rooms" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4">Tropical Paradise Coliving</Badge>
+            <Badge variant="outline" className="mb-4">Tropical Paradise Living</Badge>
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Coliving Siargao Villa</span> Private Suites
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Salamat Villa Siargao</span> Private Suites
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">Your Dream Island Living & Coworking Space Awaits</p>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">Your Dream Island Living Awaits</p>
             <div className="bg-primary/5 p-4 rounded-lg inline-block">
               <h3 className="text-lg font-semibold text-primary mb-2">Current Suite Status:</h3>
               <p className="text-sm text-muted-foreground">{getAvailabilitySummary()}</p>

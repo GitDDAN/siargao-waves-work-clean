@@ -19,6 +19,7 @@ import {
   ExternalLink
 } from "lucide-react";
 
+
 const SiargaoSection = () => {
   const advantages = [
     {
@@ -27,7 +28,7 @@ const SiargaoSection = () => {
       description: "Affordable paradise with quality infrastructure",
       details: [
         "Meals from ₱150-400",
-        "Motorbike rental ₱350/day via GoldenBellSiargao.com", 
+        "Motorbike rental ₱350/day via GoldenBellSiargao.com",
         "Local transport ₱50-100",
         "Massage ₱500/hour"
       ],
@@ -101,7 +102,7 @@ const SiargaoSection = () => {
     },
     {
       name: "General Luna Town",
-      distance: "2km drive", 
+      distance: "2km drive",
       activity: "Restaurants, cafes, shops",
       icon: Utensils
     },
@@ -141,7 +142,7 @@ const SiargaoSection = () => {
       icon: Utensils
     },
     {
-      title: "Island Exploration", 
+      title: "Island Exploration",
       description: "Discover hidden gems across the archipelago",
       activities: ["Motorbike adventures", "Cave exploration", "Beach hopping", "Waterfall hikes"],
       icon: Mountain
@@ -155,28 +156,31 @@ const SiargaoSection = () => {
   ];
 
   return (
-    <section id="siargao" className="py-20 bg-background">
+    <section id="siargao" className="py-20 bg-white">
       <div className="container mx-auto px-4">
+        {/* Section Header — frosted pill */}
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4">
-            <MapPin className="w-3 h-3 mr-1" />
-            Siargao Island Experience
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Why{" "}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Siargao?
-            </span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover why digital nomads are choosing Siargao as their long-term base
-          </p>
+          <div className="inline-block bg-white/70 backdrop-blur-md rounded-2xl px-8 py-6 shadow-lg shadow-black/5 border border-white/50">
+            <Badge variant="outline" className="mb-4 bg-white/80 border-primary/30">
+              <MapPin className="w-3 h-3 mr-1" />
+              Siargao Island Experience
+            </Badge>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              Why{" "}
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Siargao?
+              </span>
+            </h2>
+            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+              Discover why digital nomads are choosing Siargao as their long-term base
+            </p>
+          </div>
         </div>
 
         {/* Key Advantages */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {advantages.map((advantage, index) => (
-            <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] overflow-hidden">
+            <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] overflow-hidden bg-white/80 backdrop-blur-md border-white/50 shadow-lg shadow-black/5">
               <CardContent className="p-0">
                 <div className={`bg-gradient-to-br ${advantage.color} p-6 text-white`}>
                   <advantage.icon className="w-8 h-8 mb-4" />
@@ -200,7 +204,7 @@ const SiargaoSection = () => {
         </div>
 
         {/* Location Map */}
-        <div className="bg-muted/50 rounded-2xl p-8 mb-16">
+        <div className="bg-white/65 backdrop-blur-md rounded-2xl p-6 md:p-8 mb-16 shadow-lg shadow-black/5 border border-white/40">
           <h3 className="text-2xl font-bold text-center mb-8">Perfect Location - Everything Within Walking Distance</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {locations.map((location: any, index) => (
@@ -210,7 +214,7 @@ const SiargaoSection = () => {
                   href={location.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-center p-6 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-yellow-400 hover:scale-105 cursor-pointer block"
+                  className="text-center p-6 bg-gradient-to-br from-yellow-50/90 to-orange-50/90 backdrop-blur-sm rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-yellow-400 hover:scale-105 cursor-pointer block"
                 >
                   <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <location.icon className="w-6 h-6 text-white" />
@@ -224,7 +228,7 @@ const SiargaoSection = () => {
                   <p className="text-xs text-yellow-700 mt-2 font-medium">Click to visit website →</p>
                 </a>
               ) : (
-                <div key={index} className="text-center p-6 bg-background rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div key={index} className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-md shadow-black/5 hover:shadow-lg transition-shadow border border-white/50">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <location.icon className="w-6 h-6 text-primary" />
                   </div>
@@ -244,31 +248,33 @@ const SiargaoSection = () => {
 
         {/* Island Experiences */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-center mb-8">Island Experiences</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {experiences.map((experience, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center mb-4">
-                    <experience.icon className="w-5 h-5 text-white" />
-                  </div>
-                  <h4 className="font-semibold mb-2">{experience.title}</h4>
-                  <p className="text-sm text-muted-foreground mb-4">{experience.description}</p>
-                  <ul className="space-y-1">
-                    {experience.activities.map((activity, activityIndex) => (
-                      <li key={activityIndex} className="text-xs text-muted-foreground">
-                        • {activity}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="bg-white/60 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-lg shadow-black/5 border border-white/40">
+            <h3 className="text-2xl font-bold text-center mb-8">Island Experiences</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {experiences.map((experience, index) => (
+                <Card key={index} className="hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm border-white/60 shadow-md shadow-black/5">
+                  <CardContent className="p-6">
+                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center mb-4">
+                      <experience.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <h4 className="font-semibold mb-2">{experience.title}</h4>
+                    <p className="text-sm text-muted-foreground mb-4">{experience.description}</p>
+                    <ul className="space-y-1">
+                      {experience.activities.map((activity, activityIndex) => (
+                        <li key={activityIndex} className="text-xs text-muted-foreground">
+                          • {activity}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Community Impact */}
-        <div className="bg-gradient-to-r from-accent/10 to-primary/10 rounded-2xl p-8 mb-12 relative overflow-hidden">
+        <div className="bg-white/65 backdrop-blur-md rounded-2xl p-6 md:p-8 mb-12 relative overflow-hidden shadow-lg shadow-black/5 border border-white/40">
           {/* Future Goals Stamp - Updated with tropical colors */}
           <div className="absolute top-4 right-4 transform rotate-12">
             <div className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-lg border-2 border-white shadow-lg">
@@ -284,20 +290,20 @@ const SiargaoSection = () => {
             <Heart className="w-12 h-12 text-accent mx-auto mb-4" />
             <h3 className="text-2xl font-bold mb-4">Supporting Local Community</h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Our coliving space is committed to sustainable tourism and supporting the local Siargao community
+              Salamat Villa is committed to sustainable tourism and supporting the local Siargao community
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center p-6 bg-background/50 rounded-xl">
+            <div className="text-center p-6 bg-white/70 backdrop-blur-sm rounded-xl shadow-md shadow-black/5 border border-white/50">
               <div className="text-2xl font-bold text-accent mb-2">50+</div>
               <div className="text-sm">Local Jobs Created</div>
             </div>
-            <div className="text-center p-6 bg-background/50 rounded-xl">
+            <div className="text-center p-6 bg-white/70 backdrop-blur-sm rounded-xl shadow-md shadow-black/5 border border-white/50">
               <div className="text-2xl font-bold text-primary mb-2">₱2M+</div>
               <div className="text-sm">Local Business Revenue</div>
             </div>
-            <div className="text-center p-6 bg-background/50 rounded-xl">
+            <div className="text-center p-6 bg-white/70 backdrop-blur-sm rounded-xl shadow-md shadow-black/5 border border-white/50">
               <div className="text-2xl font-bold text-secondary mb-2">12</div>
               <div className="text-sm">Conservation Projects</div>
             </div>
@@ -305,24 +311,24 @@ const SiargaoSection = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center">
+        <div className="text-center bg-white/65 backdrop-blur-md rounded-2xl p-8 shadow-lg shadow-black/5 border border-white/40">
           <h3 className="text-2xl font-bold mb-4">Ready to experience Siargao?</h3>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
             Join a community that's building the future while respecting island culture
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               variant="default"
               size="lg"
-              className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
+              className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0 shadow-md"
             >
               <MapPin className="w-4 h-4 mr-2" />
               Explore Local Guide
             </Button>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="lg"
-              className="hover:bg-primary/10 hover:border-primary/50 transition-colors"
+              className="hover:bg-primary/10 hover:border-primary/50 transition-colors bg-white/80"
             >
               <Waves className="w-4 h-4 mr-2" />
               Watch Island Tour
@@ -330,16 +336,16 @@ const SiargaoSection = () => {
           </div>
         </div>
 
-        <div className="text-center space-y-4 mt-8">
+        <div className="text-center space-y-4 mt-8 bg-white/65 backdrop-blur-md rounded-2xl p-6 shadow-lg shadow-black/5 border border-white/40">
           <p className="text-sm text-muted-foreground">
             Exact coordinates: <a href="https://maps.google.com/?q=9.791547987108133,126.15896492864357" target="_blank" rel="noopener noreferrer" className="underline">9.791547987108133, 126.15896492864357</a>
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="lg"
-              className="hover:bg-primary/10 hover:border-primary/50 transition-colors"
+              className="hover:bg-primary/10 hover:border-primary/50 transition-colors bg-white/80"
               onClick={() => {
                 const message = "Hi Ali, please send me the Welcome Package!";
                 window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');
@@ -347,10 +353,10 @@ const SiargaoSection = () => {
             >
               Request Welcome Package
             </Button>
-            <Button 
-              variant="default" 
+            <Button
+              variant="default"
               size="lg"
-              className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0"
+              className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-0 shadow-md"
               onClick={() => {
                 const message = "Hi Ali, I'd like to join the community WhatsApp group!";
                 window.open(`https://wa.me/639083339477?text=${encodeURIComponent(message)}`, '_blank');

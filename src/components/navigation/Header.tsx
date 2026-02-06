@@ -9,7 +9,7 @@ import {
 const cn = (...classes: (string | undefined | null | boolean)[]) => {
   return classes.filter(Boolean).join(' ');
 };
-import { Menu, X, Waves, Users, Home, Briefcase, MapPin, Send } from "lucide-react";
+import { Menu, X, Waves, Users, Home, Laptop, MapPin, Send } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,7 +30,7 @@ const Header = () => {
   const navItems = [
     { label: "Community", href: "#community", icon: Users },
     { label: "Rooms", href: "#rooms", icon: Home },
-    { label: "Workspace", href: "#workspace", icon: Briefcase },
+    { label: "Remote Work", href: "#remote-work", icon: Laptop },
     { label: "Siargao", href: "#siargao", icon: MapPin },
   ];
 
@@ -41,14 +41,14 @@ const Header = () => {
       </div>
       <div className="flex flex-col">
         <span className="text-base font-bold text-foreground truncate">Siargao Salamat</span>
-        <span className="text-xs text-orange-500 font-medium -mt-1">Villa Coliving</span>
+        <span className="text-xs text-orange-500 font-medium -mt-1">Villa</span>
       </div>
     </a>
   );
   
   const CtaButtons = ({ mobile = false }: { mobile?: boolean }) => {
-    const contactUrl = "https://wa.me/639083339477?text=Hi!%20I'd%20like%20to%20ask%20a%20question%20about%20Siargao%20Salamat%20Villa%20Coliving.";
-    const applyUrl = "https://wa.me/639083339477?text=Hi!%20I'm%20interested%20in%20applying%20to%20stay%20at%20Siargao%20Salamat%20Villa%20Coliving.";
+    const contactUrl = "https://wa.me/639083339477?text=Hi!%20I'd%20like%20to%20ask%20a%20question%20about%20Salamat%20Villa%20Siargao.";
+    const applyUrl = "https://wa.me/639083339477?text=Hi!%20I'm%20interested%20in%20applying%20to%20stay%20at%20Salamat%20Villa%20Siargao.";
 
     return (
       <div className={`flex ${mobile ? 'flex-col space-y-3 w-full' : 'flex-row space-x-3'}`}>
