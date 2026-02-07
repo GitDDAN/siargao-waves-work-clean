@@ -247,7 +247,7 @@ const SiargaoSection = () => {
         </div>
 
         {/* Island Experiences */}
-        <div className="mb-16">
+        <div className="mb-8 md:mb-16">
           <div className="bg-white/60 backdrop-blur-md rounded-2xl p-3 sm:p-5 md:p-8 shadow-lg shadow-black/5 border border-white/40">
             <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-6 sm:mb-8">Island Experiences</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">

@@ -108,7 +108,7 @@ const WorkspaceSection = () => {
         </div>
 
         {/* Workspace Types */}
-        <div className="mb-16">
+        <div className="mb-8 md:mb-16">
           <div className="bg-white/60 backdrop-blur-md rounded-2xl p-3 sm:p-5 md:p-8 shadow-lg shadow-black/5 border border-white/40">
             <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2">Every Room is Set Up for Remote Work</h3>
             <p className="text-center text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">A desk, fast WiFi, and your choice of work spots around the villa</p>
@@ -149,7 +149,7 @@ const WorkspaceSection = () => {
         </div>
 
         {/* Success Stories */}
-        <div className="bg-white/65 backdrop-blur-md rounded-2xl p-4 sm:p-6 md:p-8 mb-12 shadow-lg shadow-black/5 border border-white/40">
+        <div className="bg-white/65 backdrop-blur-md rounded-2xl p-4 sm:p-6 md:p-8 mb-8 md:mb-12 shadow-lg shadow-black/5 border border-white/40">
           <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-6 sm:mb-8">What Our Guests Say</h3>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white/80 rounded-xl p-4 sm:p-6 shadow-md shadow-black/5 border border-white/50">

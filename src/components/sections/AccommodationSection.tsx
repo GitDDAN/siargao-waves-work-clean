@@ -324,7 +324,7 @@ const AccommodationSection = () => {
               <p className="text-sm text-muted-foreground">{getAvailabilitySummary()}</p>
             </div>
           </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-6 md:gap-8 mb-8 md:mb-16 pt-2">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-16 pt-4">
             {roomTypes.map((room) => {
               const availability = getAvailabilityDates(room);
               const { isBooked, from, fromShort, extensionWarning, possibleExtensionUntil, nextMajorAvailability, specialOffer, availableUntilDate } = availability;

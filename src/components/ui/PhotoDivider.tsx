@@ -9,7 +9,7 @@ const PhotoDivider = ({ src, alt, className = '' }: PhotoDividerProps) => (
     <img
       src={src}
       alt={alt}
-      className="w-full h-[150px] sm:h-[220px] md:h-[300px] object-cover"
+      className="w-full h-[120px] sm:h-[220px] md:h-[300px] object-cover"
       loading="lazy"
     />
   </div>

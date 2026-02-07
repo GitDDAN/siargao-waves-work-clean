@@ -39,10 +39,10 @@ const HeroSection = () => {
                     <div className="text-center">
                         <Badge
                             variant="secondary"
-                            className="bg-white/10 hover:bg-white/20 text-white border-white/20 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 md:px-8 md:py-3 text-sm md:text-base transition-all"
+                            className="bg-white/10 hover:bg-white/20 text-white border-white/20 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 md:px-8 md:py-3 text-xs sm:text-sm md:text-base transition-all"
                         >
-                            <MapPin className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3" />
-                            <span className="font-semibold text-center">General Luna • Perfect for Digital Nomads</span>
+                            <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1.5 sm:mr-2 md:mr-3 flex-shrink-0" />
+                            <span className="font-semibold text-center">General Luna • Digital Nomad Hub</span>
                         </Badge>
                     </div>
 
